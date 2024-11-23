@@ -1,0 +1,48 @@
+.buttonMenu {
+    width: 350px;
+    height: 79px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-width: 20px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 3px;
+    background-color: rgb(5, 5, 5);
+    border-left-color: rgb(67, 67, 67);
+    border-right-color: rgb(67, 67, 67);
+    border-top-color: rgb(67, 67, 67);
+    border-bottom-color: rgb(67, 67, 67);
+    transition-duration: 0.4s;
+}
+
+.buttonMenuHover:hover {
+    border-left-color: rgb(166, 166, 166);
+    border-right-color: rgb(166, 166, 166);
+    border-top-color: rgb(166, 166, 166);
+    border-bottom-color: rgb(166, 166, 166);
+    background-color: rgb(101, 101, 101);
+    scale: 1.2 1.2;
+    -unity-font-style: normal;
+    border-bottom-width: 20px;
+    bottom: 10px;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    translate: 0 0;
+}
+
+.buttonMenuFocus:focus {
+    background-color: rgb(53, 53, 53);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    top: 0;
+    scale: 1 1.1;
+    transition-duration: 1s, 0s;
+    translate: 523px 727px;
+    rotate: 180deg;
+    transition-property: all, translate;
+    left: 182px;
+}

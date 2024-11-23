@@ -1,0 +1,10 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Client/UIBuilder/Selectors/Text.uss?fileID=7433441132597879392&amp;guid=a7d9d9acfaddf8042931110f23207c73&amp;type=3#Text" />
+    <Style src="project://database/Assets/_Client/UIBuilder/Selectors/ButtonPauseAndSettings.uss?fileID=7433441132597879392&amp;guid=fb1f303c553b37247b23f075befd7f4b&amp;type=3#ButtonPauseAndSettings" />
+    <engine:VisualElement style="height: 100%; align-self: center; justify-content: center; align-items: center;">
+        <engine:Label text="Pause" enable-rich-text="true" class="textTitle" />
+        <engine:Button text="Continue" name="Continue" class="textButton pauseButton pauseButtonHover pauseButtonFocus" style="bottom: 10px;" />
+        <engine:Button text="Settings" name="Settings" class="textButton pauseButton pauseButtonHover pauseButtonFocus" style="bottom: 10px;" />
+        <engine:Button text="Exit to menu" name="Exit" class="textButton pauseButton pauseButtonHover pauseButtonFocus" style="bottom: 10px;" />
+    </engine:VisualElement>
+</engine:UXML>

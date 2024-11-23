@@ -1,0 +1,15 @@
+.textTitle {
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+    font-size: 52px;
+    width: 344px;
+    white-space: normal;
+    -unity-font-style: bold;
+}
+
+.textButton {
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    white-space: nowrap;
+    text-overflow: clip;
+}
