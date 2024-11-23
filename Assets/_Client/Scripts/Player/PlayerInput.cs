@@ -1,5 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerInput
 {
@@ -25,15 +26,15 @@ public class PlayerInput
     public void UnsubscribeGamplayActions()
     {
         _playerActions.MousePosition.performed -= OnMousePosition;
-        _playerActions.Move.performed -= OnChangeDirection;
-        _playerActions.Move.canceled -= OnChangeDirection;
+        _playerActions.Move.performed -= OnStartMove;
+        _playerActions.Move.canceled -= OnStartMove;
     }
 
     public void SubscribeGamplayActions()
     {
         _playerActions.MousePosition.performed += OnMousePosition;
-        _playerActions.Move.performed += OnChangeDirection;
-        _playerActions.Move.canceled += OnChangeDirection;
+        _playerActions.Move.performed += OnStartMove;
+        _playerActions.Move.canceled += OnStopMove;
     }
 
     private void OnMousePosition(InputAction.CallbackContext context)
@@ -41,8 +42,13 @@ public class PlayerInput
         _player.View.RotateCamera(context.ReadValue<Vector2>());
     }
 
-    private void OnChangeDirection(InputAction.CallbackContext context)
+    private void OnStartMove(InputAction.CallbackContext context)
     {
-        _player.Movement.ChangeDirection(context.ReadValue<Vector2>());
+        _player.Movement.StartMove(context.ReadValue<Vector2>());
+    }
+
+    private void OnStopMove(InputAction.CallbackContext context)
+    {
+        _player.Movement.StopMove();
     }
 }

@@ -1,6 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bootstrap : MonoBehaviour
 {
-
+    private void Start()
+    {
+        InputHandler.Initialize();
+        SceneManager.LoadScene("Test");
+    }
 }

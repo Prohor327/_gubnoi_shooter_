@@ -9,9 +9,15 @@ public class PlayerMotor : MonoBehaviour
 
 
     private float _moveSpeed;
+    private PlayerAnimations _animations;
     private CharacterController _controller;
     private Vector3 _playerVelocity;
     private Vector3 _direction;
+
+    public void Initialize(PlayerAnimations playerAnimations)
+    {
+        _animations = playerAnimations;
+    }
 
     private void Awake()
     {
@@ -34,8 +40,15 @@ public class PlayerMotor : MonoBehaviour
         _controller.Move(_playerVelocity * Time.deltaTime);
     }
 
-    public void ChangeDirection(Vector2 direction)
+    public void StartMove(Vector2 direction)
     {
+        _animations.PlayWalk();
         _direction = new Vector3(direction.x, 0, direction.y);
+    }
+
+    public void StopMove()
+    {
+        _animations.PlayIdle();
+        _direction = Vector3.zero;
     }
 }

@@ -9,15 +9,15 @@ static class InputHandler
 
     public static void Initialize()
     {
-        _playerActions = _input.Player;
-
         MonoBehaviour.print("Initialize Input Handler");
+        _input = new Input();
+        _input.Enable();
+        _playerActions = _input.Player;
     }
 
     public static void OnEnable()
     {
-        _input = new Input();
-        _input.Enable();
+
     }
 
     public static void OnDisable()

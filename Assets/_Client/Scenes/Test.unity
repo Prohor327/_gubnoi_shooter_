@@ -359,50 +359,6 @@ MonoBehaviour:
   m_ObsoleteUseShadowQualitySettings: 0
   m_ObsoleteCustomShadowResolution: 512
   m_ObsoleteContactShadows: 0
---- !u!1 &1490987957
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1490987959}
-  - component: {fileID: 1490987958}
-  m_Layer: 0
-  m_Name: Bootstrap
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1490987958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490987957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08d4bd4600f7cb4e826e2b5f1025007, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1490987959
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1490987957}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4152297, y: 0.685975, z: 1.7117466}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1718863414
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,10 +370,9 @@ GameObject:
   - component: {fileID: 1718863416}
   - component: {fileID: 1718863415}
   - component: {fileID: 1718863421}
-  - component: {fileID: 1718863420}
-  - component: {fileID: 1718863419}
   - component: {fileID: 1718863418}
   - component: {fileID: 1718863417}
+  - component: {fileID: 1718863422}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -490,39 +445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d07ac7de70f6a47accd3bc2197e8f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sens: 100
---- !u!114 &1718863419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718863414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36310597d32df954b9ce0a765793af7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rig:
-    _rig: {fileID: 2574477475259034349}
---- !u!114 &1718863420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718863414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: 1718863419}
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
+  _sens: 30
+  _fpsRig: {fileID: 2574477475259034349}
 --- !u!114 &1718863421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,6 +461,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkSpeed: 3
   _runSpeed: 5
+--- !u!114 &1718863422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718863414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae93498b61ad6164d919f4cc82f72d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentAnimator: {fileID: 2950334064474681432}
 --- !u!1 &1980009384
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,8 +578,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 10}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4011,4 +3948,3 @@ SceneRoots:
   - {fileID: 1364583334}
   - {fileID: 1980009388}
   - {fileID: 1718863416}
-  - {fileID: 1490987959}
