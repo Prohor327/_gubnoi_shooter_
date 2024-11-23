@@ -6,6 +6,6 @@ public class Bootstrap : MonoBehaviour
     private void Start()
     {
         InputHandler.Initialize();
-        SceneManager.LoadScene("Test");
+        SceneManager.LoadScene("Menu");
     }
 }
