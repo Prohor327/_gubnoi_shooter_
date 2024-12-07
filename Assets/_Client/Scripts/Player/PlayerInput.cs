@@ -13,21 +13,16 @@ public class PlayerInput
         SubscribePlayer();
     }
 
-    public void SubscribePlayer()
-    {
-        SubscribeGamplayActions();
-    }
+    public void SubscribePlayer() => SubscribeGamplayActions();
 
-    public void UnsubscribePlayer()
-    {
-        UnsubscribeGamplayActions();
-    }
+    public void UnsubscribePlayer() => UnsubscribeGamplayActions();
 
     public void UnsubscribeGamplayActions()
     {
         _playerActions.MousePosition.performed -= OnMousePosition;
         _playerActions.Move.performed -= OnStartMove;
         _playerActions.Move.canceled -= OnStartMove;
+        _playerActions.Pause.performed -= OnPause;
     }
 
     public void SubscribeGamplayActions()
@@ -35,6 +30,7 @@ public class PlayerInput
         _playerActions.MousePosition.performed += OnMousePosition;
         _playerActions.Move.performed += OnStartMove;
         _playerActions.Move.canceled += OnStopMove;
+        _playerActions.Pause.performed += OnPause;
     }
 
     private void OnMousePosition(InputAction.CallbackContext context)
@@ -50,5 +46,10 @@ public class PlayerInput
     private void OnStopMove(InputAction.CallbackContext context)
     {
         _player.Movement.StopMove();
+    }
+
+    private void OnPause(InputAction.CallbackContext context)
+    {
+        _player._pause.OpenPause();
     }
 }

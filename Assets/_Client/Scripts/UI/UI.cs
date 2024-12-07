@@ -22,6 +22,7 @@ public abstract class UI : MonoBehaviour
 
     protected virtual void Open()
     {
+        _Document.Clear();
         _Document.Add(_UIElement);
     }
 }

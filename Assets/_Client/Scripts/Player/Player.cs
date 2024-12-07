@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private PlayerInput _input;
     private PlayerAnimations _animations;
 
+    public Pause _pause;
+
     public PlayerMotor Movement => _movement;
     public PlayerView View => _view;
     public PlayerInput Input => _input;

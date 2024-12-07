@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
-
+using System.Collections;
+using System;
 
 public class Menu : UI
 {
@@ -11,14 +12,12 @@ public class Menu : UI
         Open();
 
         Button play = _UIElement.Q<Button>("Play");
-        play.text = "Zalupa";
         //Button settings = _UIElement.Q<Button>("Settings");
         Button exit = _UIElement.Q<Button>("Exit");
 
-        play.clicked += LoadTest;
+        play.clicked += () => Invoke(nameof(LoadTest), 0.7f); 
         //settings.clicked += () => Open Settings;
-        exit.clicked += () => Application.Quit();
-
+        exit.clicked += () => Invoke(nameof(Application.Quit), 0.7f);
     }
 
     protected override void Open()

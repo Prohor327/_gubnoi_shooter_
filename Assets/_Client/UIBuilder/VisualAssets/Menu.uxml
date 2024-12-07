@@ -1,7 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/_Client/UIBuilder/Selectors/ButtonMenu.uss?fileID=7433441132597879392&amp;guid=7bdd9677d90641d419d27a2a06edd014&amp;type=3#ButtonMenu" />
     <Style src="project://database/Assets/_Client/UIBuilder/Selectors/Text.uss?fileID=7433441132597879392&amp;guid=a7d9d9acfaddf8042931110f23207c73&amp;type=3#Text" />
-    <engine:VisualElement style="flex-grow: 1; width: 573px; left: 20px; justify-content: center; align-items: center;">
+    <engine:VisualElement style="flex-grow: 1; width: 573px; left: 20px; justify-content: center; align-items: center; position: absolute; height: 1073px;">
         <engine:Label text="Menu" class="textTitle" style="top: -32px; scale: 2 2;" />
         <engine:Button text="Play" name="Play" enable-rich-text="true" class="buttonMenu buttonMenuHover buttonMenuFocus textButton" style="width: 440px; height: 100px;" />
         <engine:Button text="Settings" name="Settings" class="buttonMenu buttonMenuHover buttonMenuFocus textButton" style="width: 440px; height: 100px;" />
