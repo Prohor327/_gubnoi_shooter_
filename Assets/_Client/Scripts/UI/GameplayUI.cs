@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class GameUI: UI
+public class GameplayUI : UIElement
 {
     protected override void Initialize()
     {
         base.Initialize();
     }
 
-    protected override void Open()
+    public override void Open()
     {
         base.Open();
     }
-
-    public void OpenGU() => Open();
 }

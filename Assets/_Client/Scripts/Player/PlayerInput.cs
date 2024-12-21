@@ -1,28 +1,38 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
+using Zenject;
 
 public class PlayerInput
 {
     private Player _player;
+    private Pause _pause;
     private Input.PlayerActions _playerActions => InputHandler.PlayerActions;
 
-    public PlayerInput(Player player)
+    public PlayerInput(Player player, Pause pause)
     {
+        _pause = pause;
         _player = player;
         SubscribePlayer();
     }
 
-    public void SubscribePlayer() => SubscribeGamplayActions();
+    public void SubscribePlayer()
+    {
+        SubscribeGamplayActions();
+        _playerActions.Pause.performed += OnPause;
+    }
 
-    public void UnsubscribePlayer() => UnsubscribeGamplayActions();
+    public void UnsubscribePlayer()
+    {
+        UnsubscribeGamplayActions();
+        _playerActions.Pause.performed -= OnPause;
+    }
 
     public void UnsubscribeGamplayActions()
     {
         _playerActions.MousePosition.performed -= OnMousePosition;
         _playerActions.Move.performed -= OnStartMove;
         _playerActions.Move.canceled -= OnStartMove;
-        _playerActions.Pause.performed -= OnPause;
+        _playerActions.Fire.performed -= OnFire;
     }
 
     public void SubscribeGamplayActions()
@@ -30,7 +40,12 @@ public class PlayerInput
         _playerActions.MousePosition.performed += OnMousePosition;
         _playerActions.Move.performed += OnStartMove;
         _playerActions.Move.canceled += OnStopMove;
-        _playerActions.Pause.performed += OnPause;
+        _playerActions.Fire.performed += OnFire;
+    }
+
+    private void OnFire(InputAction.CallbackContext context)
+    {
+        _player.Weapons.Attack();
     }
 
     private void OnMousePosition(InputAction.CallbackContext context)
@@ -50,6 +65,6 @@ public class PlayerInput
 
     private void OnPause(InputAction.CallbackContext context)
     {
-        _player._pause.OpenPause();
+        _pause.Open();
     }
 }

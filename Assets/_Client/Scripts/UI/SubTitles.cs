@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Subtitres : UI
+public class Subtitres : UIElement
 {
     private Label _title;
     private Label _text;
@@ -11,11 +11,11 @@ public class Subtitres : UI
     {
         base.Initialize();
 
-        _title = _UIElement.Q<Label>("Title");
-        _text = _UIElement.Q<Label>("Text");
+        _title = _container.Q<Label>("Title");
+        _text = _container.Q<Label>("Text");
     }
 
-    protected override void Open()
+    public override void Open()
     {
         base.Open();
     }

@@ -3,23 +3,23 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using Cursor = UnityEngine.Cursor;
 
-public class Pause : UI
+public class Pause : UIElement
 {
     private bool _onPause;
-    [SerializeField] private GameUI _gameUI;
+    [SerializeField] private GameplayUI _gameplayUI;
     
     protected override void Initialize()
     {
         base.Initialize();
 
-        Button Continue = _UIElement.Q<Button>("Continue");
-        Button exit = _UIElement.Q<Button>("Exit");
+        Button Continue = _container.Q<Button>("Continue");
+        Button exit = _container.Q<Button>("Exit");
 
-        Continue.clicked += OpenPause;
+        Continue.clicked += Open;
         exit.clicked += () =>  SceneManager.LoadScene(1);
     }
 
-    protected override void Open()
+    public override void Open()
     {
         base.Open();
 
@@ -36,9 +36,7 @@ public class Pause : UI
             Time.timeScale = 1f;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = true;
-            _gameUI.OpenGU();
+            _gameplayUI.Open();
         }
     }
-
-    public void OpenPause() => Open(); 
 }

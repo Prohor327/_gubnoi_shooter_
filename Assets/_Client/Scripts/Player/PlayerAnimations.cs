@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
-    [SerializeField] private Animator _currentAnimator;
+    private Animator _currentAnimator;
 
     public void PlayWalk()
     {
@@ -12,5 +12,10 @@ public class PlayerAnimations : MonoBehaviour
     public void PlayIdle()
     {
         _currentAnimator.Play("Idle");
+    }
+
+    public void SetAnimator(Animator animator)
+    {
+        _currentAnimator = animator;
     }
 }
