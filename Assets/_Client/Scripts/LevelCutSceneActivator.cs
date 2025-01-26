@@ -8,7 +8,7 @@ public class LevelCutSceneActivator : MonoBehaviour
 
     public void SetCutScene(int index)
     {
-        _cutSceneDirector.setPlayable._cutScenes[index];
+        _cutSceneDirector.playableAsset = _cutScenes[index];
         _cutSceneDirector.Play();
     }
 
