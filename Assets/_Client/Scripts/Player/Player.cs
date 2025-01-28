@@ -28,4 +28,9 @@ public class Player : MonoBehaviour
         _movement.Initialize(_animations);
         _input = new PlayerInput(this, pause);
     }
+
+    public void HasShow(bool show)
+    {
+        gameObject.SetActive(show);
+    }
 }

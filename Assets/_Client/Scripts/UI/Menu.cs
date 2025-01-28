@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using Tools;
 
 public class Menu : UIElement
 {
@@ -12,8 +13,8 @@ public class Menu : UIElement
         Button play = _container.Q<Button>("Play");
         Button exit = _container.Q<Button>("Exit");
 
-        play.clicked += () => Invoke(nameof(LoadTest), 0.7f); 
-        exit.clicked += () => Invoke(nameof(Application.Quit), 0.7f);
+        play.clicked += () => Invoke(nameof(LoadGame), 0.4f); 
+        exit.clicked += () => Invoke(nameof(Application.Quit), 0.4f);
     }
 
     public override void Open()
@@ -21,8 +22,8 @@ public class Menu : UIElement
         base.Open();
     }
 
-    private void LoadTest()
+    private void LoadGame()
     {
-        SceneManager.LoadScene("Test");
+        SceneManager.LoadScene("The prologue");
     }
 }
