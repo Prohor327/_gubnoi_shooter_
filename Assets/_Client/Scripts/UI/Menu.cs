@@ -24,6 +24,6 @@ public class Menu : UIElement
 
     private void LoadGame()
     {
-        SceneManager.LoadScene("The prologue");
+        SceneManager.LoadScene("Prologue");
     }
 }
