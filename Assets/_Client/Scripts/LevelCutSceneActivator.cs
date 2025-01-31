@@ -8,6 +8,8 @@ public class LevelCutSceneActivator : MonoBehaviour
     [SerializeField] private PlayableDirector _cutSceneDirector;
     [SerializeField] private PlayableAsset[] _cutScenes;
 
+    [SerializeField] private GameObject[] _cameras; // Obj with camera, 0 - 
+
     private Player _player;
 
     [Inject]
@@ -18,19 +20,27 @@ public class LevelCutSceneActivator : MonoBehaviour
 
     private void Start()
     {
-        SetCutScene(0);
+        _cameras[0] = _player.gameObject;
+        SetCutScene(0, 1);
     }
 
-    public void SetCutScene(int index)
+    public void SetCutScene(int index, int cameraIndex)
     {
         _cutSceneDirector.playableAsset = _cutScenes[index];
+        ReloadCamera(cameraIndex);
         _cutSceneDirector.Play();
-        _player.HasShow(false);
         print("Start cut scene");
     }
 
-    public void EndCutScene()
+    private void ReloadCamera(int index)
     {
-        _player.HasShow(true);
+        for (int i = 0;  i < _cameras.Length; i++) 
+            _cameras[i].SetActive(false);
+        _cameras[index].SetActive(true);
+    }
+    
+    public void EndCutScene(int index)
+    {
+        ReloadCamera(index);
     }
 }

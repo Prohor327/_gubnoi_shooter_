@@ -20,10 +20,14 @@ public class Subtitres : UIElement
         base.Open();
     }
 
-    public void printText(string title, string text)
+    public void SetTitle(string title)
+    {
+        _title.text = title;
+        Open();
+    }
+    public void printText(string text)
     {
         Open();
-        _title.text = title;
         StartCoroutine(Text(text));
     }
 
@@ -32,7 +36,7 @@ public class Subtitres : UIElement
         foreach (var sym in text)
         {
             _text.text += sym;
-            yield return new WaitForSeconds(.3f);
+            yield return new WaitForSeconds(.1f);
         }
     }
 

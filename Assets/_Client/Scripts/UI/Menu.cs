@@ -13,17 +13,12 @@ public class Menu : UIElement
         Button play = _container.Q<Button>("Play");
         Button exit = _container.Q<Button>("Exit");
 
-        play.clicked += () => Invoke(nameof(LoadGame), 0.4f); 
-        exit.clicked += () => Invoke(nameof(Application.Quit), 0.4f);
+        play.clicked += () => SceneManager.LoadScene("Prologue"); ; 
+        exit.clicked += () => Application.Quit();
     }
 
     public override void Open()
     {
         base.Open();
-    }
-
-    private void LoadGame()
-    {
-        SceneManager.LoadScene("Prologue");
     }
 }
