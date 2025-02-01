@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Security : MonoBehaviour, IInteract
+public class Lift : MonoBehaviour, IInteract
 {
     [SerializeField] private LevelCutSceneActivator _timeLine;
     [SerializeField] private int _indexCutScene;
@@ -8,7 +8,7 @@ public class Security : MonoBehaviour, IInteract
  
     public void CursorOnObject()
     {
-        print("Security");
+        print("Lift");
     }
 
     public void Interact()

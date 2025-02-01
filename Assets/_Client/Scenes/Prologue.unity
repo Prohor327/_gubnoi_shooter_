@@ -762,6 +762,7 @@ GameObject:
   - component: {fileID: 278055287}
   - component: {fileID: 278055286}
   - component: {fileID: 278055285}
+  - component: {fileID: 278055288}
   m_Layer: 0
   m_Name: door
   m_TagString: Untagged
@@ -858,6 +859,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278055283}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &278055288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278055283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f19214f559ad4469c520d804fc1c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeLine: {fileID: 746599442}
+  _indexCutScene: 2
+  _cameraIndex: 2
 --- !u!1 &293487577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,7 +1705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &688437231
 Animator:
   serializedVersion: 7
@@ -1816,7 +1832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!320 &746599440
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -2136,6 +2152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc97cd16452a0f049a2f450c31f30a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeLine: {fileID: 746599442}
+  _indexCutScene: 1
+  _cameraIndex: 0
 --- !u!1001 &867708431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2148,7 +2167,7 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 574d089d7e6cc9f4b8334a2fa51a1857, type: 2}
+      objectReference: {fileID: 2100000, guid: f8f4f403c5a7a384ea6aaf9e95beb79d, type: 2}
     - target: {fileID: 8597653954575179425, guid: ffa5038696d2eb24dbc63649742852b8,
         type: 3}
       propertyPath: m_Name
@@ -2157,7 +2176,7 @@ PrefabInstance:
     - target: {fileID: 8597653954575179425, guid: ffa5038696d2eb24dbc63649742852b8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8942688797412279323, guid: ffa5038696d2eb24dbc63649742852b8,
         type: 3}

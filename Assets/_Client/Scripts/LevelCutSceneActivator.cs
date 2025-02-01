@@ -21,7 +21,7 @@ public class LevelCutSceneActivator : MonoBehaviour
     private void Start()
     {
         _cameras[0] = _player.gameObject;
-        SetCutScene(0, 0);
+        SetCutScene(0, 1);
     }
 
     public void SetCutScene(int index, int cameraIndex)
