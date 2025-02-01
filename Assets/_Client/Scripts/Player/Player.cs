@@ -40,11 +40,6 @@ public class Player : MonoBehaviour
         _movement.OnStartMove += StartMove;
     }
 
-    public void HasShow(bool show)
-    {
-        gameObject.SetActive(show);
-    }
-
     private void StartMove()
     {
         if(_weapons.CurrentWeaponState == WeaponState.Idle)

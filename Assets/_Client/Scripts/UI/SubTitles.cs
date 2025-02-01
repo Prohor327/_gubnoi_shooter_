@@ -28,6 +28,7 @@ public class Subtitres : UIElement
     public void printText(string text)
     {
         Open();
+        _text.text = null;
         StartCoroutine(Text(text));
     }
 
