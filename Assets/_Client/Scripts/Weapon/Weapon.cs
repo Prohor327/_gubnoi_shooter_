@@ -7,11 +7,13 @@ public class Weapon : MonoBehaviour
 {
     private WeaponAnimations _animations;
     private WeaponState _state;
-    
+
     public Action OnEndAttack;
 
     public WeaponState State => _state;
- 
+
+    protected Transform shootPoint;
+
     private void Awake()
     {
         _animations = GetComponent<WeaponAnimations>();
@@ -21,6 +23,11 @@ public class Weapon : MonoBehaviour
     public Animator GetAnimator()
     {
         return _animations.GetAnimator();
+    }
+
+    public virtual void PreformAttack()
+    {
+
     }
 
     public void Attack()
@@ -45,4 +52,6 @@ public class Weapon : MonoBehaviour
     {
         _state = WeaponState.Idle;
     }
+
+    protected virtual void Accept(IWeaponVisitor weaponVisitor) { }
 }

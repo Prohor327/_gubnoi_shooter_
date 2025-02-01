@@ -4,9 +4,15 @@ using Zenject;
 public class PlayerLook : MonoBehaviour
 {
     [SerializeField] private float _sens;
-    [SerializeField] private Transform _fpsRig;
 
+    private Transform _fpsRig;
     private float _xRotate;
+
+    [Inject]
+    private void Construct(Rig rig)
+    {
+        _fpsRig = rig.RigPoint;
+    }
 
     private void Start()
     {
@@ -25,7 +31,7 @@ public class PlayerLook : MonoBehaviour
 
     private void OnDisable()
     {
-        //Cursor.lockState = CursorLockMode.None;
-        //Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
