@@ -492,6 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _asset: {fileID: 9197481963319205126, guid: a70db8fbeb29a6443ba1406e9a442076, type: 3}
+  _cutScene: {fileID: 746599442}
   _gameplayUI: {fileID: 211368150}
 --- !u!114 &211368150
 MonoBehaviour:

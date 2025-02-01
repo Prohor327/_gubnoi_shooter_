@@ -5,6 +5,8 @@ public class WeaponAnimations : MonoBehaviour
 {
     private Animator _animator;
 
+    private static readonly int Attack = Animator.StringToHash("Attack");
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -12,7 +14,7 @@ public class WeaponAnimations : MonoBehaviour
 
     public void PLayAttack()
     {
-        _animator.Play("Attack");
+        _animator.CrossFade(Attack, 0);
     }
 
     public Animator GetAnimator()

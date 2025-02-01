@@ -11,6 +11,9 @@ public class LevelCutSceneActivator : MonoBehaviour
     [SerializeField] private GameObject[] _cameras; // Obj with camera, 0 - 
 
     private Player _player;
+    private bool _onCutScene;
+
+    public bool OnCutScene() => _onCutScene;
 
     [Inject]
     private void Construct(Player player)
@@ -30,6 +33,7 @@ public class LevelCutSceneActivator : MonoBehaviour
         ReloadCamera(cameraIndex);
         _cutSceneDirector.Play();
         print("Start cut scene");
+        _onCutScene = true;
     }
 
     private void ReloadCamera(int index)
@@ -42,5 +46,7 @@ public class LevelCutSceneActivator : MonoBehaviour
     public void EndCutScene(int index)
     {
         ReloadCamera(index);
+        _onCutScene = false;
+        _cutSceneDirector.time = 10000;
     }
 }

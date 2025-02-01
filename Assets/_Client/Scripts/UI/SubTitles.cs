@@ -6,6 +6,7 @@ public class Subtitres : UIElement
 {
     private Label _title;
     private Label _text;
+    private Coroutine coroutine = null;
 
     protected override void Initialize()
     {
@@ -27,9 +28,12 @@ public class Subtitres : UIElement
     }
     public void printText(string text)
     {
-        Open();
-        _text.text = null;
-        StartCoroutine(Text(text));
+        if (coroutine == null)
+        {
+            Open();
+            _text.text = null;
+            coroutine = StartCoroutine(Text(text));
+        }
     }
 
     IEnumerator Text(string text)
@@ -39,6 +43,7 @@ public class Subtitres : UIElement
             _text.text += sym;
             yield return new WaitForSeconds(.1f);
         }
+        coroutine = null;
     }
 
 }

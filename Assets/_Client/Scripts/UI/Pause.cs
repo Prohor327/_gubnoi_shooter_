@@ -5,7 +5,9 @@ using Cursor = UnityEngine.Cursor;
 
 public class Pause : UIElement
 {
+    [SerializeField] private LevelCutSceneActivator _cutScene;
     private bool _onPause;
+    
     [SerializeField] private GameplayUI _gameplayUI;
     
     protected override void Initialize()
@@ -23,20 +25,29 @@ public class Pause : UIElement
     {
         base.Open();
 
-        _onPause = !_onPause;
-
-        if (_onPause)
+        if (_onPause && _cutScene.OnCutScene() == false)
         {
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+        else if (_cutScene.OnCutScene() == true)
+        {
+            _cutScene.EndCutScene(0);
+            ClosePause();
+        }
         else
         {
-            Time.timeScale = 1f;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = true;
-            _gameplayUI.Open();
+            _onPause = !_onPause;
+            ClosePause();
         }
+    }
+
+    private void ClosePause()
+    {
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
+        _gameplayUI.Open();
     }
 }
