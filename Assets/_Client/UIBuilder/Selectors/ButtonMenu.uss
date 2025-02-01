@@ -38,11 +38,4 @@
     border-right-color: rgb(0, 0, 0);
     border-top-color: rgb(0, 0, 0);
     border-bottom-color: rgb(0, 0, 0);
-    top: 0;
-    scale: 1 1.1;
-    transition-duration: 1s, 0s;
-    translate: 523px 727px;
-    rotate: 180deg;
-    transition-property: all, translate;
-    left: 182px;
 }
