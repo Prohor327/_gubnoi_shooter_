@@ -7,6 +7,8 @@ public class LevelIntaller : MonoInstaller
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Pause _pause;
 
+    private Player player;
+
     public override void InstallBindings()
     {
         InstallUI();
@@ -15,7 +17,7 @@ public class LevelIntaller : MonoInstaller
 
     private void InstallPlayer()
     {
-        Player player = Container.InstantiatePrefabForComponent<Player>(_player, _spawnPoint.position, Quaternion.identity, null);
+        player = Container.InstantiatePrefabForComponent<Player>(_player.gameObject, _spawnPoint.position, Quaternion.identity, null);
         Container.Bind<Player>().FromInstance(player).AsSingle().NonLazy();
     }
 

@@ -13,7 +13,7 @@ public class Menu : UIElement
         Button play = _container.Q<Button>("Play");
         Button exit = _container.Q<Button>("Exit");
 
-        play.clicked += () => SceneManager.LoadScene("Prologue"); ; 
+        play.clicked += () => SceneManager.LoadScene("Prologue");
         exit.clicked += () => Application.Quit();
     }
 

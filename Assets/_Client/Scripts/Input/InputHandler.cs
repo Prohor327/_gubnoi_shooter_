@@ -17,7 +17,7 @@ static class InputHandler
 
     public static void OnEnable()
     {
-
+        _input.Enable();
     }
 
     public static void OnDisable()

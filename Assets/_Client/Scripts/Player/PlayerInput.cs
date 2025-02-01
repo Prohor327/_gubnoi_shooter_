@@ -33,6 +33,7 @@ public class PlayerInput
         _playerActions.Move.performed -= OnStartMove;
         _playerActions.Move.canceled -= OnStartMove;
         _playerActions.Fire.performed -= OnFire;
+        _playerActions.Interact.started -= OnInteract;
     }
 
     public void SubscribeGamplayActions()
@@ -41,6 +42,7 @@ public class PlayerInput
         _playerActions.Move.performed += OnStartMove;
         _playerActions.Move.canceled += OnStopMove;
         _playerActions.Fire.performed += OnFire;
+        _playerActions.Interact.started += OnInteract;
     }
 
     private void OnFire(InputAction.CallbackContext context)
@@ -66,5 +68,10 @@ public class PlayerInput
     private void OnPause(InputAction.CallbackContext context)
     {
         _pause.Open();
+    }
+
+    private void OnInteract(InputAction.CallbackContext context)
+    {
+        _player.Hands.Interact();   
     }
 }
