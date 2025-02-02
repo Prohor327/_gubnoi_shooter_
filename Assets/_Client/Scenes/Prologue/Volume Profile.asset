@@ -82,8 +82,8 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 0.71473354
           value: 0.8791946
-          inSlope: 2.3271072
-          outSlope: 2.3271072
+          inSlope: 2.3996758
+          outSlope: 2.3996758
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
@@ -343,4 +343,4 @@ MonoBehaviour:
     m_Value: {x: 0.8899699, y: 0.9689578, z: 1, w: 0}
   gain:
     m_OverrideState: 0
-    m_Value: {x: 0.97953254, y: 0.990938, z: 1, w: -0.074449904}
+    m_Value: {x: 0.97953254, y: 0.990938, z: 1, w: 0.23700725}
