@@ -1,7 +1,5 @@
 using Tools;
-using UnityEditorInternal;
 using UnityEngine;
-using Zenject;
 
 public class PlayerWeapons : MonoBehaviour 
 {
