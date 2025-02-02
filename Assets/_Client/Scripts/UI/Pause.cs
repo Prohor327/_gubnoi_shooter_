@@ -5,11 +5,11 @@ using Cursor = UnityEngine.Cursor;
 
 public class Pause : UIElement
 {
-    [SerializeField] private LevelCutSceneActivator _cutScene;
-    private bool _onPause;
     
     [SerializeField] private GameplayUI _gameplayUI;
     
+    private bool _onPause;
+
     protected override void Initialize()
     {
         base.Initialize();
@@ -25,29 +25,20 @@ public class Pause : UIElement
     {
         base.Open();
 
-        if (_onPause && _cutScene.OnCutScene() == false)
+        _onPause = !_onPause;
+
+        if (_onPause)
         {
             Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        else if (_cutScene.OnCutScene() == true)
-        {
-            _cutScene.EndCutScene(0);
-            ClosePause();
-        }
         else
         {
-            _onPause = !_onPause;
-            ClosePause();
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = true;
+            _gameplayUI.Open();
         }
-    }
-
-    private void ClosePause()
-    {
-        Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
-        _gameplayUI.Open();
     }
 }
