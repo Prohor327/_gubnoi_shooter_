@@ -8,7 +8,20 @@ public class PlayerInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<Rig>().FromInstance(_rig).AsSingle().NonLazy();
+        InstallRig();
+        InstallPlayerSound();
         print("PlayerInstall");
+    }
+
+    private void InstallRig()
+    {
+        Container.Bind<Rig>().FromInstance(_rig).AsSingle().NonLazy();
+        print("RigInstalled");
+    }
+
+    private void InstallPlayerSound()
+    {
+        Container.Bind<PlayerSound>().FromInstance(GetComponent<PlayerSound>()).AsSingle();
+        print("PlayerSoundInstalled");
     }
 }

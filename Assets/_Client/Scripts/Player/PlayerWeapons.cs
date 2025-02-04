@@ -39,13 +39,11 @@ public class PlayerWeapons : MonoBehaviour
             case PlayerState.Move:
                 {
                     _animations.PlayWalk();
-                    print("Walk");
                     break;
                 }
             case PlayerState.Idle:
                 {
                     _animations.PlayIdle();
-                    print("Idle");
                     break;
                 }
         }

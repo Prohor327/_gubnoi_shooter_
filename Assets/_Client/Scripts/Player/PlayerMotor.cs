@@ -5,10 +5,7 @@ using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
-    [SerializeField] private float _walkSpeed;
-    [SerializeField] private float _runSpeed;
-
-
+    private MovementConfig _movementConfig;
     private float _moveSpeed;
     private PlayerAnimations _animations;
     private CharacterController _controller;
@@ -18,14 +15,15 @@ public class PlayerMotor : MonoBehaviour
     public Action OnEndMove;
     public Action OnStartMove;
 
-    public void Initialize(PlayerAnimations playerAnimations)
+    public void Initialize(PlayerAnimations playerAnimations, MovementConfig movementConfig)
     {
         _animations = playerAnimations;
+        _movementConfig = movementConfig;
     }
 
     private void Awake()
     {
-        _moveSpeed = _walkSpeed;
+        _moveSpeed = _movementConfig.WalkSpeed;
         _controller = GetComponent<CharacterController>();
     }
 

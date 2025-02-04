@@ -3,10 +3,15 @@ using Zenject;
 
 public class PlayerHands : MonoBehaviour
 {
-    [SerializeField] private float _handDistanse;
+    [SerializeField] private HandsConfig _handsConfig;
 
     private Transform _raycastPoint;
     private bool InteractButtonIsPressed;
+
+    public void Initialize(HandsConfig handsConfig)
+    {
+        _handsConfig = handsConfig;
+    }
 
     [Inject]
     public void Construct(Rig rig)
@@ -18,7 +23,7 @@ public class PlayerHands : MonoBehaviour
     {
         RaycastHit hit;
 
-        if(Physics.Raycast(_raycastPoint.position, _raycastPoint.TransformDirection(Vector3.forward), out hit, _handDistanse))
+        if(Physics.Raycast(_raycastPoint.position, _raycastPoint.TransformDirection(Vector3.forward), out hit, _handsConfig.Distance))
         {
             if (hit.transform.gameObject.TryGetComponent<IInteract>(out IInteract interact))
             {

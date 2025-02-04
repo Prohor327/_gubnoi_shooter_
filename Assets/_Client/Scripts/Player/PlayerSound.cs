@@ -2,10 +2,18 @@ using UnityEngine;
 
 public class PlayerSound : MonoBehaviour
 {
-    [SerializeField] private AudioSource _source;   
     [SerializeField] private AudioClip[] _walkClips;
 
-    public void SoundWalk()
+    private AudioSource _source;
+
+    public AudioSource AudioSource => _source;
+
+    private void Awake()
+    {
+        _source = GetComponent<AudioSource>();
+    }
+
+    public void SoundFootstep()
     {
         _source.PlayOneShot(_walkClips[Random.Range(0, _walkClips.Length)]);
     }

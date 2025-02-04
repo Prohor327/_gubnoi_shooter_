@@ -5,14 +5,13 @@ using System;
 [RequireComponent(typeof(Animator))]
 public class Weapon : MonoBehaviour
 {
-    private WeaponAnimations _animations;
-    private WeaponState _state;
-
     public Action OnEndAttack;
 
     public WeaponState State => _state;
 
     protected Transform shootPoint;
+    protected WeaponState _state;
+    protected WeaponAnimations _animations;
 
     private void Awake()
     {
@@ -30,27 +29,19 @@ public class Weapon : MonoBehaviour
 
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
         if(_state == WeaponState.Idle)
         {
             _state = WeaponState.Attack;
             _animations.PLayAttack();
         }
-        print(_state);
     }
 
     public void FinishAttack()
     {
         _state = WeaponState.Idle;
-        OnEndAttack.Invoke();
-        print(_state);  
-    }
-
-    [ContextMenu("Reset state")]
-    public void ResetState()
-    {
-        _state = WeaponState.Idle;
+        OnEndAttack.Invoke(); 
     }
 
     protected virtual void Accept(IWeaponVisitor weaponVisitor) { }

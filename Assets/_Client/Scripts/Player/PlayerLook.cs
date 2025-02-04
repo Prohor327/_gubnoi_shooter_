@@ -3,10 +3,14 @@ using Zenject;
 
 public class PlayerLook : MonoBehaviour
 {
-    [SerializeField] private float _sens;
-
+    private PlayerLookConfig _playerLookConfig;
     private Transform _fpsRig;
     private float _xRotate;
+
+    public void Initialize(PlayerLookConfig playerLookConfig)
+    {
+        _playerLookConfig = playerLookConfig;
+    }
 
     [Inject]
     private void Construct(Rig rig)
@@ -22,9 +26,9 @@ public class PlayerLook : MonoBehaviour
 
     public void RotateCamera(Vector2 mousePosition)
     {
-        transform.Rotate(Vector3.up * mousePosition.x * Time.deltaTime * _sens);
-        _xRotate -= mousePosition.y * Time.deltaTime * _sens;
-        _xRotate = Mathf.Clamp(_xRotate, -80f, 80f);
+        transform.Rotate(Vector3.up * mousePosition.x * Time.deltaTime * _playerLookConfig.Sensivity);
+        _xRotate -= mousePosition.y * Time.deltaTime * _playerLookConfig.Sensivity;
+        _xRotate = Mathf.Clamp(_xRotate, -_playerLookConfig.YRotateLimit, _playerLookConfig.YRotateLimit);
         Quaternion fpsRigRotation = Quaternion.Euler(_xRotate, 0, 0);
         _fpsRig.localRotation = fpsRigRotation;
     }
