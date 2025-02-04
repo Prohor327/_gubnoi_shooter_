@@ -24,13 +24,11 @@ public class Subtitres : UIElement
     public void SetTitle(string title)
     {
         _title.text = title;
-        Open();
     }
     public void printText(string text)
     {
         if (coroutine == null)
         {
-            Open();
             _text.text = null;
             coroutine = StartCoroutine(Text(text));
         }
