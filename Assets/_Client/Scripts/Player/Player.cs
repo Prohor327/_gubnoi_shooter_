@@ -53,6 +53,7 @@ public class Player : Character
         gameMachine.OnStopGame += _input.UnsubscribeGamplayActions;
         gameMachine.OnResumeGame += _input.SubscribeGamplayActions;
         gameMachine.OnFinishGame += _input.UnsubscribePlayer;
+        
         gameMachine.OnStartCutScene += DisablePlayerCameras;
         gameMachine.OnStartCutScene += EnablePlayerCameras;
     }

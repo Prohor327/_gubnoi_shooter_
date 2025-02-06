@@ -51,12 +51,14 @@ public class GameMachine
 
     public void StartCutScene()
     {
+        OnStartCutScene.Invoke();
         _isCutScenePlaying = true;
         UpdateGameState(GameState.CutScene);
     }
 
     public void EndCutScene()
     {
+        OnEndCutScene.Invoke();
         _isCutScenePlaying = false;
         UpdateGameState(GameState.Game);
     }
