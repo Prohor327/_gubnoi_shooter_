@@ -1,5 +1,4 @@
 using UnityEngine;
-using Tools;
 
 public class Shotgun : RaycastWeapon
 {

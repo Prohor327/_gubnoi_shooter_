@@ -1,5 +1,5 @@
-using Tools;
 using UnityEngine;
+using UnityEngine.TextCore;
 using Zenject;
 
 [RequireComponent(typeof(PlayerMotor))]
@@ -20,6 +20,7 @@ public class Player : Character
     private PlayerHands _hands;
     private PlayerState _state;
     private Unit _unit;
+    private Rig _rig;
 
     public PlayerMotor Movement => _movement;
     public PlayerLook View => _look;
@@ -31,7 +32,7 @@ public class Player : Character
     public Unit Unit => _unit;
 
     [Inject]
-    private void Construct(Pause pause)
+    private void Construct(Pause pause, GameMachine gameMachine, Rig rig)
     {
         _movement = GetComponent<PlayerMotor>();
         _look = GetComponent<PlayerLook>();
@@ -49,6 +50,11 @@ public class Player : Character
         _state = PlayerState.Idle;
         _movement.OnEndMove += EndMove;
         _movement.OnStartMove += StartMove;
+        gameMachine.OnStopGame += _input.UnsubscribeGamplayActions;
+        gameMachine.OnResumeGame += _input.SubscribeGamplayActions;
+        gameMachine.OnFinishGame += _input.UnsubscribePlayer;
+        gameMachine.OnStartCutScene += DisablePlayerCameras;
+        gameMachine.OnStartCutScene += EnablePlayerCameras;
     }
 
     private void StartMove()
@@ -64,5 +70,16 @@ public class Player : Character
     {
         _animations.PlayIdle();
         _state = PlayerState.Idle;
+    }
+
+    private void DisablePlayerCameras()
+    {
+        _rig.PlayerCamera.gameObject.SetActive(false);
+        _rig.WeaponCamera.gameObject.SetActive(false);
+    }
+    private void EnablePlayerCameras()
+    {
+        _rig.PlayerCamera.gameObject.SetActive(true);
+        _rig.WeaponCamera.gameObject.SetActive(true);
     }
 }

@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 6774431317375324218}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2661,6 +2661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e236dddb86ee0b2109d144b2db484585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _normalizedTransitionDurationAttack: 0.06
 --- !u!114 &2930126137945559580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3470,6 +3471,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae93498b61ad6164d919f4cc82f72d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _normalizedTransitionDurationWalk: 0.3
+  _normalizedTransitionDurationIdle: 0.3
 --- !u!114 &8078329573291477317
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,18 +1,24 @@
-    using UnityEngine;
+using UnityEngine;
+using Zenject;
 
 public class Security : MonoBehaviour, IInteract
 {
-    [SerializeField] private LevelCutSceneActivator _timeLine;
-    [SerializeField] private int _indexCutScene;
-    [SerializeField] private int _cameraIndex;
- 
+    [SerializeField] private CutSceneSO _cutSceneSO;
+
+    private CutScenesManager _cutScenesManager;
+
+    [Inject]
+    private void Construct(CutScenesManager cutScenesManager)
+    {
+        _cutScenesManager = cutScenesManager;
+    }
+    
     public void CursorOnObject()
     {
-        print("Security");
     }
 
     public void Interact()
     {
-        _timeLine.SetCutScene(_indexCutScene, _cameraIndex);
+        _cutScenesManager.StartCutScene(_cutSceneSO);
     }
 }

@@ -11,7 +11,7 @@ public class RaycastWeapon : Weapon
     [Inject]
     private void Construct(Rig rig)
     {
-        shootPoint = rig.CameraPoint;
+        shootPoint = rig.PlayerCamera.transform;
     }
 
     public override void PreformAttack()

@@ -16,7 +16,7 @@ public class PlayerHands : MonoBehaviour
     [Inject]
     public void Construct(Rig rig)
     {
-        _raycastPoint = rig.CameraPoint;
+        _raycastPoint = rig.PlayerCamera.transform;
     }
 
     public void LateUpdate()

@@ -1,4 +1,3 @@
-using Tools;
 using UnityEngine;
 
 public class PlayerWeapons : MonoBehaviour 

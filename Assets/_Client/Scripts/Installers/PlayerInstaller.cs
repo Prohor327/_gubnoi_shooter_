@@ -10,7 +10,7 @@ public class PlayerInstaller : MonoInstaller
     {
         InstallRig();
         InstallPlayerSound();
-        print("PlayerInstall");
+        print("PlayerInstalled");
     }
 
     private void InstallRig()

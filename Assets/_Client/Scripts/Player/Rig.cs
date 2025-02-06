@@ -5,8 +5,10 @@ using UnityEngine;
 public class Rig
 {
     [SerializeField] private Transform _rig;
-    [SerializeField] private Transform _camera;
+    [SerializeField] private Camera _camera;
+    [SerializeField] private Camera _weaponCamera;
 
     public Transform RigPoint => _rig;
-    public Transform CameraPoint => _camera;
+    public Camera PlayerCamera => _camera;
+    public Camera WeaponCamera => _weaponCamera;
 }

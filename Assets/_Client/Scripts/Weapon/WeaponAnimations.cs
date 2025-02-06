@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class WeaponAnimations : MonoBehaviour 
 {
+    [SerializeField] private float _normalizedTransitionDurationAttack = 0.06f;
+
     private Animator _animator;
 
     private static readonly int Attack = Animator.StringToHash("Attack");
@@ -14,7 +16,7 @@ public class WeaponAnimations : MonoBehaviour
 
     public void PLayAttack()
     {
-        _animator.CrossFade(Attack, 0);
+        _animator.CrossFade(Attack, _normalizedTransitionDurationAttack);
     }
 
     public Animator GetAnimator()

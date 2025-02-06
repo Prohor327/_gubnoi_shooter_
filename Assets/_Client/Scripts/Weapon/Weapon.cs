@@ -1,5 +1,4 @@
 using UnityEngine;
-using Tools;
 using System;
 
 [RequireComponent(typeof(Animator))]

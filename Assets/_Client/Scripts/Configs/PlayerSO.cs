@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerConfig", menuName = "PlayerConfig", order = 0)]
+[CreateAssetMenu(fileName = "PlayerConfig", menuName = "Game/PlayerConfig", order = 0)]
 public class PlayerSO : ScriptableObject 
 {
     [SerializeField] private MovementConfig _movementConfig;

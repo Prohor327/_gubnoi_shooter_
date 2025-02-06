@@ -1,11 +1,18 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Zenject;
 
 public class Bootstrap : MonoBehaviour
 {
+    private GameMachine _gameMachine;
+
+    [Inject]
+    public void Construct(GameMachine gameMachine)
+    {
+        _gameMachine = gameMachine;
+    }
+
     private void Start()
     {
-        InputHandler.Initialize();
-        SceneManager.LoadScene("Menu");
+        _gameMachine.Initialize();
     }
 }
