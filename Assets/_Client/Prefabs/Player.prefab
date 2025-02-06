@@ -3532,7 +3532,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rig:
     _rig: {fileID: 1032080455747027925}
-    _camera: {fileID: 9159482374488658669}
+    _camera: {fileID: 2265850909557902685}
+    _weaponCamera: {fileID: 4794702292465054059}
 --- !u!82 &5452224689098295496
 AudioSource:
   m_ObjectHideFlags: 0

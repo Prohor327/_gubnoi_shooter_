@@ -34,6 +34,7 @@ public class Player : Character
     [Inject]
     private void Construct(Pause pause, GameMachine gameMachine, Rig rig)
     {
+        _rig = rig;
         _movement = GetComponent<PlayerMotor>();
         _look = GetComponent<PlayerLook>();
         _animations = GetComponent<PlayerAnimations>();
@@ -53,9 +54,9 @@ public class Player : Character
         gameMachine.OnStopGame += _input.UnsubscribeGamplayActions;
         gameMachine.OnResumeGame += _input.SubscribeGamplayActions;
         gameMachine.OnFinishGame += _input.UnsubscribePlayer;
-        
+
         gameMachine.OnStartCutScene += DisablePlayerCameras;
-        gameMachine.OnStartCutScene += EnablePlayerCameras;
+        gameMachine.OnEndCutScene += EnablePlayerCameras;
     }
 
     private void StartMove()

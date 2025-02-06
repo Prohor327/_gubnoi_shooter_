@@ -1037,7 +1037,7 @@ MonoBehaviour:
   _player: {fileID: 8363578427431343702, guid: 125649c6f36e7b07cb273d5502f8126c, type: 3}
   _spawnPoint: {fileID: 790555010}
   _pause: {fileID: 211368149}
-  _cutScenesManager: {fileID: 0}
+  _cutScenesManager: {fileID: 746599442}
 --- !u!114 &379488223
 MonoBehaviour:
   m_ObjectHideFlags: 0

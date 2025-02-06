@@ -42,7 +42,7 @@ public class GameMachine
 
     public void StopGame()
     {
-        OnStopGame.Invoke();
+        OnStopGame?.Invoke();
         Time.timeScale = 0.0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -51,21 +51,21 @@ public class GameMachine
 
     public void StartCutScene()
     {
-        OnStartCutScene.Invoke();
+        OnStartCutScene?.Invoke();
         _isCutScenePlaying = true;
         UpdateGameState(GameState.CutScene);
     }
 
     public void EndCutScene()
     {
-        OnEndCutScene.Invoke();
+        OnEndCutScene?.Invoke();
         _isCutScenePlaying = false;
         UpdateGameState(GameState.Game);
     }
 
     public void ResumeGame()
     {
-        OnResumeGame.Invoke();
+        OnResumeGame?.Invoke();
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -81,7 +81,7 @@ public class GameMachine
 
     public void FinishGame()
     {
-        OnFinishGame.Invoke();
+        OnFinishGame?.Invoke();
         OnStopGame += () => {};
         OnResumeGame += () => {};
         OnStartCutScene += () => {};
