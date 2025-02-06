@@ -15,6 +15,7 @@ public class PrologueStartCutSceneStarter : MonoBehaviour
 
     private void Start()
     {
+        if (_cutScenesManager == null) print("aaa");
         _cutScenesManager.StartCutScene(_cutSceneSO);
     }
 }
