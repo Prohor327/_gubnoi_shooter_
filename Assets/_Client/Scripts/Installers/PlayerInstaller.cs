@@ -10,18 +10,18 @@ public class PlayerInstaller : MonoInstaller
     {
         InstallRig();
         InstallPlayerSound();
-        print("PlayerInstalled");
+        print("Player Installed");
     }
 
     private void InstallRig()
     {
         Container.Bind<Rig>().FromInstance(_rig).AsSingle().NonLazy();
-        print("RigInstalled");
+        print("Rig Installed");
     }
 
     private void InstallPlayerSound()
     {
         Container.Bind<PlayerSound>().FromInstance(GetComponent<PlayerSound>()).AsSingle();
-        print("PlayerSoundInstalled");
+        print("PlayerSound Installed");
     }
 }

@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
-using Cursor = UnityEngine.Cursor;
+using UnityEngine.InputSystem;
 using Zenject;
-using TMPro;
 
 public class Pause : UIElement
 {
@@ -19,6 +18,9 @@ public class Pause : UIElement
 
     protected override void Initialize()
     {
+        _gameMachine.OnFinishGame += OnFinishGame;
+        InputHandler.Game.Pause.started += OnPause;
+
         base.Initialize();
 
         Button Continue = _container.Q<Button>("Continue");
@@ -44,5 +46,15 @@ public class Pause : UIElement
             _gameplayUI.Open();
             _gameMachine.ResumeGame();
         }
+    }
+
+    private void OnPause(InputAction.CallbackContext context)
+    {
+        Open();
+    }
+
+    private void OnFinishGame()
+    {
+        InputHandler.Game.Pause.started -= OnPause;
     }
 }

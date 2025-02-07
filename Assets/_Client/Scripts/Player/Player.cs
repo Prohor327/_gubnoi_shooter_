@@ -46,17 +46,17 @@ public class Player : Character
         _look.Initialize(_playerSO.PlayerLookConfig);
         _unit.Initialize(this, _playerSO.HealthConfig);
         _hands.Initialize(_playerSO.HandsConfig);
-        _input = new PlayerInput(this, pause);
+        _input = new PlayerInput(this);
 
         _state = PlayerState.Idle;
         _movement.OnEndMove += EndMove;
         _movement.OnStartMove += StartMove;
-        gameMachine.OnStopGame += _input.UnsubscribeGamplayActions;
-        gameMachine.OnResumeGame += _input.SubscribeGamplayActions;
+        gameMachine.OnStopGame += _input.Disable;
+        gameMachine.OnResumeGame += _input.Enable;
         gameMachine.OnFinishGame += _input.UnsubscribePlayer;
 
-        gameMachine.OnStartCutScene += DisablePlayerCameras;
-        gameMachine.OnEndCutScene += EnablePlayerCameras;
+        gameMachine.OnStartCutScene += OnStartCutScene;
+        gameMachine.OnEndCutScene += OnEndCutScene;
     }
 
     private void StartMove()
@@ -70,18 +70,20 @@ public class Player : Character
 
     private void EndMove()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         _animations.PlayIdle();
         _state = PlayerState.Idle;
     }
 
-    private void DisablePlayerCameras()
+    private void OnStartCutScene()
     {
-        _rig.PlayerCamera.gameObject.SetActive(false);
-        _rig.WeaponCamera.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        _input.Disable();
     }
-    private void EnablePlayerCameras()
+    private void OnEndCutScene()
     {
-        _rig.PlayerCamera.gameObject.SetActive(true);
-        _rig.WeaponCamera.gameObject.SetActive(true);
+        gameObject.SetActive(true);
+        _input.Enable();
     }
 }

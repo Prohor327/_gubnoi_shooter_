@@ -2666,11 +2666,14 @@ MonoBehaviour:
     - Key: {fileID: 11400000, guid: fe589afde516ee24ebedb9c53caa525a, type: 2}
       Value:
         _asset: {fileID: 11400000, guid: d10b62663db470347bfa6aaf69c35725, type: 2}
-        _camera: {fileID: 1017997668}
+        Camera: {fileID: 1017997668}
     - Key: {fileID: 11400000, guid: 48598934cde2f78448400a6fc9da4fdf, type: 2}
       Value:
         _asset: {fileID: 11400000, guid: c166b692773f279479a4296e658c343d, type: 2}
-        _camera: {fileID: 1155449583}
+        Camera: {fileID: 1155449583}
+  _cameras:
+  - {fileID: 1017997668}
+  - {fileID: 1155449583}
 --- !u!114 &746599443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2825,7 +2828,7 @@ Transform:
   m_GameObject: {fileID: 790555009}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 166.59, y: 3.96, z: 187.8}
+  m_LocalPosition: {x: 166.59, y: 0.758, z: 187.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

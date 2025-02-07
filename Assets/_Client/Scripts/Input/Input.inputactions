@@ -24,15 +24,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "ad9dfbd9-df5c-41b6-acd4-4562483f641f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Fire",
                     "type": "Button",
                     "id": "b62a6a69-9ba8-4d2d-8dbb-39f5fb0d3ad2",
@@ -45,6 +36,15 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "ddc12dcf-359e-4405-a5e0-9e75b80d1fed",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "1e007f67-0ec1-4bd7-874a-ee2b72d2e319",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -120,17 +120,6 @@
                 },
                 {
                     "name": "",
-                    "id": "b2781942-1a5a-458c-a04f-f6d1e92a52cf",
-                    "path": "<Keyboard>/p",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "737c41be-0c74-470e-b2c5-b3fb554c11f9",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -148,6 +137,73 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aaa0d2a1-bf35-4aac-b5cd-de534f957861",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "CutScene",
+            "id": "aab882e7-fe01-4d82-9cc4-8142ef71f66a",
+            "actions": [
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "e4b4a95b-3176-43e7-bd68-e4ad60e3a395",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b6000b46-62f2-438e-96c7-1f9922ec1143",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Game",
+            "id": "2ea5a780-5bc3-49fd-bd83-06b621dfcf09",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "67bb4dbb-bd64-4e76-97db-bf187c2eb865",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "efb07e17-5de2-415e-8261-62cba98eeaa8",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -6,8 +6,8 @@ using UnityEngine.Playables;
 public class CutScene
 {
     [SerializeField] private PlayableAsset _asset;
-    [SerializeField] private Camera _camera;
+    
+    public Camera Camera;
 
     public PlayableAsset Asset => _asset;
-    public Camera Camera => _camera;
 }
