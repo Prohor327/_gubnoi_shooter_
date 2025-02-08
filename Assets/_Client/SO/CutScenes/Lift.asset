@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Lift
   m_EditorClassIdentifier: 
   _name: Lift
+  _id: 1

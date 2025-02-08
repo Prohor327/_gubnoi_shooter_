@@ -3,16 +3,16 @@ using UnityEngine.Playables;
 using Zenject;
 using UnityEngine.InputSystem;
 using AYellowpaper.SerializedCollections;
+using System;
 
 public class CutScenesManager : MonoBehaviour
 {   
     [SerializedDictionary("Cut Scene Name", "Asset")]
     [SerializeField] private SerializedDictionary<CutSceneSO, CutScene> _cutScenes;
-    [SerializeField] private Camera[] _cameras;
 
     private PlayableDirector _director; 
-    private CutSceneSO _currentCutSceneSO;
     private GameMachine _gameMachine;
+    private CutSceneSO _currentCutSceneSO;
 
     [Inject]
     private void Construct(GameMachine gameMachine)
@@ -34,19 +34,16 @@ public class CutScenesManager : MonoBehaviour
         _currentCutSceneSO = so;
         _director.playableAsset = _cutScenes[_currentCutSceneSO].Asset;
         InputHandler.CutSceneActions.Enable();
-        _cameras[_currentCutSceneSO.Id].gameObject.SetActive(true);
-        print(_currentCutSceneSO.Id);
+        _cutScenes[_currentCutSceneSO].Camera.gameObject.SetActive(true);
         _director.time = 0;
         _director.Play();
-        print("Start cutscene: " + _currentCutSceneSO.Name);
+        print("Start cutscene: " + so.Name);
     }
     
     public void EndCutScene()
     {
-        _cameras[_currentCutSceneSO.Id].gameObject.SetActive(false);
-        print("End cutscene: " + _currentCutSceneSO.Name);
-        _currentCutSceneSO = null;
-        _director.time = 10000;
+        _cutScenes[_currentCutSceneSO].Camera.gameObject.SetActive(false);
+        _director.time = 100000;
         InputHandler.CutSceneActions.Disable();
         _gameMachine.EndCutScene();
     }

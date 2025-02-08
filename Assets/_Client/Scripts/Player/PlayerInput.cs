@@ -15,11 +15,14 @@ public class PlayerInput
 
     public void SubscribePlayer()
     {
-        _playerActions.MousePosition.performed -= OnMousePosition;
-        _playerActions.Move.performed -= OnStartMove;
-        _playerActions.Move.canceled -= OnStopMove;
-        _playerActions.Fire.performed -= OnFire;
-        _playerActions.Interact.started -= OnInteract;
+        _playerActions.MousePosition.performed += OnMousePosition;
+        _playerActions.Move.performed += OnStartMove;
+        _playerActions.Move.canceled += OnStopMove;
+        _playerActions.Fire.performed += OnFire;
+        _playerActions.Interact.started += OnInteract;
+        _playerActions.FirstWeapon.started += OnFirstWeapon;
+        _playerActions.SecondWeapon.started += OnSecondWeapon;
+        _playerActions.ThirdWeapon.started += OnThirdWeapon;
     }
 
     public void UnsubscribePlayer()
@@ -29,6 +32,9 @@ public class PlayerInput
         _playerActions.Move.canceled -= OnStopMove;
         _playerActions.Fire.performed -= OnFire;
         _playerActions.Interact.started -= OnInteract;
+        _playerActions.FirstWeapon.started -= OnFirstWeapon;
+        _playerActions.SecondWeapon.started -= OnSecondWeapon;
+        _playerActions.ThirdWeapon.started -= OnThirdWeapon;
     }
 
     private void OnFire(InputAction.CallbackContext context)
@@ -54,6 +60,20 @@ public class PlayerInput
     private void OnInteract(InputAction.CallbackContext context)
     {
         _player.Hands.Interact();   
+    }
+    private void OnFirstWeapon(InputAction.CallbackContext context)
+    {
+        _player.Weapons.ChangeWeapon(0);   
+    }
+
+    private void OnSecondWeapon(InputAction.CallbackContext context)
+    {
+        _player.Weapons.ChangeWeapon(1);   
+    }
+
+    private void OnThirdWeapon(InputAction.CallbackContext context)
+    {
+        _player.Weapons.ChangeWeapon(2);   
     }
 
     public void Enable()

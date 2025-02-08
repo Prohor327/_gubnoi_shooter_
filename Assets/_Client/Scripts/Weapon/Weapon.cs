@@ -6,16 +6,25 @@ public class Weapon : MonoBehaviour
 {
     public Action OnEndAttack;
 
-    public WeaponState State => _state;
+    public WeaponState State => state;
 
     protected Transform shootPoint;
-    protected WeaponState _state;
+    protected WeaponState state;
     protected WeaponAnimations _animations;
+
+    private WeaponSound _sound;
 
     private void Awake()
     {
+        _sound = GetComponent<WeaponSound>();
         _animations = GetComponent<WeaponAnimations>();
-        _state = WeaponState.Idle;
+    }
+
+    public void Initialize(Transform shootPoint, PlayerSound playerSound)
+    {
+        this.shootPoint = shootPoint;
+        _sound.Initialize(playerSound);
+        state = WeaponState.Idle;
     }
 
     public Animator GetAnimator()
@@ -30,17 +39,22 @@ public class Weapon : MonoBehaviour
 
     public virtual void Attack()
     {
-        if(_state == WeaponState.Idle)
+        if(state == WeaponState.Idle)
         {
-            _state = WeaponState.Attack;
+            state = WeaponState.Attack;
             _animations.PLayAttack();
         }
     }
 
     public void FinishAttack()
     {
-        _state = WeaponState.Idle;
+        state = WeaponState.Idle;
         OnEndAttack.Invoke(); 
+    }
+
+    public void RemoveWeapon()
+    {
+        state = WeaponState.Idle;
     }
 
     protected virtual void Accept(IWeaponVisitor weaponVisitor) { }

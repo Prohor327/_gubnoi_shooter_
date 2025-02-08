@@ -58,8 +58,10 @@ public class GameMachine
 
     public void EndCutScene()
     {
-        OnEndCutScene?.Invoke();
+        OnEndCutScene.Invoke();
         _isCutScenePlaying = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         UpdateGameState(GameState.Game);
     }
 

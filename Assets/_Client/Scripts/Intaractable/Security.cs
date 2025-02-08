@@ -3,22 +3,34 @@ using Zenject;
 
 public class Security : MonoBehaviour, IInteract
 {
-    [SerializeField] private CutSceneSO _cutSceneSO;
+    [SerializeField] private AudioClip _clip;
 
-    private CutScenesManager _cutScenesManager;
+    private SubTitles _subTitles;
+    private AudioSource _audioSource;
 
     [Inject]
-    private void Construct(CutScenesManager cutScenesManager)
+    private void Construct(SubTitles subTitles)
     {
-        _cutScenesManager = cutScenesManager;
+        _subTitles = subTitles;
     }
-    
+
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     public void CursorOnObject()
     {
+        print("sssss");
     }
 
     public void Interact()
     {
-        _cutScenesManager.StartCutScene(_cutSceneSO);
+        if(!_audioSource.isPlaying)
+        {
+            _audioSource.PlayOneShot(_clip);
+            _subTitles.PrintText("А, ты пришел, ну проходи, лифт вот там. Вон там. Вон. Вон. Ну, ты че слепой? Ну ты хуле лифт не видишь, слепошарый. Вон там.");
+            _subTitles.SetTitle("Security");
+        }
     }
 }

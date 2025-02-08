@@ -6,10 +6,9 @@ public class WeaponSound : MonoBehaviour
 {
     [SerializeField] private AudioClip _shotSound;
 
-    private PlayerSound _playerSound;
+    [SerializeField] private PlayerSound _playerSound;
 
-    [Inject]
-    private void Construct(PlayerSound playerSound)
+    public void Initialize(PlayerSound playerSound)
     {
         _playerSound = playerSound;
     }

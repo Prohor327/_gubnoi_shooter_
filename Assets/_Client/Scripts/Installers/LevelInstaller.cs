@@ -7,6 +7,7 @@ public class LevelIntaller : MonoInstaller
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Pause _pause;
     [SerializeField] private CutScenesManager _cutScenesManager;
+    [SerializeField] private SubTitles _subTitles;
 
     private Player player;
 
@@ -26,6 +27,7 @@ public class LevelIntaller : MonoInstaller
     private void InstallUI()
     {
         Container.Bind<Pause>().FromInstance(_pause).AsSingle().NonLazy();
+        Container.Bind<SubTitles>().FromInstance(_subTitles).AsSingle().NonLazy();
     }
 
     private void InstallCutSceneManager()

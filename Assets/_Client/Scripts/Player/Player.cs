@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.TextCore;
 using Zenject;
 
 [RequireComponent(typeof(PlayerMotor))]
@@ -32,7 +31,7 @@ public class Player : Character
     public Unit Unit => _unit;
 
     [Inject]
-    private void Construct(Pause pause, GameMachine gameMachine, Rig rig)
+    private void Construct(GameMachine gameMachine, Rig rig)
     {
         _rig = rig;
         _movement = GetComponent<PlayerMotor>();
@@ -61,7 +60,14 @@ public class Player : Character
 
     private void StartMove()
     {
-        if(_weapons.CurrentWeaponState == WeaponState.Idle)
+        if(_weapons.AmountWeapon != 0)
+        {
+            if(_weapons.GetWeaponState() == WeaponState.Idle)
+            {
+                _animations.PlayWalk();
+            }
+        }
+        else
         {
             _animations.PlayWalk();
         }
@@ -78,8 +84,8 @@ public class Player : Character
 
     private void OnStartCutScene()
     {
-        gameObject.SetActive(false);
         _input.Disable();
+        gameObject.SetActive(false);
     }
     private void OnEndCutScene()
     {
