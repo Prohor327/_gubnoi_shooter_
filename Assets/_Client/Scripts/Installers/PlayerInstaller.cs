@@ -10,6 +10,7 @@ public class PlayerInstaller : MonoInstaller
     {
         InstallRig();
         InstallPlayerSound();
+        InstallGroundChecker();
         print("Player Installed");
     }
 
@@ -23,5 +24,11 @@ public class PlayerInstaller : MonoInstaller
     {
         Container.Bind<PlayerSound>().FromInstance(GetComponent<PlayerSound>()).AsSingle();
         print("PlayerSound Installed");
+    }
+
+    private void InstallGroundChecker()
+    {
+        Container.Bind<GroundChecker>().FromInstance(GetComponent<GroundChecker>()).AsSingle();
+        print("GroundChecker Installed");
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
   _movementConfig:
-    _walkSpeed: 10
+    _walkSpeed: 6
     _runSpeed: 0
   _healthConfig:
     Health: 100

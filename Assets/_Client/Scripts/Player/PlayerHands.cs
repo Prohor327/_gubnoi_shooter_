@@ -27,7 +27,6 @@ public class PlayerHands : MonoBehaviour
         {
             if (hit.transform.gameObject.TryGetComponent<IInteract>(out IInteract interact))
             {
-                print("aasdasd");
                 if(InteractButtonIsPressed)
                 {
                     interact.Interact();
@@ -42,7 +41,6 @@ public class PlayerHands : MonoBehaviour
 
     public void Interact()
     {
-
         InteractButtonIsPressed = true;
     }
 }

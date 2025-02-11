@@ -1596,6 +1596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shotSound: {fileID: 8300000, guid: 8404cbf639766964888469da61975d43, type: 3}
+  _playerSound: {fileID: 0}
 --- !u!114 &6755084158782610484
 MonoBehaviour:
   m_ObjectHideFlags: 0

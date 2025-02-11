@@ -21,3 +21,12 @@ public enum GameState
     Pause, 
     Death
 }
+
+public enum GroundType
+{
+    None,
+    Gravel, 
+    Floor,
+    Wood, 
+    Tiles
+}
