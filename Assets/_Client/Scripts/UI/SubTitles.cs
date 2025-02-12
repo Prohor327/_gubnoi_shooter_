@@ -4,6 +4,8 @@ using UnityEngine.UIElements;
 
 public class SubTitles : UIElement
 {
+    [SerializeField] private GameplayUI _gameplayUI;
+    
     private Label _title;
     private Label _text;
     private Coroutine coroutine = null;
@@ -12,10 +14,8 @@ public class SubTitles : UIElement
     {
         base.Initialize();
 
-        _title = _container.Q<Label>("Title");
-        _text = _container.Q<Label>("Text");
-        Clear();
-        //Open();
+        _title = _UIElement.Q<Label>("Title");
+        _text = _UIElement.Q<Label>("Text");
     }
 
     public override void Open()
@@ -26,6 +26,7 @@ public class SubTitles : UIElement
     public void SetTitle(string title)
     {
         _title.text = title;
+        Open();
     }
     public void PrintText(string text)
     {
@@ -38,10 +39,9 @@ public class SubTitles : UIElement
         }
     }
 
-    public void Clear()
+    public void Close()
     {
-        _text.SetEnabled(false);
-        _title.SetEnabled(false);
+        _gameplayUI.Open();
     }
 
     IEnumerator Text(string text)
@@ -51,6 +51,8 @@ public class SubTitles : UIElement
             _text.text += sym;
             yield return new WaitForSeconds(.1f);
         }
+        yield return new WaitForSeconds(1f);
+        Close();
         coroutine = null;
     }
 

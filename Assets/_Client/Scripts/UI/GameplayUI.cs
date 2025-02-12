@@ -8,7 +8,7 @@ public class GameplayUI : UIElement
     protected override void Initialize()
     {
         base.Initialize();
-        _fon = _container.Q<VisualElement>("Fon");
+        _fon = _UIElement.Q<VisualElement>("Fon");
     }
 
     public override void Open()

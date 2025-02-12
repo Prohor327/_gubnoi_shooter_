@@ -29,8 +29,8 @@ public class Security : MonoBehaviour, IInteract
         if(!_audioSource.isPlaying)
         {
             _audioSource.PlayOneShot(_clip);
-            _subTitles.PrintText("А, ты пришел, ну проходи, лифт вот там. Вон там. Вон. Вон. Ну, ты че слепой? Ну ты хуле лифт не видишь, слепошарый. Вон там.");
             _subTitles.SetTitle("Security");
+            _subTitles.PrintText("А, ты пришел, ну проходи, лифт вот там. Вон там. Вон. Вон. Ну, ты че слепой? Ну ты хуле лифт не видишь, слепошарый. Вон там.");
         }
     }
 }

@@ -23,8 +23,8 @@ public class Pause : UIElement
 
         base.Initialize();
 
-        Button Continue = _container.Q<Button>("Continue");
-        Button exit = _container.Q<Button>("Exit");
+        Button Continue = _UIElement.Q<Button>("Continue");
+        Button exit = _UIElement.Q<Button>("Exit");
 
         Continue.clicked += Close;
         exit.clicked += () =>  SceneManager.LoadScene(1);
