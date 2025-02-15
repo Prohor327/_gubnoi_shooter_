@@ -343,4 +343,4 @@ MonoBehaviour:
     m_Value: {x: 0.8899699, y: 0.9689578, z: 1, w: 0}
   gain:
     m_OverrideState: 0
-    m_Value: {x: 1, y: 0.91082627, z: 0.9177926, w: -0.12506172}
+    m_Value: {x: 1, y: 0.98736614, z: 0.99478316, w: -0.03464579}

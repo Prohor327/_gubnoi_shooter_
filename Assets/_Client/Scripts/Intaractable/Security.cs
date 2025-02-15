@@ -21,7 +21,7 @@ public class Security : MonoBehaviour, IInteract
 
     public void CursorOnObject()
     {
-        print("sssss");
+        
     }
 
     public void Interact()
@@ -30,7 +30,7 @@ public class Security : MonoBehaviour, IInteract
         {
             _audioSource.PlayOneShot(_clip);
             _subTitles.SetTitle("Security");
-            _subTitles.PrintText("А, ты пришел, ну проходи, лифт вот там. Вон там. Вон. Вон. Ну, ты че слепой? Ну ты хуле лифт не видишь, слепошарый. Вон там.");
+            _subTitles.PrintText("А, ты пришел, ну проходи, лифт вот там. Вон там. Вон. Вон. Ну, ты че слепой? Ну ты лифт не видишь, слепошарый. Вон там.");
         }
     }
 }

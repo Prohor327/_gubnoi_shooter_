@@ -54,8 +54,7 @@ MonoBehaviour:
     m_Value: 0
   material:
     m_OverrideState: 0
-    m_Value: {fileID: -876546973899608171, guid: 02532cbb810fb404db49da84f1efe41e,
-      type: 3}
+    m_Value: {fileID: -876546973899608171, guid: 02532cbb810fb404db49da84f1efe41e, type: 3}
   airDensityR:
     m_OverrideState: 0
     m_Value: 0.04534
@@ -247,11 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
   m_Name: SkyandFogSettingsProfile
   m_EditorClassIdentifier: 
-  components:
-  - {fileID: 1142777632297148762}
-  - {fileID: -7724654706381055090}
-  - {fileID: -4151792930034644520}
-  - {fileID: 7642060734654139733}
+  components: []
 --- !u!114 &1142777632297148762
 MonoBehaviour:
   m_ObjectHideFlags: 3

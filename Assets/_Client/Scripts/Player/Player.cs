@@ -2,6 +2,7 @@ using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(PlayerMotor))]
+[RequireComponent(typeof(ShakeCameraOnWeaponAttack))]
 [RequireComponent(typeof(PlayerLook))]
 [RequireComponent(typeof(PlayerAnimations))]
 [RequireComponent(typeof(PlayerWeapons))]

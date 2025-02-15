@@ -1,26 +1,19 @@
 using UnityEngine;
-using Zenject;
 
-public class RaycastWeapon : Weapon
+public abstract class RaycastWeapon : FirearmWeapon
 {
-    [SerializeField] private GameObject _decal;
-    [SerializeField] private float _decalLifetime;
 
+    [Header("Shoot")]
     [SerializeField] private int _amountShots;
+    [SerializeField] protected float distance;
 
+    [Header("Shoot")]
     [SerializeField] private bool _useSpread;
     [SerializeField] private float _spreading;
 
-    [SerializeField] protected float distance;
-
-    [Inject]
-    private void Construct(Rig rig)
-    {
-        shootPoint = rig.PlayerCamera.transform;
-    }
-
     public override void PreformAttack()
     {
+        base.PreformAttack();
         for (int i = 0; i < _amountShots; i++)
         {
             Vector3 direction = shootPoint.transform.forward;
@@ -34,6 +27,7 @@ public class RaycastWeapon : Weapon
             RaycastHit hit;
             if (Physics.Raycast(shootPoint.position, direction, out hit, distance))
             {
+                SpawnBulletHole(hit);
                 HitScan(hit);
             }
         }
@@ -41,12 +35,9 @@ public class RaycastWeapon : Weapon
 
     protected void HitScan(RaycastHit hit)
     {
-        GameObject decal = Instantiate(_decal, hit.point, Quaternion.LookRotation(hit.normal), hit.transform);
-        Destroy(decal, _decalLifetime);
-
         if (hit.transform.gameObject.TryGetComponent<IWeaponVisitor>(out IWeaponVisitor weaponVisitor))
         {
-            Accept(weaponVisitor);
+            Accept(weaponVisitor, hit);
         }
     }
 }
