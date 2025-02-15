@@ -1,5 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerInput
 {
@@ -23,6 +24,7 @@ public class PlayerInput
         _playerActions.FirstWeapon.started += OnFirstWeapon;
         _playerActions.SecondWeapon.started += OnSecondWeapon;
         _playerActions.ThirdWeapon.started += OnThirdWeapon;
+        MonoBehaviour.print("Player subscribed");
     }
 
     public void UnsubscribePlayer()
@@ -35,6 +37,7 @@ public class PlayerInput
         _playerActions.FirstWeapon.started -= OnFirstWeapon;
         _playerActions.SecondWeapon.started -= OnSecondWeapon;
         _playerActions.ThirdWeapon.started -= OnThirdWeapon;
+        MonoBehaviour.print("Player unsubscribed");
     }
 
     private void OnFire(InputAction.CallbackContext context)

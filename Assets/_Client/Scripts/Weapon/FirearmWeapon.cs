@@ -24,7 +24,7 @@ public abstract class FirearmWeapon : Weapon
         Instantiate(bulletHole.gameObject, hit.point, Quaternion.LookRotation(hit.normal), hit.transform);
     }
 
-    public override void PreformAttack()
+    public override void Attack()
     {
         if(amountBulletsInCurrentClip <= 0)        
         {
@@ -34,6 +34,11 @@ public abstract class FirearmWeapon : Weapon
             }
             return;
         }
+        base.Attack();
+    }
+
+    public override void PreformAttack()
+    {
         amountBulletsInCurrentClip--;
 
         print("amount bullets:" + _amountBullets + " _amountBulletsInCurrentClip: " + amountBulletsInCurrentClip);

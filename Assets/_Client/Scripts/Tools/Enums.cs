@@ -30,3 +30,9 @@ public enum GroundType
     Wood, 
     Tiles
 }
+
+public enum AmmoType
+{
+    Bullet,
+    Fraction
+}
