@@ -922,8 +922,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 5
   _shakeCameraAnimationSO: {fileID: 11400000, guid: f10381b072eefe24b910fdf7ad903474, type: 2}
+  _ammoType: 1
   _clipSize: 2
-  _startAmountBullets: 3
   bulletHole: {fileID: 2803857800911547382, guid: a15fef016959ed240962c57af85bbca2, type: 3}
   _amountShots: 5
   distance: 100

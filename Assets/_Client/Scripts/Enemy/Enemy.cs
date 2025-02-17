@@ -14,11 +14,17 @@ public class Enemy : Character
         _animations = GetComponent<EnemyAnimations>();
         _unit = GetComponent<Unit>();
         _unit.Initialize(this, _enemySO.HealthConfig);
+        _unit.OnTakenDamege += GetHit;
     }
 
     public override void Dead()
     {
         _animations.PlayDead();
         GetComponent<Collider>().enabled = false;
+    }
+
+    private void GetHit()
+    {
+        _animations.PlayGetHit();
     }
 }

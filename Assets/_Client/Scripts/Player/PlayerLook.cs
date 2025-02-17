@@ -7,21 +7,10 @@ public class PlayerLook : MonoBehaviour
     private Transform _fpsRig;
     private float _xRotate;
 
-    public void Initialize(PlayerLookConfig playerLookConfig)
-    {
-        _playerLookConfig = playerLookConfig;
-    }
-
-    [Inject]
-    private void Construct(Rig rig)
+    public void Initialize(Rig rig, PlayerLookConfig playerLookConfig)
     {
         _fpsRig = rig.RigPoint;
-    }
-
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        _playerLookConfig = playerLookConfig;
     }
 
     public void RotateCamera(Vector2 mousePosition)

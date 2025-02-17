@@ -1,46 +1,44 @@
 using UnityEngine;
-using Zenject;
 
 public class PlayerHands : MonoBehaviour
 {
     [SerializeField] private HandsConfig _handsConfig;
 
     private Transform _raycastPoint;
-    private bool InteractButtonIsPressed;
+    private IInteractable _currentTarget;
 
-    public void Initialize(HandsConfig handsConfig)
+    public void Initialize(Rig rig, HandsConfig handsConfig)
     {
+        _raycastPoint = rig.PlayerCamera.transform;
         _handsConfig = handsConfig;
     }
 
-    [Inject]
-    public void Construct(Rig rig)
-    {
-        _raycastPoint = rig.PlayerCamera.transform;
-    }
-
-    public void LateUpdate()
+    public void Update()
     {
         RaycastHit hit;
 
         if(Physics.Raycast(_raycastPoint.position, _raycastPoint.TransformDirection(Vector3.forward), out hit, _handsConfig.Distance))
         {
-            if (hit.transform.gameObject.TryGetComponent<IInteract>(out IInteract interact))
+            if (hit.transform.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
-                if(InteractButtonIsPressed)
+                if(interactable != _currentTarget)
                 {
-                    interact.Interact();
-                    InteractButtonIsPressed = false;
-                    return;
+                    _currentTarget = interactable;
+                    _currentTarget.OnStartHover();
                 }
 
-                interact.CursorOnObject();
+                _currentTarget.OnHover();
+            }
+            else if(_currentTarget != null)
+            {
+                _currentTarget.OnEndHover();
+                _currentTarget = null;
             }
         }
     }
 
     public void Interact()
     {
-        InteractButtonIsPressed = true;
+        _currentTarget?.OnInteract();
     }
 }

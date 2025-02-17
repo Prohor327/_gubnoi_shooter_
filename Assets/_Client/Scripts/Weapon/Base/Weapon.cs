@@ -20,7 +20,6 @@ public abstract class Weapon : MonoBehaviour
     public WeaponState State => state;
     public float Damage => _damage;
 
-    protected Transform shootPoint;
     protected WeaponState state;
     protected WeaponAnimations _animations;
 
@@ -32,9 +31,8 @@ public abstract class Weapon : MonoBehaviour
         _animations = GetComponent<WeaponAnimations>();
     }
 
-    public virtual void Initialize(Transform shootPoint, PlayerSound playerSound)
+    public virtual void Initialize(PlayerSound playerSound)
     {
-        this.shootPoint = shootPoint;
         _sound.Initialize(playerSound);
         state = WeaponState.Idle;
         OnInitialize?.Invoke();

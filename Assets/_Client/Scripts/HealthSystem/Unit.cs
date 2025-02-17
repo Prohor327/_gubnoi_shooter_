@@ -7,7 +7,8 @@ public class Unit : MonoBehaviour
     private Character _character;
     private float _health;
 
-    public Action<float> OnHealthChanged; 
+    public Action<float> OnHealthChanged;
+    public Action OnTakenDamege;
 
     public void Initialize(Character character, HealthConfig healthConfig)
     {
@@ -20,6 +21,7 @@ public class Unit : MonoBehaviour
     {
         _health -= damage;
         OnHealthChanged?.Invoke(_health);
+        OnTakenDamege.Invoke();
         if(_health <= 0)
         {
             _character.Dead();

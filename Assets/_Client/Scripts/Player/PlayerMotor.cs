@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
 
@@ -7,7 +8,6 @@ public class PlayerMotor : MonoBehaviour
 {
     private MovementConfig _movementConfig;
     private float _moveSpeed;
-    private PlayerAnimations _animations;
     private CharacterController _controller;
     private Vector3 _playerVelocity;
     private Vector3 _direction;
@@ -15,14 +15,9 @@ public class PlayerMotor : MonoBehaviour
     public Action OnEndMove;
     public Action OnStartMove;
 
-    public void Initialize(PlayerAnimations playerAnimations, MovementConfig movementConfig)
+    public void Initialize(MovementConfig movementConfig)
     {
-        _animations = playerAnimations;
         _movementConfig = movementConfig;
-    }
-
-    private void Awake()
-    {
         _moveSpeed = _movementConfig.WalkSpeed;
         _controller = GetComponent<CharacterController>();
     }

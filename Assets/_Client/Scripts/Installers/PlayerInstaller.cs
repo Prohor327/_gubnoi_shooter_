@@ -9,7 +9,6 @@ public class PlayerInstaller : MonoInstaller
     public override void InstallBindings()
     {
         InstallRig();
-        InstallPlayerSound();
         InstallGroundChecker();
         print("Player Installed");
     }
@@ -18,12 +17,6 @@ public class PlayerInstaller : MonoInstaller
     {
         Container.Bind<Rig>().FromInstance(_rig).AsSingle().NonLazy();
         print("Rig Installed");
-    }
-
-    private void InstallPlayerSound()
-    {
-        Container.Bind<PlayerSound>().FromInstance(GetComponent<PlayerSound>()).AsSingle();
-        print("PlayerSound Installed");
     }
 
     private void InstallGroundChecker()

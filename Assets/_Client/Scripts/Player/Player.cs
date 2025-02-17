@@ -2,7 +2,7 @@ using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(PlayerMotor))]
-[RequireComponent(typeof(ShakeCameraOnWeaponAttack))]
+[RequireComponent(typeof(Shaker))]
 [RequireComponent(typeof(PlayerLook))]
 [RequireComponent(typeof(PlayerAnimations))]
 [RequireComponent(typeof(PlayerWeapons))]
@@ -10,7 +10,7 @@ using Zenject;
 [RequireComponent(typeof(Unit))]
 public class Player : Character
 {
-    [SerializeField] private PlayerSO _playerSO;
+    [SerializeField] private PlayerSO _config;
 
     private PlayerMotor _movement;
     private PlayerLook _look;
@@ -19,8 +19,11 @@ public class Player : Character
     private PlayerWeapons _weapons;
     private PlayerHands _hands;
     private PlayerState _state;
+    private PlayerSound _sound;
     private Unit _unit;
     private Rig _rig;
+    private Ammo _ammo;
+    private Shaker _cameraShaker;
 
     public PlayerMotor Movement => _movement;
     public PlayerLook View => _look;
@@ -30,6 +33,9 @@ public class Player : Character
     public PlayerHands Hands => _hands;
     public PlayerState State => _state;
     public Unit Unit => _unit;
+    public Ammo Ammo => _ammo;
+    public PlayerSound Sound => _sound;
+    public Shaker CameraShaker => _cameraShaker;
 
     [Inject]
     private void Construct(GameMachine gameMachine, Rig rig)
@@ -41,11 +47,16 @@ public class Player : Character
         _weapons = GetComponent<PlayerWeapons>();
         _hands = GetComponent<PlayerHands>();
         _unit = GetComponent<Unit>();
+        _ammo = GetComponent<Ammo>();
+        _sound = GetComponent<PlayerSound>();
+        _cameraShaker = GetComponent<Shaker>();
 
-        _movement.Initialize(_animations, _playerSO.MovementConfig);
-        _look.Initialize(_playerSO.PlayerLookConfig);
-        _unit.Initialize(this, _playerSO.HealthConfig);
-        _hands.Initialize(_playerSO.HandsConfig);
+        _movement.Initialize(_config.MovementConfig);
+        _weapons.Initialize(rig, this);
+        _hands.Initialize(rig, _config.HandsConfig);
+        _look.Initialize(rig, _config.PlayerLookConfig);
+        _unit.Initialize(this, _config.HealthConfig);
+
         _input = new PlayerInput(this);
 
         _state = PlayerState.Idle;

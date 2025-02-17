@@ -1,3 +1,5 @@
+using UnityEngine.Rendering;
+
 public enum WeaponState
 {
     Idle = 1,
@@ -35,4 +37,11 @@ public enum AmmoType
 {
     Bullet,
     Fraction
+}
+
+public enum WeaponType
+{
+    Axe,
+    Pistol, 
+    Shotgun
 }

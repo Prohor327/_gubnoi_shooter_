@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class Security : MonoBehaviour, IInteract
+public class Security : MonoBehaviour, IInteractable
 {
     [SerializeField] private AudioClip _clip;
 
@@ -19,12 +19,7 @@ public class Security : MonoBehaviour, IInteract
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public void CursorOnObject()
-    {
-        
-    }
-
-    public void Interact()
+    public void OnInteract()
     {
         if(!_audioSource.isPlaying)
         {
@@ -33,4 +28,10 @@ public class Security : MonoBehaviour, IInteract
             _subTitles.PrintText("А, ты пришел, ну проходи, лифт вот там. Вон там. Вон. Вон. Ну, ты че слепой? Ну ты лифт не видишь, слепошарый. Вон там.");
         }
     }
+
+    public void OnStartHover() {   }
+
+    public void OnEndHover() {   }
+
+    public void OnHover() {   }
 }

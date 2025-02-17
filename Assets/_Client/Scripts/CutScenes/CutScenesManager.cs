@@ -3,7 +3,6 @@ using UnityEngine.Playables;
 using Zenject;
 using UnityEngine.InputSystem;
 using AYellowpaper.SerializedCollections;
-using System;
 
 public class CutScenesManager : MonoBehaviour
 {   
