@@ -4,29 +4,29 @@ using AYellowpaper.SerializedCollections;
 public class Ammo : MonoBehaviour 
 {
     [SerializedDictionary("Ammo type", "Amount")]
-    [SerializeField] private SerializedDictionary<AmmoType, int> _ammo;
+    [SerializeField] protected SerializedDictionary<AmmoType, int> ammo;
 
-    public bool TryShot(AmmoType ammoType)
+    public virtual bool TryShot(AmmoType ammoType)
     {
-        if(_ammo[ammoType] <= 0)    
+        if(ammo[ammoType] <= 0)    
         {
             return false;
         }
         else
         {
-            _ammo[ammoType]--;
+            ammo[ammoType]--;
             return true;
         }
     }
 
     public int GetAmountAmmo(AmmoType ammoType)
     {
-        return _ammo[ammoType];
+        return ammo[ammoType];
     }   
 
-    public void AddAmmo(AmmoType ammoType, int amount)
+    public virtual void AddAmmo(AmmoType ammoType, int amount)
     {
-        _ammo[ammoType] += amount;
+        ammo[ammoType] += amount;
     }   
 
     // public int GetAmmoForClip(AmmoType ammoType, int clipSize)

@@ -915,12 +915,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6207bbab7586cf64485b2763048debc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
   _damage: 10
   _shakeCameraAnimationSO: {fileID: 11400000, guid: f10381b072eefe24b910fdf7ad903474, type: 2}
+  _ammoType: 2
   _clipSize: 2
-  _startAmountBullets: 3
   bulletHole: {fileID: 2803857800911547382, guid: a15fef016959ed240962c57af85bbca2, type: 3}
   _amountShots: 1
   distance: 100
-  _useSpread: 0
-  _spreading: 0
+  _useSpread: 1
+  _spreading: 0.1

@@ -10,7 +10,6 @@ public class PlayerWeapons : MonoBehaviour
     private Player _player;
     private Transform _shootPoint;
     private Transform _weaponPoint;
-    private Ammo _clip;
     
     public int AmountWeapon => _startedWeapons.Length;
 
@@ -27,6 +26,7 @@ public class PlayerWeapons : MonoBehaviour
         if(AmountWeapon != 0)
         {
             SpawnWeapon(0, _shootPoint, true);
+            _weapons[0].Take();
             for(int i = 1; i < AmountWeapon; i++)
             {
                 SpawnWeapon(i, _shootPoint, false);
@@ -43,6 +43,7 @@ public class PlayerWeapons : MonoBehaviour
             {
                 FirearmWeapon weapon = Instantiate(_startedWeapons[index].gameObject, _weaponPoint).GetComponent<FirearmWeapon>();
                 weapon.Initialize(shootPoint, _player.Sound, _player.Ammo);
+                weapon.OnTake += () => _player.Ammo.ChangeAmmoType(weapon.AmmoType);
                 _weapons.Add(weapon);
             }
             break;
@@ -50,6 +51,7 @@ public class PlayerWeapons : MonoBehaviour
             {
                 OverlapWeapon weapon = Instantiate(_startedWeapons[index].gameObject, _weaponPoint).GetComponent<OverlapWeapon>();
                 weapon.Initialize(_player.Sound);
+                weapon.OnTake += () => _player.Ammo.ChangeAmmoType(AmmoType.Nothing);
                 _weapons.Add(weapon);
             }
             break;
@@ -67,8 +69,9 @@ public class PlayerWeapons : MonoBehaviour
         }
         _weapons[_indexCurrentWeapon].RemoveWeapon();
         _weapons[_indexCurrentWeapon].gameObject.SetActive(false);
-        _weapons[indexWeapon].gameObject.SetActive(true);
         _indexCurrentWeapon = indexWeapon;
+        _weapons[_indexCurrentWeapon].gameObject.SetActive(true);
+        _weapons[_indexCurrentWeapon].Take();
         _player.Animations.SetAnimator(_weapons[_indexCurrentWeapon].GetAnimator());
     }
 

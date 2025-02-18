@@ -35,6 +35,8 @@ public enum GroundType
 
 public enum AmmoType
 {
+    None,
+    Nothing,
     Bullet,
     Fraction
 }

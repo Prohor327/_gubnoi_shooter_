@@ -5,7 +5,7 @@ public class PlayerHands : MonoBehaviour
     [SerializeField] private HandsConfig _handsConfig;
 
     private Transform _raycastPoint;
-    private IInteractable _currentTarget;
+    private Interactable _currentTarget;
 
     public void Initialize(Rig rig, HandsConfig handsConfig)
     {
@@ -19,19 +19,21 @@ public class PlayerHands : MonoBehaviour
 
         if(Physics.Raycast(_raycastPoint.position, _raycastPoint.TransformDirection(Vector3.forward), out hit, _handsConfig.Distance))
         {
-            if (hit.transform.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable))
+            if (hit.collider.TryGetComponent<Interactable>(out Interactable interactable))
             {
                 if(interactable != _currentTarget)
                 {
+                    _currentTarget?.OnEndHover();
                     _currentTarget = interactable;
-                    _currentTarget.OnStartHover();
+                    _currentTarget?.OnStartHover();
+                    return;
                 }
 
-                _currentTarget.OnHover();
+                _currentTarget?.OnHover();
             }
             else if(_currentTarget != null)
             {
-                _currentTarget.OnEndHover();
+                _currentTarget?.OnEndHover();
                 _currentTarget = null;
             }
         }
@@ -40,5 +42,6 @@ public class PlayerHands : MonoBehaviour
     public void Interact()
     {
         _currentTarget?.OnInteract();
+        _currentTarget = null;
     }
 }

@@ -11,15 +11,14 @@ public class PlayerMotor : MonoBehaviour
     private CharacterController _controller;
     private Vector3 _playerVelocity;
     private Vector3 _direction;
+    private PlayerEvents _playerEvents;
 
-    public Action OnEndMove;
-    public Action OnStartMove;
-
-    public void Initialize(MovementConfig movementConfig)
+    public void Initialize(MovementConfig movementConfig, PlayerEvents playerEvents)
     {
         _movementConfig = movementConfig;
         _moveSpeed = _movementConfig.WalkSpeed;
         _controller = GetComponent<CharacterController>();
+        _playerEvents = playerEvents;
     }
 
     private void Update()
@@ -40,12 +39,12 @@ public class PlayerMotor : MonoBehaviour
     public void StartMove(Vector2 direction)
     {
         _direction = new Vector3(direction.x, 0, direction.y);
-        OnStartMove.Invoke();
+        _playerEvents.OnStartMove.Invoke();
     }
 
     public void StopMove()
     {
         _direction = Vector3.zero;
-        OnEndMove.Invoke();
+        _playerEvents.OnEndMove.Invoke();
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class AmmoPack : MonoBehaviour, IInteractable
+public class AmmoPack : Interactable
 {
     [SerializeField] private AmmoPackSO _ammoPackSO;
 
@@ -13,18 +13,10 @@ public class AmmoPack : MonoBehaviour, IInteractable
         _playerAmmo = player.Ammo;
     }
 
-    public void OnHover()
-    {
-        print(_ammoPackSO.AmmoType + " " + _ammoPackSO.AmountAmmo);
-    }
-
-    public void OnInteract()
+    public override void OnInteract()
     {
         _playerAmmo.AddAmmo(_ammoPackSO.AmmoType, _ammoPackSO.AmountAmmo);
-        Destroy(gameObject);
+        base.OnInteract();
+        DestroyImmediate(gameObject);
     }
-
-    public void OnStartHover() {   }
-
-    public void OnEndHover() {   }
 }

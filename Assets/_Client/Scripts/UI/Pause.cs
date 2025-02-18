@@ -6,8 +6,6 @@ using Zenject;
 
 public class Pause : UIElement
 {
-    [SerializeField] private GameplayUI _gameplayUI;
-    
     private GameMachine _gameMachine;
 
     [Inject]
@@ -43,7 +41,6 @@ public class Pause : UIElement
     {
         if(_gameMachine.CurrentState == GameState.Pause)
         {
-            _gameplayUI.Open();
             _gameMachine.ResumeGame();
         }
     }

@@ -1,6 +1,5 @@
-using System.Security.Principal;
 using UnityEngine;
-using Zenject;
+using System;
 
 public abstract class FirearmWeapon : Weapon
 {
@@ -9,14 +8,14 @@ public abstract class FirearmWeapon : Weapon
     [SerializeField] private int _clipSize;
 
     [Header("VFX")]
-    [SerializeField] BulletHole bulletHole;
+    [SerializeField] private BulletHole bulletHole;
 
     private int _amountBulletsInCurrentClip;
     private Ammo _clip;
 
     protected Transform shootPoint;
 
-    private int _amountBullets => _clip.GetAmountAmmo(_ammoType);
+    public AmmoType AmmoType => _ammoType;
 
     public virtual void Initialize(Transform shootPoint, PlayerSound playerSound, Ammo clip)
     {
@@ -49,7 +48,7 @@ public abstract class FirearmWeapon : Weapon
         _clip.TryShot(_ammoType);
 
         //print("amount bullets: " + _amountBullets + " _amountBulletsInCurrentClip: " + _amountBulletsInCurrentClip);
-        print("amount bullets: " + _amountBullets);
+        print("amount bullets: " + _clip.GetAmountAmmo(_ammoType));
     }
 
     protected abstract void Accept(IWeaponVisitor weaponVisitor, RaycastHit hit);
@@ -58,6 +57,6 @@ public abstract class FirearmWeapon : Weapon
     {
         
         //print("amount bullets: " + _amountBullets + " _amountBulletsInCurrentClip: " + _amountBulletsInCurrentClip);
-        print("amount bullets: " + _amountBullets);
+        print("amount bullets: " + _clip.GetAmountAmmo(_ammoType));
     }
 }

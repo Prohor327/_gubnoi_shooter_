@@ -4,6 +4,9 @@ using System;
 [RequireComponent(typeof(Animator))]
 public abstract class Weapon : MonoBehaviour
 {
+    [Header("Base")]
+    [SerializeField] private WeaponType _type;
+
     [Header("Damage")]
     [SerializeField] private float _damage;
 
@@ -11,6 +14,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private ShakeCameraAnimationSO _shakeCameraAnimationSO;
 
     public Action OnEndAttack;
+    public Action OnTake;
     public Action OnInitialize;
     public Action OnPerformAttack;
     public Action OnStartAttack;
@@ -18,6 +22,7 @@ public abstract class Weapon : MonoBehaviour
     public Action OnRemoveWeapon;
 
     public WeaponState State => state;
+    public WeaponType Type => _type;
     public float Damage => _damage;
 
     protected WeaponState state;
@@ -41,6 +46,10 @@ public abstract class Weapon : MonoBehaviour
     public Animator GetAnimator()
     {
         return _animations.GetAnimator();
+    }
+    public virtual void Take()
+    {
+        OnTake?.Invoke();
     }
 
     public virtual void PreformAttack() 
@@ -78,6 +87,7 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void OnDisable() 
     {
         OnInitialize += () => {};
+        OnTake += () => {};
         OnEndAttack += () => {};
         OnStartAttack += () => {};
         OnPerformAttack += () => {};

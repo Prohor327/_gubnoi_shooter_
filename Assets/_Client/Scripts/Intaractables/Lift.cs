@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class Lift : MonoBehaviour, IInteractable
+public class Lift : Interactable
 {
     [SerializeField] private CutSceneSO _cutSceneSO;
 
@@ -13,14 +13,8 @@ public class Lift : MonoBehaviour, IInteractable
         _cutScenesManager = cutScenesManager;
     }
 
-    public void OnInteract()
+    public override void OnInteract()
     {
         _cutScenesManager.StartCutScene(_cutSceneSO);
     }
-
-    public void OnStartHover() {   }
-
-    public void OnEndHover() {   }
-
-    public void OnHover() {   }
 }

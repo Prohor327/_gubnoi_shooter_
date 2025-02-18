@@ -920,9 +920,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6198396483681e45977a1e30f5cc97d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
   _damage: 5
   _shakeCameraAnimationSO: {fileID: 11400000, guid: f10381b072eefe24b910fdf7ad903474, type: 2}
-  _ammoType: 1
+  _ammoType: 3
   _clipSize: 2
   bulletHole: {fileID: 2803857800911547382, guid: a15fef016959ed240962c57af85bbca2, type: 3}
   _amountShots: 5
