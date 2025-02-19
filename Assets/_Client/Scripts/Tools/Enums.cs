@@ -3,7 +3,8 @@ using UnityEngine.Rendering;
 public enum WeaponState
 {
     Idle = 1,
-    Attack = 2
+    Attack = 2, 
+    Reload = 3
 }
 
 public enum PlayerState

@@ -47,10 +47,13 @@ public abstract class Weapon : MonoBehaviour
     {
         return _animations.GetAnimator();
     }
+
     public virtual void Take()
     {
         OnTake?.Invoke();
     }
+
+    public virtual void Reload() {  }
 
     public virtual void PreformAttack() 
     {

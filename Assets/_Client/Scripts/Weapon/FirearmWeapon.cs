@@ -4,33 +4,42 @@ using System;
 public abstract class FirearmWeapon : Weapon
 {
     [Header("Magazine")]
-    [SerializeField] private AmmoType _ammoType;
-    [SerializeField] private int _clipSize;
+    [SerializeField] protected AmmoType ammoType;
+    [SerializeField] protected int clipSize;
 
     [Header("VFX")]
     [SerializeField] private BulletHole bulletHole;
 
-    [SerializeField] private int _amountAmmoInClip;
-    private Ammo _ammo;
+    [SerializeField] protected int amountAmmoInClip;
+    protected Ammo ammo;
 
     protected Transform shootPoint;
 
-    public AmmoType AmmoType => _ammoType;
+    public AmmoType AmmoType => ammoType;
 
     public Action<string> OnChangedAmountAmmoInClip;
 
     public override void Take()
     {
         base.Take();
-        OnChangedAmountAmmoInClip.Invoke(_amountAmmoInClip.ToString() + "/" + _ammo.GetAmountAmmo(_ammoType));
+        OnChangedAmountAmmoInClip.Invoke(amountAmmoInClip.ToString() + "/" + ammo.GetAmountAmmo(ammoType));
     }
 
     public virtual void Initialize(Transform shootPoint, PlayerSound playerSound, Ammo ammo)
     {
         this.shootPoint = shootPoint;
         base.Initialize(playerSound);
-        _ammo = ammo;
-        Reload();
+        this.ammo = ammo;
+        this.ammo.OnAddedAmmo += OnAddedAmmo;
+        PerformReload();
+    }
+
+    protected void OnAddedAmmo()
+    {
+        if(gameObject.activeSelf)
+        {
+            OnChangedAmountAmmoInClip.Invoke(amountAmmoInClip.ToString() + "/" + ammo.GetAmountAmmo(ammoType));
+        }
     }
 
     protected void SpawnBulletHole(RaycastHit hit)
@@ -40,9 +49,8 @@ public abstract class FirearmWeapon : Weapon
 
     public override void Attack()
     {
-        if(_amountAmmoInClip <= 0)        
+        if(amountAmmoInClip <= 0)        
         {
-            Reload();
             return;
         }
         base.Attack();
@@ -50,22 +58,33 @@ public abstract class FirearmWeapon : Weapon
 
     public override void PreformAttack()
     {
-        _amountAmmoInClip--;
+        amountAmmoInClip--;
 
-        OnChangedAmountAmmoInClip.Invoke(_amountAmmoInClip.ToString() + "/" + _ammo.GetAmountAmmo(_ammoType));
+        OnChangedAmountAmmoInClip.Invoke(amountAmmoInClip.ToString() + "/" + ammo.GetAmountAmmo(ammoType));
 
-        print("amount bullets: " + _ammo.GetAmountAmmo(_ammoType));
+        print("amount bullets: " + ammo.GetAmountAmmo(ammoType));
     }
 
     protected abstract void Accept(IWeaponVisitor weaponVisitor, RaycastHit hit);
 
-    public void Reload()
+    public override void Reload()
     {
-        _amountAmmoInClip = _ammo.LoadClip(_ammoType, _clipSize, _amountAmmoInClip);
-        OnChangedAmountAmmoInClip?.Invoke(_amountAmmoInClip.ToString() + "/" + _ammo.GetAmountAmmo(_ammoType));
+        if(state == WeaponState.Idle)
+        {
+            state = WeaponState.Reload;
+            _animations.PlayReload();
+        }
+    }
 
-        print("Reloading...");
-        print("amount bullets: " + _ammo.GetAmountAmmo(_ammoType));
+    public virtual void PerformReload()
+    {
+        amountAmmoInClip = ammo.LoadClip(ammoType, clipSize, amountAmmoInClip);
+        OnChangedAmountAmmoInClip?.Invoke(amountAmmoInClip.ToString() + "/" + ammo.GetAmountAmmo(ammoType));
+    }
+
+    public void FinishReload()
+    {
+        state = WeaponState.Idle;
     }
 
     protected override void OnDisable()

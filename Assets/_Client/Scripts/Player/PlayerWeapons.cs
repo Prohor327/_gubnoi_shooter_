@@ -57,6 +57,7 @@ public class PlayerWeapons : MonoBehaviour
             break;
         }
         _weapons[index].OnPerformShakingCamera += _player.CameraShaker.ReactOnAttack;
+        //_weapons[index].OnTake
         _weapons[index].gameObject.SetActive(stateWeapon);
         _weapons[index].OnEndAttack += EndAttack;
     }
@@ -78,6 +79,11 @@ public class PlayerWeapons : MonoBehaviour
     public void Attack()
     {
         _weapons[_indexCurrentWeapon].Attack();
+    }
+
+    public void Reload()
+    {
+        _weapons[_indexCurrentWeapon].Reload();
     }
 
     private void EndAttack()

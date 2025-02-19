@@ -903,6 +903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _normalizedTransitionDurationAttack: 0.06
+  _normalizedTransitionDurationReload: 0.06
 --- !u!114 &4822978064445843476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,12 +916,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6207bbab7586cf64485b2763048debc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
+  _type: 1
   _damage: 10
   _shakeCameraAnimationSO: {fileID: 11400000, guid: f10381b072eefe24b910fdf7ad903474, type: 2}
-  _ammoType: 2
-  _clipSize: 2
+  ammoType: 2
+  clipSize: 7
   bulletHole: {fileID: 2803857800911547382, guid: a15fef016959ed240962c57af85bbca2, type: 3}
+  amountAmmoInClip: 0
   _amountShots: 1
   distance: 100
   _useSpread: 1

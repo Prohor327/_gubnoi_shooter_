@@ -20,6 +20,7 @@ public class PlayerInput
         _playerActions.Move.performed += OnStartMove;
         _playerActions.Move.canceled += OnStopMove;
         _playerActions.Fire.performed += OnFire;
+        _playerActions.Reload.performed += OnReload;
         _playerActions.Interact.started += OnInteract;
         _playerActions.FirstWeapon.started += OnFirstWeapon;
         _playerActions.SecondWeapon.started += OnSecondWeapon;
@@ -33,6 +34,7 @@ public class PlayerInput
         _playerActions.Move.performed -= OnStartMove;
         _playerActions.Move.canceled -= OnStopMove;
         _playerActions.Fire.performed -= OnFire;
+        _playerActions.Reload.performed -= OnReload;
         _playerActions.Interact.started -= OnInteract;
         _playerActions.FirstWeapon.started -= OnFirstWeapon;
         _playerActions.SecondWeapon.started -= OnSecondWeapon;
@@ -43,6 +45,11 @@ public class PlayerInput
     private void OnFire(InputAction.CallbackContext context)
     {
         _player.Weapons.Attack();
+    }
+
+    private void OnReload(InputAction.CallbackContext context)
+    {
+        _player.Weapons.Reload();
     }
 
     private void OnMousePosition(InputAction.CallbackContext context)
