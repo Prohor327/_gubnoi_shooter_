@@ -43,7 +43,7 @@ public class PlayerWeapons : MonoBehaviour
             {
                 FirearmWeapon weapon = Instantiate(_startedWeapons[index].gameObject, _weaponPoint).GetComponent<FirearmWeapon>();
                 weapon.Initialize(shootPoint, _player.Sound, _player.Ammo);
-                weapon.OnTake += () => _player.Ammo.ChangeAmmoType(weapon.AmmoType);
+                weapon.OnChangedAmountAmmoInClip += (string text) => _player.Events.OnChangedAmountAmmo(text);
                 _weapons.Add(weapon);
             }
             break;
@@ -51,7 +51,7 @@ public class PlayerWeapons : MonoBehaviour
             {
                 OverlapWeapon weapon = Instantiate(_startedWeapons[index].gameObject, _weaponPoint).GetComponent<OverlapWeapon>();
                 weapon.Initialize(_player.Sound);
-                weapon.OnTake += () => _player.Ammo.ChangeAmmoType(AmmoType.Nothing);
+                weapon.OnTake += () => _player.Events.OnChangedAmountAmmo.Invoke("∞");
                 _weapons.Add(weapon);
             }
             break;

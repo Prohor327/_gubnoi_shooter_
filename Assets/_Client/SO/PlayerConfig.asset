@@ -18,7 +18,7 @@ MonoBehaviour:
   _healthConfig:
     Health: 100
   _handsConfig:
-    _distance: 5
+    _distance: 1.5
   _playerLookConfig:
     Sensivity: 2
     FocusOfView: 0

@@ -1,13 +1,12 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Zenject;
+using Zenject;           
 
 public class GameplayUI : UIElement
 {
     private VisualElement _background;
     private Label _currentInteractableText;
-    private Label _magazine;
+    private Label _magazine; 
 
     [Inject]
     private void Construct(GameMachine gameMachine, Player player)
@@ -15,15 +14,17 @@ public class GameplayUI : UIElement
         gameMachine.OnStartGame += Open;
         gameMachine.OnResumeGame += Open;
         gameMachine.OnEndCutScene += Open;
+
         player.Events.OnStartHoverObject += ChangeCurrentInteractableText;
         player.Events.OnEndHoverObject += ClearCurrentInteractableText;
+        
         player.Events.OnChangedAmountAmmo += ChangeMagazineText;
     }
 
     protected override void Initialize()
     {
         base.Initialize();
-        _background = _UIElement.Q<VisualElement>("Fon");
+        _background = _UIElement.Q<VisualElement>("Background");
         _currentInteractableText = _UIElement.Q<Label>("CurrentInteractable");
         _magazine = _UIElement.Q<Label>("Magazine");
     }

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e28c5cf79c5f264f8aab2e521719ab3, type: 3}
   m_Name: fraction 10
   m_EditorClassIdentifier: 
-  _ammoType: 1
+  _ammoType: 3
   _amountAmmo: 1

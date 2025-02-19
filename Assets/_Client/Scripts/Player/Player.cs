@@ -23,7 +23,7 @@ public class Player : Character
     private PlayerSound _sound;
     private Unit _unit;
     private Rig _rig;
-    private PlayerAmmo _ammo;
+    private Ammo _ammo;
     private Shaker _cameraShaker;
     private PlayerEvents _events;
 
@@ -35,7 +35,7 @@ public class Player : Character
     public PlayerHands Hands => _hands;
     public PlayerState State => _state;
     public Unit Unit => _unit;
-    public PlayerAmmo Ammo => _ammo;
+    public Ammo Ammo => _ammo;
     public PlayerSound Sound => _sound;
     public Shaker CameraShaker => _cameraShaker;
     public PlayerEvents Events => _events;
@@ -50,7 +50,7 @@ public class Player : Character
         _weapons = GetComponent<PlayerWeapons>();
         _hands = GetComponent<PlayerHands>();
         _unit = GetComponent<Unit>();
-        _ammo = GetComponent<PlayerAmmo>();
+        _ammo = GetComponent<Ammo>();
         _sound = GetComponent<PlayerSound>();
         _cameraShaker = GetComponent<Shaker>();
 
@@ -61,7 +61,7 @@ public class Player : Character
         _hands.Initialize(rig, _config.HandsConfig);
         _look.Initialize(rig, _config.PlayerLookConfig);
         _unit.Initialize(this, _config.HealthConfig);
-        _ammo.Initialize(_events);
+        //_ammo.Initialize(_events);
 
         _input = new PlayerInput(this);
 

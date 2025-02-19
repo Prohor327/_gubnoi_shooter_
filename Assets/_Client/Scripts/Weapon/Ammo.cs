@@ -6,17 +6,18 @@ public class Ammo : MonoBehaviour
     [SerializedDictionary("Ammo type", "Amount")]
     [SerializeField] protected SerializedDictionary<AmmoType, int> ammo;
 
-    public virtual bool TryShot(AmmoType ammoType)
+    public virtual int LoadClip(AmmoType ammoType, int clipSize, int amountAmmoInClip)
     {
-        if(ammo[ammoType] <= 0)    
+        ammo[ammoType] += amountAmmoInClip;
+        if(GetAmountAmmo(ammoType) >= clipSize)
         {
-            return false;
+            ammo[ammoType] -= clipSize;
+            return clipSize;
         }
-        else
-        {
-            ammo[ammoType]--;
-            return true;
-        }
+
+        int result = GetAmountAmmo(ammoType);
+        ammo[ammoType] = 0;
+        return result;
     }
 
     public int GetAmountAmmo(AmmoType ammoType)
