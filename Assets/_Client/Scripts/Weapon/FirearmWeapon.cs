@@ -62,8 +62,6 @@ public abstract class FirearmWeapon : Weapon
         amountAmmoInClip--;
 
         OnChangedAmountAmmoInClip.Invoke(amountAmmoInClip.ToString() + "/" + ammo.GetAmountAmmo(ammoType));
-
-        print("amount bullets: " + ammo.GetAmountAmmo(ammoType));
     }
 
     protected abstract void Accept(IWeaponVisitor weaponVisitor, RaycastHit hit);

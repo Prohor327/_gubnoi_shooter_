@@ -9,10 +9,12 @@ public class Rig
     [SerializeField] private Transform _weaponPoint;
     [SerializeField] private Camera _camera;
     [SerializeField] private Camera _weaponCamera;
+    [SerializeField] private Transform _itemPoint;
 
     public Transform RigPoint => _rig;
     public Camera PlayerCamera => _camera;
     public Camera WeaponCamera => _weaponCamera;
     public Transform WeaponPoint => _weaponPoint;
     public Transform CamerasParent => _camerasParent;
+    public Transform ItemPoint => _itemPoint;
 }

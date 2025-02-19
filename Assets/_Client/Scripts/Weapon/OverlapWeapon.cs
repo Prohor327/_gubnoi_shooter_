@@ -8,7 +8,7 @@ public abstract class OverlapWeapon : Weapon
     [SerializeField] private float _attackRange;
     [SerializeField] private Transform _overlapPoint;
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         if(_overlapPoint != null)
         {

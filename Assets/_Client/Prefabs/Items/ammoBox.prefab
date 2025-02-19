@@ -151,5 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18efede0da6cb164b8717213aaf6f490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textShowingInUI: "\u041F\u043E\u0434\u043E\u0431\u0440\u0430\u0442\u044C \u043F\u0430\u0442\u0440\u043E\u043D\u044B"
+  _name: "\u043F\u0430\u0442\u0440\u043E\u043D\u044B"
+  _interactSound: {fileID: 8300000, guid: 6135000c28a46c34fb14f50215dad3d6, type: 3}
+  _isTakable: 1
   _ammoPackSO: {fileID: 11400000, guid: 7b37d7d3946b74449b9801d44d1b74ce, type: 2}

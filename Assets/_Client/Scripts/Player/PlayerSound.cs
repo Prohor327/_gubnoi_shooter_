@@ -48,4 +48,9 @@ public class PlayerSound : MonoBehaviour
             break;
         }
     }
+
+    public void PlayAudioClip(AudioClip clip)
+    {
+        _source.PlayOneShot(clip);
+    }
 }

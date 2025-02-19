@@ -6,7 +6,7 @@ public class PlayerWeapons : MonoBehaviour
     [SerializeField] private Weapon[] _startedWeapons;
 
     private List<Weapon> _weapons = new List<Weapon>();
-    private int _indexCurrentWeapon;
+    private int _currentWeaponIndex;
     private Player _player;
     private Transform _shootPoint;
     private Transform _weaponPoint;
@@ -31,7 +31,9 @@ public class PlayerWeapons : MonoBehaviour
             {
                 SpawnWeapon(i, _shootPoint, false);
             }
-            _player.Animations.SetAnimator(_weapons[_indexCurrentWeapon].GetAnimator());
+            _player.Animations.SetAnimator(_weapons[_currentWeaponIndex].GetAnimator());
+            // _player.Events.OnTakenItem += PutAwayCurrentWeapon;
+            // _player.Events.OnPutAwayItem += TakeCurrentWeapon;
         }
     }
 
@@ -64,26 +66,26 @@ public class PlayerWeapons : MonoBehaviour
 
     public void ChangeWeapon(int indexWeapon)
     {
-        if(indexWeapon == _indexCurrentWeapon || indexWeapon > _weapons.Count - 1)
+        if(indexWeapon == _currentWeaponIndex || indexWeapon > _weapons.Count - 1)
         {
             return;
         }
-        _weapons[_indexCurrentWeapon].RemoveWeapon();
-        _weapons[_indexCurrentWeapon].gameObject.SetActive(false);
-        _indexCurrentWeapon = indexWeapon;
-        _weapons[_indexCurrentWeapon].gameObject.SetActive(true);
-        _weapons[_indexCurrentWeapon].Take();
-        _player.Animations.SetAnimator(_weapons[_indexCurrentWeapon].GetAnimator());
+        _weapons[_currentWeaponIndex].RemoveWeapon();
+        _weapons[_currentWeaponIndex].gameObject.SetActive(false);
+        _currentWeaponIndex = indexWeapon;
+        _weapons[_currentWeaponIndex].gameObject.SetActive(true);
+        _weapons[_currentWeaponIndex].Take();
+        _player.Animations.SetAnimator(_weapons[_currentWeaponIndex].GetAnimator());
     }
 
     public void Attack()
     {
-        _weapons[_indexCurrentWeapon].Attack();
+        _weapons[_currentWeaponIndex].Attack();
     }
 
     public void Reload()
     {
-        _weapons[_indexCurrentWeapon].Reload();
+        _weapons[_currentWeaponIndex].Reload();
     }
 
     private void EndAttack()
@@ -105,6 +107,18 @@ public class PlayerWeapons : MonoBehaviour
 
     public WeaponState GetWeaponState()
     {
-        return _weapons[_indexCurrentWeapon].State;
+        return _weapons[_currentWeaponIndex].State;
     }
+
+    // private void PutAwayCurrentWeapon()
+    // {
+    //     _weapons[_currentWeaponIndex].RemoveWeapon();
+    //     _weapons[_currentWeaponIndex].gameObject.SetActive(false);
+    // }
+
+    // private void TakeCurrentWeapon()
+    // {
+    //     _weapons[_currentWeaponIndex].gameObject.SetActive(true);
+    //     _weapons[_currentWeaponIndex].Take();
+    // }
 }

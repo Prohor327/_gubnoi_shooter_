@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18efede0da6cb164b8717213aaf6f490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textShowingInUI: "\u041F\u043E\u0434\u0431\u0440\u0430\u0442\u044C \u0434\u0440\u043E\u0431\u043E\u0432\u044B\u0435
-    \u043F\u0430\u0442\u0440\u043E\u043D\u044B"
+  _name: "\u0434\u0440\u043E\u0431\u043E\u0432\u044B\u0435 \u043F\u0430\u0442\u0440\u043E\u043D\u044B"
+  _interactSound: {fileID: 8300000, guid: f7da832cb812b384684f23db7af49b6d, type: 3}
+  _isTakable: 1
   _ammoPackSO: {fileID: 11400000, guid: b2d71cfabf46c7e45b9dcc9a7b7119bb, type: 2}

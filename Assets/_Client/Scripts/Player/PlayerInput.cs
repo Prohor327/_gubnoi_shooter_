@@ -22,6 +22,7 @@ public class PlayerInput
         _playerActions.Fire.performed += OnFire;
         _playerActions.Reload.performed += OnReload;
         _playerActions.Interact.started += OnInteract;
+        _playerActions.Take.started += OnTake;
         _playerActions.FirstWeapon.started += OnFirstWeapon;
         _playerActions.SecondWeapon.started += OnSecondWeapon;
         _playerActions.ThirdWeapon.started += OnThirdWeapon;
@@ -36,6 +37,7 @@ public class PlayerInput
         _playerActions.Fire.performed -= OnFire;
         _playerActions.Reload.performed -= OnReload;
         _playerActions.Interact.started -= OnInteract;
+        _playerActions.Take.started -= OnTake;
         _playerActions.FirstWeapon.started -= OnFirstWeapon;
         _playerActions.SecondWeapon.started -= OnSecondWeapon;
         _playerActions.ThirdWeapon.started -= OnThirdWeapon;
@@ -45,6 +47,11 @@ public class PlayerInput
     private void OnFire(InputAction.CallbackContext context)
     {
         _player.Weapons.Attack();
+    }
+
+    private void OnTake(InputAction.CallbackContext context)
+    {
+        //_player.Hands.Take();
     }
 
     private void OnReload(InputAction.CallbackContext context)

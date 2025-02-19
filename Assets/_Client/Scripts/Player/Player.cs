@@ -58,7 +58,7 @@ public class Player : Character
 
         _movement.Initialize(_config.MovementConfig, _events);
         _weapons.Initialize(rig, this);
-        _hands.Initialize(rig, _config.HandsConfig);
+        _hands.Initialize(rig, _config.HandsConfig, _events);
         _look.Initialize(rig, _config.PlayerLookConfig);
         _unit.Initialize(this, _config.HealthConfig);
         //_ammo.Initialize(_events);
@@ -113,6 +113,7 @@ public class Player : Character
         _input.Disable();
         gameObject.SetActive(false);
     }
+
     private void OnEndCutScene()
     {
         gameObject.SetActive(true);

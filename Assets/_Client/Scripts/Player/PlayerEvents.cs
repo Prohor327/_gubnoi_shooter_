@@ -9,4 +9,6 @@ public class PlayerEvents
     public Action OnEndMove;
     public Action<string> OnChangedAmountAmmo;
     public Action OnChangedAmmoType;
+    public Action OnTakenItem;
+    public Action OnPutAwayItem;
 }

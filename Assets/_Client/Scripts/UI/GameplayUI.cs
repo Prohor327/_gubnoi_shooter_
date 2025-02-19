@@ -6,6 +6,7 @@ public class GameplayUI : UIElement
 {
     private VisualElement _background;
     private Label _currentInteractableText;
+    private Label _currentTakeableText;
     private Label _magazine; 
 
     [Inject]
@@ -15,10 +16,12 @@ public class GameplayUI : UIElement
         gameMachine.OnResumeGame += Open;
         gameMachine.OnEndCutScene += Open;
 
-        player.Events.OnStartHoverObject += ChangeCurrentInteractableText;
+        player.Events.OnStartHoverObject += OnStartHoverObject;
         player.Events.OnEndHoverObject += ClearCurrentInteractableText;
         
         player.Events.OnChangedAmountAmmo += ChangeMagazineText;
+
+        //player.Events.OnTakenItem += () => ChangeCurrentInteractableText("[F] Отпустить предмет \n[ЛКМ] Бросить предмет");
     }
 
     protected override void Initialize()
@@ -26,12 +29,18 @@ public class GameplayUI : UIElement
         base.Initialize();
         _background = _UIElement.Q<VisualElement>("Background");
         _currentInteractableText = _UIElement.Q<Label>("CurrentInteractable");
+        _currentTakeableText = _UIElement.Q<Label>("CurrentTakeable");
         _magazine = _UIElement.Q<Label>("Magazine");
     }
 
     private void ChangeMagazineText(string text)
     {
         _magazine.text = text;
+    }
+
+    private void OnStartHoverObject(string text)
+    {
+        ChangeCurrentInteractableText(text);
     }
 
     private void ChangeCurrentInteractableText(string text)
@@ -43,6 +52,7 @@ public class GameplayUI : UIElement
     {
         _currentInteractableText.text = "";
     }
+
     public override void Open()
     {
         base.Open();
