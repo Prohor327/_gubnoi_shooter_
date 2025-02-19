@@ -347,7 +347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e236dddb86ee0b2109d144b2db484585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _normalizedTransitionDurationAttack: 0.06
+  _normalizedTransitionDurationAttack: 0.01
+  _normalizedTransitionDurationReload: 0.01
 --- !u!114 &8887356820664298851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,6 +362,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shotSound: {fileID: 0}
+  _shotWithounBulletsSound: {fileID: 0}
+  _openGate: {fileID: 0}
+  _closeGate: {fileID: 0}
+  _loadBullet: {fileID: 0}
+  _putAwayMagazine: {fileID: 0}
+  _putMagazine: {fileID: 0}
+  _pistolGate: {fileID: 0}
 --- !u!114 &496160808756783761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47b51702e519ab4d94071a9a5671235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
   _damage: 10
   _shakeCameraAnimationSO: {fileID: 11400000, guid: f10381b072eefe24b910fdf7ad903474, type: 2}
   _maxAmountColliders: 5

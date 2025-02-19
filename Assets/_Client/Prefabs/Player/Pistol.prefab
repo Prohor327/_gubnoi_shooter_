@@ -890,6 +890,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shotSound: {fileID: 8300000, guid: c524ea39d7e34354c9def2d9d373600e, type: 3}
+  _shotWithounBulletsSound: {fileID: 8300000, guid: 114aaa337d6d02d4d81da948b219639b, type: 3}
+  _openGate: {fileID: 0}
+  _closeGate: {fileID: 0}
+  _loadBullet: {fileID: 0}
+  _putAwayMagazine: {fileID: 8300000, guid: 83d07f187c08f454c8a9aa9d2f38e028, type: 3}
+  _putMagazine: {fileID: 8300000, guid: 6135000c28a46c34fb14f50215dad3d6, type: 3}
+  _pistolGate: {fileID: 8300000, guid: e835557efdc6323418e62238c13fcbd8, type: 3}
 --- !u!114 &8261572940111603162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,7 +925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 1
   _damage: 10
-  _shakeCameraAnimationSO: {fileID: 11400000, guid: f10381b072eefe24b910fdf7ad903474, type: 2}
+  _shakeCameraAnimationSO: {fileID: 11400000, guid: 063f30f662300d94cbc6f1440b0baae2, type: 2}
   ammoType: 2
   clipSize: 7
   bulletHole: {fileID: 2803857800911547382, guid: a15fef016959ed240962c57af85bbca2, type: 3}

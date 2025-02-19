@@ -28,17 +28,17 @@ public abstract class Weapon : MonoBehaviour
     protected WeaponState state;
     protected WeaponAnimations _animations;
 
-    private PlayerWeaponSound _sound;
+    protected PlayerWeaponSound sound;
 
     private void Awake()
     {
-        _sound = GetComponent<PlayerWeaponSound>();
+        sound = GetComponent<PlayerWeaponSound>();
         _animations = GetComponent<WeaponAnimations>();
     }
 
     public virtual void Initialize(PlayerSound playerSound)
     {
-        _sound.Initialize(playerSound);
+        sound.Initialize(playerSound);
         state = WeaponState.Idle;
         OnInitialize?.Invoke();
     }

@@ -51,6 +51,7 @@ public abstract class FirearmWeapon : Weapon
     {
         if(amountAmmoInClip <= 0)        
         {
+            sound.SoundShotWithoutBullets();
             return;
         }
         base.Attack();
@@ -69,7 +70,7 @@ public abstract class FirearmWeapon : Weapon
 
     public override void Reload()
     {
-        if(state == WeaponState.Idle)
+        if(state == WeaponState.Idle && ammo.GetAmountAmmo(ammoType) > 0)
         {
             state = WeaponState.Reload;
             _animations.PlayReload();
