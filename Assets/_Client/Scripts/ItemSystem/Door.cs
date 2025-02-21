@@ -3,7 +3,6 @@ using DG.Tweening;
 
 public class Door : Interactable
 {
-    [SerializeField] private float _endRotateValue;
     [SerializeField] private float _openningDuration;
     [SerializeField] private AudioClip _openningSound;
     [SerializeField] private AudioClip _closingSound;

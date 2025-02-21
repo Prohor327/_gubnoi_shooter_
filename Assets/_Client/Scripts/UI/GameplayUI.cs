@@ -56,11 +56,11 @@ public class GameplayUI : UIElement
     public override void Open()
     {
         base.Open();
-        _background.style.backgroundColor = new Color(0, 0, 0, 0);
+        //_background.style.backgroundColor = new Color(0, 0, 0, 0);
     }
 
     public void Darkness()
     {
-        _background.style.backgroundColor = new Color(0,0,0,255);
+        //_background.style.backgroundColor = new Color(0,0,0,255);
     }
 }
