@@ -26,7 +26,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void OnStartHover()
     {
-        _playerEvents.OnStartHoverObject.Invoke("[E] Подобрать " + _name);
+        _playerEvents.OnStartHoverObject.Invoke("[E] " + _name);
     }
     
     public virtual void OnEndHover()
