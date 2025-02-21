@@ -3,34 +3,34 @@ using Zenject;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] private string _name = "Патрон";
-    [SerializeField] private AudioClip _interactSound;
+    [SerializeField] protected string objectName = "Патрон";
 
-    private PlayerEvents _playerEvents;
-    private PlayerSound _playerSound;
+    protected PlayerEvents playerEvents;
 
     [Inject]
-    private void Construct(Player player)
+    protected virtual void Construct(Player player)
     {
-        _playerEvents = player.Events;
-        _playerSound = player.Sound;
+        playerEvents = player.Events;
     }
 
     public virtual void OnInteract()
     {
-        _playerEvents.OnEndHoverObject.Invoke();
-        _playerSound.PlayAudioClip(_interactSound);
+        playerEvents.OnEndHoverObject.Invoke();
     }
 
     public virtual void OnHover() {  }
 
+<<<<<<< Updated upstream
     public virtual void OnStartHover()
     {
         _playerEvents.OnStartHoverObject.Invoke("[E] " + _name);
     }
+=======
+    public virtual void OnStartHover() {   }
+>>>>>>> Stashed changes
     
     public virtual void OnEndHover()
     {
-        _playerEvents.OnEndHoverObject.Invoke();
+        playerEvents.OnEndHoverObject.Invoke();
     }
 }

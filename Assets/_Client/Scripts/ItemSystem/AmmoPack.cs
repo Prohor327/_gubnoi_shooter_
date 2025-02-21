@@ -1,16 +1,17 @@
 using UnityEngine;
 using Zenject;
 
-public class AmmoPack : Interactable
+public class AmmoPack : Pickable
 {
     [SerializeField] private AmmoPackSO _ammoPackSO;
 
     private Ammo _playerAmmo;
 
     [Inject]    
-    private void Construct(Player player)
+    protected override void Construct(Player player)
     {
         _playerAmmo = player.Ammo;
+        base.Construct(player);
     }
 
     public override void OnInteract()
