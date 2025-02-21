@@ -1,13 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Zenject;           
+using Zenject;
 
 public class GameplayUI : UIElement
 {
     private VisualElement _background;
     private Label _currentInteractableText;
     private Label _currentTakeableText;
-    private Label _magazine; 
+    private Label _magazine;
 
     [Inject]
     private void Construct(GameMachine gameMachine, Player player)
@@ -18,7 +20,7 @@ public class GameplayUI : UIElement
 
         player.Events.OnStartHoverObject += OnStartHoverObject;
         player.Events.OnEndHoverObject += ClearCurrentInteractableText;
-        
+
         player.Events.OnChangedAmountAmmo += ChangeMagazineText;
 
         //player.Events.OnTakenItem += () => ChangeCurrentInteractableText("[F] Отпустить предмет \n[ЛКМ] Бросить предмет");
@@ -56,11 +58,17 @@ public class GameplayUI : UIElement
     public override void Open()
     {
         base.Open();
-        //_background.style.backgroundColor = new Color(0, 0, 0, 0);
     }
-
     public void Darkness()
     {
-        //_background.style.backgroundColor = new Color(0,0,0,255);
+        StartCoroutine(nameof(InDarkness));
+    }
+
+    IEnumerable InDarkness()
+    {
+        _background.style.transitionDuration = new List<TimeValue>() { new TimeValue(2) };
+        _background.style.backgroundColor = new Color(0, 0, 0, 0);
+        yield return null;
+        _background.style.backgroundColor = new Color(0, 0, 0, 1);
     }
 }

@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
 public class Lift : Interactable
 {
     [SerializeField] private CutSceneSO _cutSceneSO;
+    [SerializeField] private AudioClip _clip;
+    [SerializeField] private AudioSource _source;
 
     private CutScenesManager _cutScenesManager;
 
@@ -15,6 +18,16 @@ public class Lift : Interactable
 
     public override void OnInteract()
     {
+        StartCoroutine(nameof(InLift));
+        
+    }
+
+    IEnumerable InLift()
+    {
+        base.OnInteract();
+        _source.clip = _clip;
+        // door close
+        yield return new WaitForSeconds(30f);
         _cutScenesManager.StartCutScene(_cutSceneSO);
     }
 }
