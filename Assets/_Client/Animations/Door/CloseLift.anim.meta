@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:Assets/_Client/Animations/Door/CloseLift.anim.meta
 guid: e0504edd783b34942a3edb6f7342509f
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 7400000
+========
+guid: cd2820c01e61222479052cba49c46c12
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+>>>>>>>> Stashed changes:Assets/_Client/material/Lift.mat.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

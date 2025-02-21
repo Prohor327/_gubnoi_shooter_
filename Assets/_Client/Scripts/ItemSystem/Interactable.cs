@@ -20,14 +20,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void OnHover() {  }
 
-<<<<<<< Updated upstream
-    public virtual void OnStartHover()
-    {
-        _playerEvents.OnStartHoverObject.Invoke("[E] " + _name);
-    }
-=======
     public virtual void OnStartHover() {   }
->>>>>>> Stashed changes
     
     public virtual void OnEndHover()
     {

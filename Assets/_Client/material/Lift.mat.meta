@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:Assets/_Client/material/Lift.mat.meta
 guid: cd2820c01e61222479052cba49c46c12
+========
+guid: bdaf4df927f0e6542b14e5ba39e79675
+>>>>>>>> Stashed changes:Assets/_Client/material/Prologue_building_out.mat.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000

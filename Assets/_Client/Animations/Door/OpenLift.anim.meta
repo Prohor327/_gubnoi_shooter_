@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< Updated upstream:Assets/_Client/Animations/Door/OpenLift.anim.meta
 guid: 0b06ef4717a392a45968f88be8dcc226
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 7400000
+========
+guid: 1444306950af0fd4eb7eb4e51108182c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+>>>>>>>> Stashed changes:Assets/_Client/material/Prologue_building_in.mat.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
