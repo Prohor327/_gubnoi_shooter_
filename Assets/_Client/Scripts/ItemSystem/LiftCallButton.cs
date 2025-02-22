@@ -68,7 +68,7 @@ public class LiftCallButton : Door
     {   
         _door1.DOLocalMoveX(_door1DefaultPos.x - 2, openningDuration);
         _door2.DOLocalMoveX(_door2DefaultPos.x + 2, openningDuration).onComplete = OnEndOpen;
-        audioSource.PlayOneShot(_openningSound);
+        _liftAudioSource.PlayOneShot(_openningSound);
         StartCoroutine(Wait());
     }
 
@@ -82,6 +82,11 @@ public class LiftCallButton : Door
     {
         _door1.DOLocalMoveX(_door1DefaultPos.x, openningDuration);
         _door2.DOLocalMoveX(_door2DefaultPos.x, openningDuration).onComplete = OnEndClose;
-        audioSource.PlayOneShot(_openningSound);
+        _liftAudioSource.PlayOneShot(_openningSound);
+    }
+
+    public void CloseDoors()
+    {
+        Close();
     }
 }

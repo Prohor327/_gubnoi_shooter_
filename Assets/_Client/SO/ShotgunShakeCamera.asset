@@ -17,10 +17,10 @@ MonoBehaviour:
       isOn: 1
       duration: 0.1
       ease: 1
-      randomnessMode: 0
-      strength: {x: 0.1, y: 0.3, z: 0.07}
+      randomnessMode: 1
+      strength: {x: 0.1, y: 0.2, z: 0.03}
       randomness: 0
-      vibrato: 5
+      vibrato: 0
       snapping: 0
     _rotationConfig:
       isOn: 1
