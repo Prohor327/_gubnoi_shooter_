@@ -13,10 +13,7 @@ public class Interactable : MonoBehaviour
         playerEvents = player.Events;
     }
 
-    public virtual void OnInteract()
-    {
-        playerEvents.OnEndHoverObject.Invoke();
-    }
+    public virtual void OnInteract() {   }
 
     public virtual void OnHover() {  }
 

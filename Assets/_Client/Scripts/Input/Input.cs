@@ -116,6 +116,15 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FourthWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc6e59ca-4f7a-4a6b-b5d4-028a1e3bdfbe"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -272,6 +281,17 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""action"": ""Take"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d6e510e-6918-48f6-8c86-428c830a8ca1"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FourthWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -346,6 +366,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         m_Player_ThirdWeapon = m_Player.FindAction("ThirdWeapon", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_Take = m_Player.FindAction("Take", throwIfNotFound: true);
+        m_Player_FourthWeapon = m_Player.FindAction("FourthWeapon", throwIfNotFound: true);
         // CutScene
         m_CutScene = asset.FindActionMap("CutScene", throwIfNotFound: true);
         m_CutScene_Skip = m_CutScene.FindAction("Skip", throwIfNotFound: true);
@@ -430,6 +451,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ThirdWeapon;
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_Take;
+    private readonly InputAction m_Player_FourthWeapon;
     public struct PlayerActions
     {
         private @Input m_Wrapper;
@@ -444,6 +466,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         public InputAction @ThirdWeapon => m_Wrapper.m_Player_ThirdWeapon;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @Take => m_Wrapper.m_Player_Take;
+        public InputAction @FourthWeapon => m_Wrapper.m_Player_FourthWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -483,6 +506,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @Take.started += instance.OnTake;
             @Take.performed += instance.OnTake;
             @Take.canceled += instance.OnTake;
+            @FourthWeapon.started += instance.OnFourthWeapon;
+            @FourthWeapon.performed += instance.OnFourthWeapon;
+            @FourthWeapon.canceled += instance.OnFourthWeapon;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -517,6 +543,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @Take.started -= instance.OnTake;
             @Take.performed -= instance.OnTake;
             @Take.canceled -= instance.OnTake;
+            @FourthWeapon.started -= instance.OnFourthWeapon;
+            @FourthWeapon.performed -= instance.OnFourthWeapon;
+            @FourthWeapon.canceled -= instance.OnFourthWeapon;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -638,6 +667,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         void OnThirdWeapon(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnTake(InputAction.CallbackContext context);
+        void OnFourthWeapon(InputAction.CallbackContext context);
     }
     public interface ICutSceneActions
     {

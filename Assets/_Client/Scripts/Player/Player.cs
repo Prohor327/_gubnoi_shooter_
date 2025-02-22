@@ -7,32 +7,33 @@ using Zenject;
 [RequireComponent(typeof(PlayerLook))]
 [RequireComponent(typeof(PlayerAnimations))]
 [RequireComponent(typeof(PlayerWeapons))]
-[RequireComponent(typeof(PlayerHands))]
+[RequireComponent(typeof(PlayerInteract))]
 [RequireComponent(typeof(Unit))]
 public class Player : Character
 {
     [SerializeField] private PlayerSO _config;
+    [SerializeField] private Rig _rig;
 
     private PlayerMotor _movement;
     private PlayerLook _look;
     private PlayerInput _input;
     private PlayerAnimations _animations;
     private PlayerWeapons _weapons;
-    private PlayerHands _hands;
+    private PlayerInteract _hands;
     private PlayerState _state;
     private PlayerSound _sound;
     private Unit _unit;
-    private Rig _rig;
     private Ammo _ammo;
     private Shaker _cameraShaker;
     private PlayerEvents _events;
+    private GroundChecker _groundChecker;
 
     public PlayerMotor Movement => _movement;
     public PlayerLook View => _look;
     public PlayerInput Input => _input;
     public PlayerWeapons Weapons => _weapons;
     public PlayerAnimations Animations => _animations;
-    public PlayerHands Hands => _hands;
+    public PlayerInteract Hands => _hands;
     public PlayerState State => _state;
     public Unit Unit => _unit;
     public Ammo Ammo => _ammo;
@@ -41,27 +42,27 @@ public class Player : Character
     public PlayerEvents Events => _events;
 
     [Inject]
-    private void Construct(GameMachine gameMachine, Rig rig)
+    private void Construct(GameMachine gameMachine)
     {
-        _rig = rig;
         _movement = GetComponent<PlayerMotor>();
         _look = GetComponent<PlayerLook>();
         _animations = GetComponent<PlayerAnimations>();
         _weapons = GetComponent<PlayerWeapons>();
-        _hands = GetComponent<PlayerHands>();
+        _hands = GetComponent<PlayerInteract>();
         _unit = GetComponent<Unit>();
         _ammo = GetComponent<Ammo>();
         _sound = GetComponent<PlayerSound>();
         _cameraShaker = GetComponent<Shaker>();
+        _groundChecker = GetComponent<GroundChecker>();
 
         _events = new PlayerEvents();
 
         _movement.Initialize(_config.MovementConfig, _events);
-        _weapons.Initialize(rig, this);
-        _hands.Initialize(rig, _config.HandsConfig, _events);
-        _look.Initialize(rig, _config.PlayerLookConfig);
+        _weapons.Initialize(_rig, this);
+        _hands.Initialize(_rig, _config.HandsConfig, _events);
+        _look.Initialize(_rig, _config.PlayerLookConfig);
         _unit.Initialize(this, _config.HealthConfig);
-        //_ammo.Initialize(_events);
+        _sound.Initialize(_groundChecker, this);
 
         _input = new PlayerInput(this);
 

@@ -16,13 +16,17 @@ public class Lift : Interactable
         _cutScenesManager = cutScenesManager;
     }
 
-    public override void OnInteract()
+    public override void OnStartHover()
     {
-        StartCoroutine(nameof(InLift));
-        
+        playerEvents.OnStartHoverObject("[E] Спустьтся");
     }
 
-    IEnumerable InLift()
+    public override void OnInteract()
+    {
+        StartCoroutine(InLift());   
+    }
+
+    private IEnumerator InLift()
     {
         base.OnInteract();
         _source.clip = _clip;

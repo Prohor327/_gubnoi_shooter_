@@ -149,6 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18efede0da6cb164b8717213aaf6f490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: "\u0414\u0440\u043E\u0431\u043E\u0432\u043E\u0439 \u043F\u0430\u0442\u0440\u043E\u043D"
+  objectName: "\u043F\u0430\u0442\u0440\u043E\u043D \u0434\u043B\u044F \u0434\u0440\u043E\u0431\u043E\u0432\u0438\u043A\u0430"
   _pickUpSound: {fileID: 8300000, guid: f7da832cb812b384684f23db7af49b6d, type: 3}
   _ammoPackSO: {fileID: 11400000, guid: f6caed8ae96026541860aeaac0cfad34, type: 2}

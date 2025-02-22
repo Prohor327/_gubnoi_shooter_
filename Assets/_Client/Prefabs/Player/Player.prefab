@@ -346,8 +346,6 @@ GameObject:
   - component: {fileID: 684890322411200720}
   - component: {fileID: 8078329573291477317}
   - component: {fileID: 6940201596720619722}
-  - component: {fileID: 4988933923079372769}
-  - component: {fileID: 7944050981637714052}
   - component: {fileID: 5452224689098295496}
   - component: {fileID: 8143977178675499994}
   - component: {fileID: 4687091881883762659}
@@ -396,7 +394,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -439,6 +437,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: b8c71327bc98f5b44ae1ac4cf1968acb, type: 2}
+  _rig:
+    _rig: {fileID: 1032080455747027925}
+    _camerasParent: {fileID: 1577310667593383456}
+    _weaponPoint: {fileID: 8955629051232246684}
+    _camera: {fileID: 2265850909557902685}
+    _weaponCamera: {fileID: 4794702292465054059}
+    _itemPoint: {fileID: 0}
 --- !u!114 &684890322411200720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,44 +486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37f9b3cf09011549ad8cbb4704d0d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handsConfig:
-    _distance: 0
---- !u!114 &4988933923079372769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8363578427431343702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: 7944050981637714052}
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
---- !u!114 &7944050981637714052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8363578427431343702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36310597d32df954b9ce0a765793af7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rig:
-    _rig: {fileID: 1032080455747027925}
-    _camerasParent: {fileID: 1577310667593383456}
-    _weaponPoint: {fileID: 8955629051232246684}
-    _camera: {fileID: 2265850909557902685}
-    _weaponCamera: {fileID: 4794702292465054059}
 --- !u!82 &5452224689098295496
 AudioSource:
   m_ObjectHideFlags: 0
@@ -717,6 +684,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ca9610949651dcd4baf6776a22b7e186, type: 3}
   - {fileID: 8300000, guid: 2aa7ae1ebff94ca4f83b530f9abbb7cb, type: 3}
   - {fileID: 8300000, guid: fcf928d6a40c2f340a865a3d29d9e774, type: 3}
+  _walkRate: 0.7
 --- !u!114 &4687091881883762659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,8 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cdc6d6afe0914746a0079be23212d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _castDistance: 1.77
-  _boxSize: {x: 1, y: 0.37, z: 1}
+  _maxDistance: 2
   _groundLayers:
     serializedVersion: 2
     m_Bits: 64

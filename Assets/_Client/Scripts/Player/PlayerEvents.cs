@@ -11,4 +11,6 @@ public class PlayerEvents
     public Action OnChangedAmmoType;
     public Action OnTakenItem;
     public Action OnPutAwayItem;
+    public Action OnPutAwayAnyWeapon;
+    public Action OnTakenAnyWeapon;
 }

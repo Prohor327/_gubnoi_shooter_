@@ -10,6 +10,7 @@ public class PlayerWeapons : MonoBehaviour
     private Player _player;
     private Transform _shootPoint;
     private Transform _weaponPoint;
+    public bool isWeaponActive { private set; get; }
     
     public int AmountWeapon => _startedWeapons.Length;
 
@@ -32,8 +33,6 @@ public class PlayerWeapons : MonoBehaviour
                 SpawnWeapon(i, _shootPoint, false);
             }
             _player.Animations.SetAnimator(_weapons[_currentWeaponIndex].GetAnimator());
-            // _player.Events.OnTakenItem += PutAwayCurrentWeapon;
-            // _player.Events.OnPutAwayItem += TakeCurrentWeapon;
         }
     }
 
@@ -62,30 +61,65 @@ public class PlayerWeapons : MonoBehaviour
         //_weapons[index].OnTake
         _weapons[index].gameObject.SetActive(stateWeapon);
         _weapons[index].OnEndAttack += EndAttack;
+        _weapons[index].OnTake += OnTakenWeapon;
+    }
+
+    private void OnTakenWeapon()
+    {
+        if(_player.State == PlayerState.Move)
+        {
+            _player.Animations.PlayWalk();
+        }
     }
 
     public void ChangeWeapon(int indexWeapon)
     {
-        if(indexWeapon == _currentWeaponIndex || indexWeapon > _weapons.Count - 1)
+        if(indexWeapon == _currentWeaponIndex || indexWeapon > _weapons.Count)
         {
             return;
         }
+
+        if(indexWeapon == 3)
+        {
+            RemoveWeapon();
+            return;
+        }
+
+        if(isWeaponActive)
+        {
+            isWeaponActive = false;
+            _player.Events.OnTakenAnyWeapon.Invoke();
+        }
+
         _weapons[_currentWeaponIndex].RemoveWeapon();
         _weapons[_currentWeaponIndex].gameObject.SetActive(false);
         _currentWeaponIndex = indexWeapon;
         _weapons[_currentWeaponIndex].gameObject.SetActive(true);
-        _weapons[_currentWeaponIndex].Take();
         _player.Animations.SetAnimator(_weapons[_currentWeaponIndex].GetAnimator());
+        _weapons[_currentWeaponIndex].Take();
+    }
+
+    private void RemoveWeapon()
+    {
+        _weapons[_currentWeaponIndex].gameObject.SetActive(false);
+        _player.Events.OnPutAwayAnyWeapon.Invoke();
+        isWeaponActive = true;
     }
 
     public void Attack()
     {
-        _weapons[_currentWeaponIndex].Attack();
+        if(!isWeaponActive)
+        {
+            _weapons[_currentWeaponIndex].Attack();
+        }
     }
 
     public void Reload()
     {
-        _weapons[_currentWeaponIndex].Reload();
+        if(!isWeaponActive)
+        {
+            _weapons[_currentWeaponIndex].Reload();
+        }
     }
 
     private void EndAttack()

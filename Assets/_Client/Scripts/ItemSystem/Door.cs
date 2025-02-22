@@ -3,22 +3,23 @@ using DG.Tweening;
 
 public class Door : Interactable
 {
-    [SerializeField] private float _openningDuration;
-    [SerializeField] private AudioClip _openningSound;
-    [SerializeField] private AudioClip _closingSound;
+    [SerializeField] protected float openningDuration;
+    [SerializeField] protected AudioClip _openningSound;
+    [SerializeField] protected AudioClip _closingSound;
 
-    private bool _isOpen = false;
-    private bool _isAnimationPlaying = false;
-    private AudioSource _audioSource;
+    protected bool isOpen = false;
+    protected bool isAnimationPlaying = false;
 
-    private void Start()
+    protected AudioSource audioSource;
+
+    protected virtual void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public override void OnStartHover()
     {
-        if(_isOpen)
+        if(isOpen)
         {
             playerEvents.OnStartHoverObject.Invoke("[E] Закрыть");
         }
@@ -30,12 +31,12 @@ public class Door : Interactable
 
     public override void OnInteract()
     {
-        if(!_isAnimationPlaying)
+        if(!isAnimationPlaying)
         {
             base.OnInteract();
-            _isAnimationPlaying = true;
+            isAnimationPlaying = true;
 
-            if(_isOpen)
+            if(isOpen)
             {
                 Close();
             }
@@ -47,28 +48,28 @@ public class Door : Interactable
     }
 
     [ContextMenu("Open")]
-    private void Open()
+    protected virtual void Open()
     {
-        transform.DOLocalRotateQuaternion(Quaternion.Euler(-90, 0, 100), _openningDuration).onComplete = OnEndOpen;
-        _audioSource.PlayOneShot(_openningSound);
+        transform.DOLocalRotateQuaternion(Quaternion.Euler(-90, 0, 100), openningDuration).onComplete = OnEndOpen;
+        audioSource.PlayOneShot(_openningSound);
     }
 
     [ContextMenu("Close")]
-    private void Close()
+    protected virtual void Close()
     {
-        transform.DOLocalRotateQuaternion(Quaternion.Euler(-90, 0, 0), _openningDuration).onComplete = OnEndClose;
-        _audioSource.PlayOneShot(_closingSound);
+        transform.DOLocalRotateQuaternion(Quaternion.Euler(-90, 0, 0), openningDuration).onComplete = OnEndClose;
+        audioSource.PlayOneShot(_closingSound);
     }
 
-    private void OnEndOpen()
+    protected void OnEndOpen()
     {
-        _isAnimationPlaying = false;
-        _isOpen = true;
+        isAnimationPlaying = false;
+        isOpen = true;
     }
 
-    private void OnEndClose()
+    protected void OnEndClose()
     {
-        _isAnimationPlaying = false;
-        _isOpen = false;
+        isAnimationPlaying = false;
+        isOpen = false;
     }
 }

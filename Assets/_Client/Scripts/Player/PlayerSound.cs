@@ -7,16 +7,22 @@ public class PlayerSound : MonoBehaviour
     [SerializeField] private AudioClip[] _footstepsWood;
     [SerializeField] private AudioClip[] _footstepsTiles;
     [SerializeField] private AudioClip[] _footstepsFloor;
+    [SerializeField] private float _walkRate;
 
+    private bool _isWalkInUpdate;
     private AudioSource _source;
     private GroundChecker _groundChecker;
+    private float _nextStep;
+    private Player _player;
 
     public AudioSource AudioSource => _source;
 
-    [Inject]
-    private void Construct(GroundChecker groundChecker)
+    public void Initialize(GroundChecker groundChecker, Player player)
     {
         _groundChecker = groundChecker;
+        _player = player;
+        _player.Events.OnPutAwayAnyWeapon += () => { _isWalkInUpdate = true; };
+        _player.Events.OnTakenAnyWeapon += () => { _isWalkInUpdate = false; };
     }
 
     private void Awake()
@@ -46,6 +52,23 @@ public class PlayerSound : MonoBehaviour
             case GroundType.Wood:
                 _source.PlayOneShot(_footstepsWood[Random.Range(0, _footstepsWood.Length)]);
             break;
+        }
+    }
+
+    private void Update()
+    {
+        if(_isWalkInUpdate && _player.State == PlayerState.Move)
+        {
+            Walk();
+        }
+    }
+
+    private void Walk()
+    {
+        if(Time.time >= _nextStep)
+        {
+            _nextStep = Time.time + _walkRate;
+            SoundFootstep();
         }
     }
 
