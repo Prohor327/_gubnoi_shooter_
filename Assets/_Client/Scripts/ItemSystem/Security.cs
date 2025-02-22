@@ -24,7 +24,7 @@ public class Security : Interactable
         if(!_audioSource.isPlaying)
         {
             _audioSource.PlayOneShot(_clip);
-            _subTitles.SetTitle("Security");
+            _subTitles.SetTitle("Охранник");
             _subTitles.PrintText("А, ты пришел, ну проходи, лифт вот там. Вон там. Вон. Вон. Ну, ты че слепой? Ну ты лифт не видишь, слепошарый. Вон там.");
         }
     }

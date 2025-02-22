@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 
 public class SubTitles : UIElement
 {   
+    [SerializeField] private GameplayUI _gameplayUI;
     private Label _title;
     private Label _text;
     private Coroutine coroutine = null;
@@ -39,6 +40,7 @@ public class SubTitles : UIElement
 
     public void Close()
     {
+        _gameplayUI.Open();
     }
 
     IEnumerator Text(string text)
