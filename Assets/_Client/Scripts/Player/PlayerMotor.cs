@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
 
@@ -12,13 +10,15 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 _playerVelocity;
     private Vector3 _direction;
     private PlayerEvents _playerEvents;
+    private PlayerSound _playerSound;
 
-    public void Initialize(MovementConfig movementConfig, PlayerEvents playerEvents)
+    public void Initialize(MovementConfig movementConfig, Player player)
     {
         _movementConfig = movementConfig;
         _moveSpeed = _movementConfig.WalkSpeed;
         _controller = GetComponent<CharacterController>();
-        _playerEvents = playerEvents;
+        _playerEvents = player.Events;
+        _playerSound = player.Sound;
     }
 
     private void Update()
@@ -46,5 +46,14 @@ public class PlayerMotor : MonoBehaviour
     {
         _direction = Vector3.zero;
         _playerEvents.OnEndMove.Invoke();
+    }
+
+    public void Jump()
+    {
+        if(_controller.isGrounded)
+        {
+            _playerSound.SoundJump();
+            _playerVelocity.y += Mathf.Sqrt(_movementConfig.JumpHeight * -2.0f * Physics.gravity.y);
+        }
     }
 }

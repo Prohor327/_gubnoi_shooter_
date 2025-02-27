@@ -16,6 +16,7 @@ public class AmmoPack : Pickable
 
     public override void OnInteract()
     {
+        base.OnInteract();
         _playerAmmo.AddAmmo(_ammoPackSO.AmmoType, _ammoPackSO.AmountAmmo);
         playerEvents.OnEndHoverObject.Invoke();
         DestroyImmediate(gameObject);

@@ -7,6 +7,8 @@ public class PlayerSound : MonoBehaviour
     [SerializeField] private AudioClip[] _footstepsWood;
     [SerializeField] private AudioClip[] _footstepsTiles;
     [SerializeField] private AudioClip[] _footstepsFloor;
+    [SerializeField] private AudioClip _jump;
+    [SerializeField] private AudioClip _landing;
     [SerializeField] private float _walkRate;
 
     private bool _isWalkInUpdate;
@@ -21,7 +23,7 @@ public class PlayerSound : MonoBehaviour
     {
         _groundChecker = groundChecker;
         _player = player;
-        _player.Events.OnPutAwayAnyWeapon += () => { _isWalkInUpdate = true; };
+        _player.Events.OnTakenHands += () => { _isWalkInUpdate = true; };
         _player.Events.OnTakenAnyWeapon += () => { _isWalkInUpdate = false; };
     }
 
@@ -75,5 +77,15 @@ public class PlayerSound : MonoBehaviour
     public void PlayAudioClip(AudioClip clip)
     {
         _source.PlayOneShot(clip);
+    }
+
+    public void SoundJump()
+    {
+        PlayAudioClip(_jump);
+    }
+
+    public void SoundLanding()
+    {
+        PlayAudioClip(_landing);
     }
 }

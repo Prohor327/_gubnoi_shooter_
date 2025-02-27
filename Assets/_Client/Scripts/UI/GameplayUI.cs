@@ -7,8 +7,8 @@ using Zenject;
 public class GameplayUI : UIElement
 {
     private VisualElement _background;
+    private List<VisualElement> _playerItems = new List<VisualElement>();
     private Label _currentInteractableText;
-    private Label _currentTakeableText;
     private Label _magazine;
 
     [Inject]
@@ -22,16 +22,28 @@ public class GameplayUI : UIElement
         player.Events.OnEndHoverObject += ClearCurrentInteractableText;
 
         player.Events.OnChangedAmountAmmo += ChangeMagazineText;
+    
+        player.Events.OnTakenAxe += () => ChangeWeaponImage(0, player.Weapons.PreviousWeaponIndex);
+        player.Events.OnTakenPistol += () => ChangeWeaponImage(1, player.Weapons.PreviousWeaponIndex);
+        player.Events.OnTakenShotgun += () => ChangeWeaponImage(2, player.Weapons.PreviousWeaponIndex);
+        player.Events.OnTakenHands += () => ChangeWeaponImage(3, player.Weapons.PreviousWeaponIndex);
+    }
 
-        //player.Events.OnTakenItem += () => ChangeCurrentInteractableText("[F] Отпустить предмет \n[ЛКМ] Бросить предмет");
+    private void ChangeWeaponImage(int weaponIndex, int previousWeaponIndex)
+    {
+        _playerItems[weaponIndex].style.visibility = Visibility.Visible;
+        _playerItems[previousWeaponIndex].style.visibility = Visibility.Hidden;
     }
 
     protected override void Initialize()
     {
         base.Initialize();
+        _playerItems.Add(_UIElement.Q<VisualElement>("Axe"));
+        _playerItems.Add(_UIElement.Q<VisualElement>("Pistol"));
+        _playerItems.Add(_UIElement.Q<VisualElement>("Shotgun"));
+        _playerItems.Add(_UIElement.Q<VisualElement>("Hands"));
         _background = _UIElement.Q<VisualElement>("Background");
         _currentInteractableText = _UIElement.Q<Label>("CurrentInteractable");
-        _currentTakeableText = _UIElement.Q<Label>("CurrentTakeable");
         _magazine = _UIElement.Q<Label>("Magazine");
     }
 
@@ -59,12 +71,13 @@ public class GameplayUI : UIElement
     {
         base.Open();
     }
-    public void Darkness()
+
+    public void MakeScreenDark()
     {
-        StartCoroutine(nameof(InDarkness));
+        StartCoroutine(nameof(StartDarkenAnimation));
     }
 
-    IEnumerable InDarkness()
+    private IEnumerable StartDarkenAnimation()
     {
         _background.style.transitionDuration = new List<TimeValue>() { new TimeValue(2) };
         _background.style.backgroundColor = new Color(0, 0, 0, 0);

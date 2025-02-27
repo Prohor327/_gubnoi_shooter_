@@ -1,5 +1,4 @@
-using NUnit.Framework;
-using UnityEngine;
+ using UnityEngine;
 
 public class GroundChecker : MonoBehaviour 
 {
@@ -9,29 +8,42 @@ public class GroundChecker : MonoBehaviour
     public bool IsGrounded { get; private set; }
     public GroundType CurrentGroundType { get; private set; }
 
+    private PlayerSound _playerSound;
+    private CharacterController _controller;
+
+    public void Initialize(PlayerSound playerSound)
+    {
+        _playerSound = playerSound;
+        _controller = GetComponent<CharacterController>();
+    }
+
     private void Update()
     {
-        RaycastHit hit;
-
-        bool isHited = Physics.Raycast(transform.position, Vector3.down, out hit, _maxDistance, _groundLayers);
-
-        if(isHited)
+        if(_controller.isGrounded)
         {
+            RaycastHit hit;
+            
             if(!IsGrounded)
             {
                 IsGrounded = true;
+                _playerSound.SoundLanding();
+                print("landing");
             }
 
-            Ground ground;
-            if(hit.collider.TryGetComponent<Ground>(out ground) && CurrentGroundType != ground.Type)
+            if(Physics.Raycast(transform.position, Vector3.down, out hit, _maxDistance, _groundLayers))
             {
-                CurrentGroundType = ground.Type;
+                Ground ground;
+                if(hit.collider.TryGetComponent<Ground>(out ground) && CurrentGroundType != ground.Type)
+                {
+                    CurrentGroundType = ground.Type;
+                }
             }
         }
-        else if(!isHited && IsGrounded)
+        else if(IsGrounded)
         {
             CurrentGroundType = GroundType.None;
             IsGrounded = false;
+            print("rise");
         }
     }    
 

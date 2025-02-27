@@ -14,7 +14,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] private ShakeCameraAnimationSO _shakeCameraAnimationSO;
 
     public Action OnEndAttack;
-    public Action OnTake;
+    public Action OnTaken;
     public Action OnInitialize;
     public Action OnPerformAttack;
     public Action OnStartAttack;
@@ -50,7 +50,7 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual void Take()
     {
-        OnTake?.Invoke();
+        OnTaken?.Invoke();
     }
 
     public virtual void Reload() {  }
@@ -90,7 +90,7 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void OnDisable() 
     {
         OnInitialize += () => {};
-        OnTake += () => {};
+        OnTaken += () => {};
         OnEndAttack += () => {};
         OnStartAttack += () => {};
         OnPerformAttack += () => {};

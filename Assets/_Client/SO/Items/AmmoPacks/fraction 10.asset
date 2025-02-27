@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: fraction 10
   m_EditorClassIdentifier: 
   _ammoType: 3
-  _amountAmmo: 1
+  _amountAmmo: 10

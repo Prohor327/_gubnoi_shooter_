@@ -137,7 +137,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957989832828201102}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!1 &5139545195757282526
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +394,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.4
+  m_Radius: 0.35
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -672,6 +672,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ca9610949651dcd4baf6776a22b7e186, type: 3}
   - {fileID: 8300000, guid: 2aa7ae1ebff94ca4f83b530f9abbb7cb, type: 3}
   - {fileID: 8300000, guid: fcf928d6a40c2f340a865a3d29d9e774, type: 3}
+  _jump: {fileID: 8300000, guid: 81cf27e5daad3bf42b34d87ad336124f, type: 3}
+  _landing: {fileID: 8300000, guid: f23283d79a2880a47b2b9c9e97a04c0d, type: 3}
   _walkRate: 0.7
 --- !u!114 &4687091881883762659
 MonoBehaviour:

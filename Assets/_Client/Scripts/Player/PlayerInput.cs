@@ -27,6 +27,7 @@ public class PlayerInput
         _playerActions.SecondWeapon.started += OnSecondWeapon;
         _playerActions.ThirdWeapon.started += OnThirdWeapon;
         _playerActions.FourthWeapon.started += OnFourthWeapon;
+        _playerActions.Jump.started += OnPressSpace;
         MonoBehaviour.print("Player subscribed");
     }
 
@@ -43,6 +44,7 @@ public class PlayerInput
         _playerActions.SecondWeapon.started -= OnSecondWeapon;
         _playerActions.ThirdWeapon.started -= OnThirdWeapon;
         _playerActions.FourthWeapon.started -= OnFourthWeapon;
+        _playerActions.Jump.started -= OnPressSpace;
         MonoBehaviour.print("Player unsubscribed");
     }
 
@@ -98,6 +100,11 @@ public class PlayerInput
     private void OnFourthWeapon(InputAction.CallbackContext context)
     {
         _player.Weapons.ChangeWeapon(3);   
+    }
+
+    private void OnPressSpace(InputAction.CallbackContext context)
+    {
+        _player.Movement.Jump();
     }
 
     public void Enable()

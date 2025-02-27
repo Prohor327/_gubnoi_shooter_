@@ -15,10 +15,12 @@ MonoBehaviour:
   _movementConfig:
     _walkSpeed: 6
     _runSpeed: 0
+    _jumpHeight: 3
   _healthConfig:
     Health: 100
   _handsConfig:
     _distance: 1.5
+    _throwingForce: 0
   _playerLookConfig:
     Sensivity: 2
     FocusOfView: 0

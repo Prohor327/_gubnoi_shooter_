@@ -39,6 +39,7 @@ public class Player : Character
     public PlayerSound Sound => _sound;
     public Shaker CameraShaker => _cameraShaker;
     public PlayerEvents Events => _events;
+    public GroundChecker GroundChecker => _groundChecker;
 
     [Inject]
     private void Construct(GameMachine gameMachine)
@@ -56,12 +57,13 @@ public class Player : Character
 
         _events = new PlayerEvents();
 
-        _movement.Initialize(_config.MovementConfig, _events);
+        _movement.Initialize(_config.MovementConfig, this);
         _weapons.Initialize(_rig, this);
         _hands.Initialize(_rig, _config.HandsConfig, _events);
         _look.Initialize(_rig, _config.PlayerLookConfig);
         _unit.Initialize(this, _config.HealthConfig);
         _sound.Initialize(_groundChecker, this);
+        _groundChecker.Initialize(_sound);
 
         _input = new PlayerInput(this);
 
