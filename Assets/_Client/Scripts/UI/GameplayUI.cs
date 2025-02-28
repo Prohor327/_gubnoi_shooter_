@@ -82,20 +82,19 @@ public class GameplayUI : UIElement
         {
             case 0:
                 {
-                    _target.style.visibility = Visibility.Visible;
-                    _target.transform.rotation = Quaternion.Euler(45f, 0f, 0f);
+                    _target.style.visibility = Visibility.Hidden;
                     break;
                 }
             case 1:
                 {
                     _target.style.visibility = Visibility.Visible;
-                    _target.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                    _target.style.rotate = new StyleRotate(new Rotate(0f));
                     break;
                 }
             case 2:
                 {
                     _target.style.visibility = Visibility.Visible;
-                    _target.transform.rotation = Quaternion.Euler(45f, 0f, 0f);
+                    _target.style.rotate = new StyleRotate(new Rotate(45f));
                     break;
                 }
             case 3:
