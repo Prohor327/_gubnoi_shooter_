@@ -10603,6 +10603,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2844322794661677853, guid: 7bec52b4b85ba314c86e73d8f93cf2c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4646772398827601259, guid: 7bec52b4b85ba314c86e73d8f93cf2c1, type: 3}
       propertyPath: m_Name
       value: Pistol Variant 1

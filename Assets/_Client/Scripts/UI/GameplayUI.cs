@@ -7,6 +7,7 @@ using Zenject;
 public class GameplayUI : UIElement
 {
     private VisualElement _background;
+    private VisualElement _target;
     private List<VisualElement> _playerItems = new List<VisualElement>();
     private Label _currentInteractableText;
     private Label _magazine;
@@ -33,6 +34,8 @@ public class GameplayUI : UIElement
     {
         _playerItems[weaponIndex].style.visibility = Visibility.Visible;
         _playerItems[previousWeaponIndex].style.visibility = Visibility.Hidden;
+        ChangeTarget(weaponIndex);
+        
     }
 
     protected override void Initialize()
@@ -43,6 +46,7 @@ public class GameplayUI : UIElement
         _playerItems.Add(_UIElement.Q<VisualElement>("Shotgun"));
         _playerItems.Add(_UIElement.Q<VisualElement>("Hands"));
         _background = _UIElement.Q<VisualElement>("Background");
+        _target = _UIElement.Q<VisualElement>("Target");
         _currentInteractableText = _UIElement.Q<Label>("CurrentInteractable");
         _magazine = _UIElement.Q<Label>("Magazine");
     }
@@ -70,6 +74,36 @@ public class GameplayUI : UIElement
     public override void Open()
     {
         base.Open();
+    }
+
+    private void ChangeTarget(int weaponIndex)
+    {
+        switch (weaponIndex)
+        {
+            case 0:
+                {
+                    _target.style.visibility = Visibility.Visible;
+                    _target.transform.rotation = Quaternion.Euler(45f, 0f, 0f);
+                    break;
+                }
+            case 1:
+                {
+                    _target.style.visibility = Visibility.Visible;
+                    _target.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                    break;
+                }
+            case 2:
+                {
+                    _target.style.visibility = Visibility.Visible;
+                    _target.transform.rotation = Quaternion.Euler(45f, 0f, 0f);
+                    break;
+                }
+            case 3:
+                {
+                    _target.style.visibility = Visibility.Hidden;
+                    break;
+                }
+        }
     }
 
     public void MakeScreenDark()
