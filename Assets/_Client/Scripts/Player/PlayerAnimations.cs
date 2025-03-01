@@ -12,7 +12,7 @@ public class PlayerAnimations : MonoBehaviour
 
     public void PlayWalk()
     {
-        _currentAnimator.CrossFade(Walk, _normalizedTransitionDurationIdle);
+        _currentAnimator.CrossFade(Walk, _normalizedTransitionDurationWalk);
     }
 
     public void PlayIdle()

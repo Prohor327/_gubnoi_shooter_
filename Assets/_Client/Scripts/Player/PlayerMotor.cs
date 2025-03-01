@@ -1,7 +1,7 @@
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(CharacterController))]
-
 public class PlayerMotor : MonoBehaviour
 {
     private MovementConfig _movementConfig;
@@ -11,6 +11,8 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 _direction;
     private PlayerEvents _playerEvents;
     private PlayerSound _playerSound;
+    private float _height;
+    private bool _isChangingHeight;
 
     public void Initialize(MovementConfig movementConfig, Player player)
     {
@@ -19,6 +21,7 @@ public class PlayerMotor : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _playerEvents = player.Events;
         _playerSound = player.Sound;
+        _height = _controller.height;
     }
 
     private void Update()
@@ -52,8 +55,28 @@ public class PlayerMotor : MonoBehaviour
     {
         if(_controller.isGrounded)
         {
-            _playerSound.SoundJump();
+            //_playerSound.SoundJump();
             _playerVelocity.y += Mathf.Sqrt(_movementConfig.JumpHeight * -2.0f * Physics.gravity.y);
+        }
+    }
+
+    public void Crouch()
+    {
+        if(_isChangingHeight)
+        {
+            return;
+        }
+        _isChangingHeight = true;
+        if(_controller.height == _movementConfig.CrouchHeight)
+        {
+            _moveSpeed = _movementConfig.WalkSpeed;
+            DOTween.To(() =>  _controller.height, x => _controller.height = x, _height, _movementConfig.CrouchDuration).OnComplete(() => {_isChangingHeight = false;});
+        }
+        else
+        {
+            _moveSpeed = _movementConfig.CrouchSpeed;
+            DOTween.To(() =>  _controller.height, x => _controller.height = x, _movementConfig.CrouchDuration,
+             _movementConfig.CrouchDuration).OnComplete(() => {_isChangingHeight = false;});
         }
     }
 }

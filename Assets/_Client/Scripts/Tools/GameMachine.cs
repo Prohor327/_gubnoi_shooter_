@@ -35,6 +35,7 @@ public class GameMachine
     {
         UpdateGameState(GameState.LoadGame);
         _scenesOpener.OpenLevel(nameLevel);
+        OnStartGame?.Invoke();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         UpdateGameState(GameState.Game);
