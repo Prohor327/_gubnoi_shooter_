@@ -28,11 +28,12 @@ Transform:
   m_GameObject: {fileID: 957989832828201102}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.000000119209275, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5248353, z: 0.436}
+  m_LocalPosition: {x: 0, y: 0.1768353, z: -0.15200001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1577310667593383456}
+  m_Children:
+  - {fileID: 1831047613736942519}
+  m_Father: {fileID: 1032080455747027925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2265850909557902685
 Camera:
@@ -163,12 +164,12 @@ Transform:
   m_GameObject: {fileID: 5139545195757282526}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.348, z: 0.436}
+  m_LocalPosition: {x: 0, y: 0.348, z: 0.106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8955629051232246684}
-  - {fileID: 1577310667593383456}
+  - {fileID: 9159482374488658669}
   m_Father: {fileID: 4805493047442072522}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6844763294163142184
@@ -197,12 +198,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6844763294163142184}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.000000119209275, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5248353, z: 0.436}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1577310667593383456}
+  m_Father: {fileID: 9159482374488658669}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &4794702292465054059
 Camera:
@@ -324,7 +325,7 @@ Transform:
   m_GameObject: {fileID: 7735569025416805566}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.455, z: 0.046}
+  m_LocalPosition: {x: 0, y: -0.455, z: -0.074}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -439,7 +440,7 @@ MonoBehaviour:
   _config: {fileID: 11400000, guid: b8c71327bc98f5b44ae1ac4cf1968acb, type: 2}
   _rig:
     _rig: {fileID: 1032080455747027925}
-    _camerasParent: {fileID: 1577310667593383456}
+    _camerasParent: {fileID: 9159482374488658669}
     _weaponPoint: {fileID: 8955629051232246684}
     _camera: {fileID: 2265850909557902685}
     _weaponCamera: {fileID: 4794702292465054059}
@@ -733,7 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e82547aaefee44ea5075a56068170c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 1577310667593383456}
+  _transform: {fileID: 0}
 --- !u!114 &1897502623866216444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,51 +747,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37f9b3cf09011549ad8cbb4704d0d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &9196551637695469152
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1577310667593383456}
-  - component: {fileID: 3946706746383487977}
-  m_Layer: 0
-  m_Name: Cameras
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1577310667593383456
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9196551637695469152}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.348, z: -0.468}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 9159482374488658669}
-  - {fileID: 1831047613736942519}
-  m_Father: {fileID: 1032080455747027925}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3946706746383487977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9196551637695469152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38b36d519ce42db4bac5c52e18e8afe0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positionLerpSpeed: 8
-  rotationLerpSpeed: 8

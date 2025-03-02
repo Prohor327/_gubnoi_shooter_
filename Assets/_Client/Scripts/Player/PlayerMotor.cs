@@ -1,5 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEditor;
+using NUnit.Framework;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMotor : MonoBehaviour
@@ -13,6 +15,19 @@ public class PlayerMotor : MonoBehaviour
     private PlayerSound _playerSound;
     private float _height;
     private bool _isChangingHeight;
+
+    private void OnDrawGizmos()
+    {
+        if (Selection.Contains(gameObject))
+        {
+            return;
+        }
+        if(_controller == null)
+        {
+            _controller = GetComponent<CharacterController>();
+        }
+        DebugDrawer.DrawWireCapsule(transform.position, transform.rotation, _controller.radius * transform.localScale.z, _controller.height * transform.localScale.y, Color.green);
+    }
 
     public void Initialize(MovementConfig movementConfig, Player player)
     {
