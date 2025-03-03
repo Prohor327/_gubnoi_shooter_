@@ -19,7 +19,7 @@ public class Menu : UIElement
         Button play = _UIElement.Q<Button>("Play");
         Button exit = _UIElement.Q<Button>("Exit");
 
-        play.clicked += () => _gameMachine.LoadLevel("Level");
+        play.clicked += () => _gameMachine.LoadLevel("Prologue");
         exit.clicked += () => Application.Quit();
     }
 
