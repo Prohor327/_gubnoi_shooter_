@@ -56,4 +56,9 @@ public class CutScenesManager : MonoBehaviour
     {
         InputHandler.CutSceneActions.Skip.started -= SkipCutScene;
     }
+
+    public void LoadLevel(string name)
+    {
+        _gameMachine.LoadLevel(name);
+    }
 }

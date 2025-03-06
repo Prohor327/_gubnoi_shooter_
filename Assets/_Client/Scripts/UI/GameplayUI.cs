@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -103,18 +102,5 @@ public class GameplayUI : UIElement
                     break;
                 }
         }
-    }
-
-    public void MakeScreenDark()
-    {
-        StartCoroutine(nameof(StartDarkenAnimation));
-    }
-
-    private IEnumerable StartDarkenAnimation()
-    {
-        _background.style.transitionDuration = new List<TimeValue>() { new TimeValue(2) };
-        _background.style.backgroundColor = new Color(0, 0, 0, 0);
-        yield return null;
-        _background.style.backgroundColor = new Color(0, 0, 0, 1);
     }
 }
