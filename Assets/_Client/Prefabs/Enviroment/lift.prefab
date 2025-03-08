@@ -317,7 +317,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5501839637881242706}
-  - component: {fileID: 7763063437833499360}
   m_Layer: 0
   m_Name: door lift
   m_TagString: Untagged
@@ -342,29 +341,6 @@ Transform:
   - {fileID: 5621705111232224159}
   m_Father: {fileID: 4532837177611930261}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &7763063437833499360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4084510842459859294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2a88ad95bcb33844b11c9b58770f1c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: "\u041F\u0430\u0442\u0440\u043E\u043D"
-  openningDuration: 0
-  _openningSound: {fileID: 0}
-  _closingSound: {fileID: 0}
-  _door1: {fileID: 7967221635403631261}
-  _door2: {fileID: 5621705111232224159}
-  _liftArrivingTime: 0
-  _liftWaitingTime: 0
-  _liftSound: {fileID: 0}
-  _pressButtonSound: {fileID: 0}
-  _liftAudioSource: {fileID: 0}
 --- !u!1 &4452928082843765460
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +566,7 @@ MonoBehaviour:
   _buttonPressSound: {fileID: 8300000, guid: 7e8dff2bebab5d5489150d0d9401ac8a, type: 3}
   _liftAudioSource: {fileID: 6903072802379949404}
   _liftCallButton: {fileID: 0}
-  _timeInLift: 10
+  _timeInLift: 3
 --- !u!1 &7183803155360202890
 GameObject:
   m_ObjectHideFlags: 0
