@@ -1,7 +1,7 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerWeaponSound : MonoBehaviour
 {
     [SerializeField] private AudioClip _shotSound;
@@ -13,54 +13,56 @@ public class PlayerWeaponSound : MonoBehaviour
     [SerializeField] private AudioClip _putMagazine;
     [SerializeField] private AudioClip _pistolGate;
 
+    private AudioSource _source;
     private PlayerSound _playerSound;
 
     public void Initialize(PlayerSound playerSound)
     {
         _playerSound = playerSound;
+        _source = GetComponent<AudioSource>();
     }
 
     public void SoundShot()
     {
-        _playerSound.AudioSource.PlayOneShot(_shotSound);
+        _source.PlayOneShot(_shotSound);
     }
 
     public void SoundShotWithoutBullets()
     {
-        if(!_playerSound.AudioSource.isPlaying)
+        if(!_source.isPlaying)
         {
-            _playerSound.AudioSource.PlayOneShot(_shotWithounBulletsSound);
+            _source.PlayOneShot(_shotWithounBulletsSound);
         }
     }
 
     public void SoundOpenGate()
     {
-        _playerSound.AudioSource.PlayOneShot(_openGate);
+        _source.PlayOneShot(_openGate);
     }
     
     public void SoundCloseGate()
     {
-        _playerSound.AudioSource.PlayOneShot(_closeGate);
+        _source.PlayOneShot(_closeGate);
     }
 
     public void SoundLoadBullet()
     {
-        _playerSound.AudioSource.PlayOneShot(_loadBullet);
+        _source.PlayOneShot(_loadBullet);
     }
 
     public void SoundPutAwayMagazine()
     {
-        _playerSound.AudioSource.PlayOneShot(_putAwayMagazine);
+        _source.PlayOneShot(_putAwayMagazine);
     }
 
     public void SoundPutMagazine()
     {
-        _playerSound.AudioSource.PlayOneShot(_putMagazine);
+        _source.PlayOneShot(_putMagazine);
     }
 
     public void SoundPistolGate()
     {
-        _playerSound.AudioSource.PlayOneShot(_pistolGate);
+        _source.PlayOneShot(_pistolGate);
     }
 
     public void SoundFootstep()

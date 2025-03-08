@@ -460,6 +460,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 81481cb4e0a66c24e96b18423f2589c4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1034965363570232199, guid: 81481cb4e0a66c24e96b18423f2589c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 9.717922
@@ -928,7 +932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6198396483681e45977a1e30f5cc97d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 2
+  _type: 3
   _damage: 5
   _shakeCameraAnimationSO: {fileID: 11400000, guid: 47d5c84f069953d40a015c55c8436255, type: 2}
   ammoType: 3

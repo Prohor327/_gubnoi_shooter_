@@ -11,7 +11,7 @@ public class WeaponAnimations : MonoBehaviour
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int Reload = Animator.StringToHash("Reload");
 
-    private void Awake()
+    public void Initialize()
     {
         _animator = GetComponent<Animator>();
     }

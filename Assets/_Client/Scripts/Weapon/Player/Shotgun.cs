@@ -5,10 +5,10 @@ public class Shotgun : RaycastWeapon
     public override void Initialize(Transform shootPoint, PlayerSound playerSound, Ammo ammo)
     {
         this.shootPoint = shootPoint;
-        base.Initialize(playerSound);
         this.ammo = ammo;
         this.ammo.OnAddedAmmo += OnAddedAmmo;
         amountAmmoInClip = ammo.LoadClip(ammoType, clipSize, amountAmmoInClip);
+        base.Initialize(playerSound);
     }
 
     public override void Reload()

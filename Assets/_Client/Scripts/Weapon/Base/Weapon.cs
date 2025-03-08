@@ -1,7 +1,10 @@
 using UnityEngine;
 using System;
+using TMPro;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(WeaponAnimations))]
+[RequireComponent(typeof(PlayerWeaponSound))]
 public abstract class Weapon : MonoBehaviour
 {
     [Header("Base")]
@@ -26,26 +29,22 @@ public abstract class Weapon : MonoBehaviour
     public float Damage => _damage;
 
     protected WeaponState state;
-    protected WeaponAnimations _animations;
-
     protected PlayerWeaponSound sound;
-
-    private void Awake()
-    {
-        sound = GetComponent<PlayerWeaponSound>();
-        _animations = GetComponent<WeaponAnimations>();
-    }
+    protected WeaponAnimations animations;
 
     public virtual void Initialize(PlayerSound playerSound)
     {
-        sound.Initialize(playerSound);
         state = WeaponState.Idle;
         OnInitialize?.Invoke();
+        sound = GetComponent<PlayerWeaponSound>();
+        sound.Initialize(playerSound);
+        animations = GetComponent<WeaponAnimations>();
+        animations.Initialize();
     }
 
     public Animator GetAnimator()
     {
-        return _animations.GetAnimator();
+        return animations.GetAnimator();
     }
 
     public virtual void Take()
@@ -65,7 +64,7 @@ public abstract class Weapon : MonoBehaviour
         if(state == WeaponState.Idle)
         {
             state = WeaponState.Attack;
-            _animations.PLayAttack();
+            animations.PLayAttack();
             OnStartAttack?.Invoke();
         }
     }
