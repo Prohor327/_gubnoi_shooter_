@@ -44,7 +44,21 @@ public enum AmmoType
 
 public enum WeaponType
 {
+    None, 
     Axe,
     Pistol, 
     Shotgun
+}
+
+public enum PlayerWeaponsTypes
+{
+    Axe, 
+    Pistol,
+    Shotgun
+}
+
+public enum HandsState
+{
+    Hands,
+    Weapon
 }

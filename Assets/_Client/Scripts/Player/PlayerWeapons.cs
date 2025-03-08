@@ -1,26 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
-using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerWeapons : MonoBehaviour 
 {
     [SerializeField] private Weapon[] _startedWeapons;
 
-    private List<Weapon> _weapons = new List<Weapon>();
+    private Dictionary<WeaponType, Weapon> _weapons = new Dictionary<WeaponType, Weapon>();
     private Player _player;
-    private Transform _shootPoint;
-    private Transform _weaponPoint;
-    public bool isWeaponActive { private set; get; }
     
     public int AmountWeapon => _startedWeapons.Length;
-    public int CurrentWeaponIndex {private set; get; }
-    public int PreviousWeaponIndex {private set; get; }
+    public WeaponType CurrentWeaponType { private set; get; }
+    public WeaponType PreviousWeaponType { private set; get; }
 
-    public void Initialize(Rig rig, Player player)
+    public void Initialize(Player player)
     {
-        _shootPoint = rig.PlayerCamera.transform;
-        _weaponPoint = rig.WeaponPoint;
-
         _player = player;
     }
 
@@ -28,57 +22,60 @@ public class PlayerWeapons : MonoBehaviour
     {
         if(AmountWeapon != 0)
         {
-            SpawnWeapon(0, true);
-            _weapons[0].Take();
-            for(int i = 1; i < AmountWeapon; i++)
+            for(int i = 0; i < AmountWeapon; i++)
             {
-                SpawnWeapon(i, false);
+                SpawnWeapon(_startedWeapons[i]);
             }
-            _player.Animations.SetAnimator(_weapons[CurrentWeaponIndex].GetAnimator());
         }
     }
 
-    private void SpawnWeapon(int index, bool stateWeapon)
+    private void SpawnWeapon(Weapon addedWeapon)
     {
-        switch(_startedWeapons[index].Type)
+        if(_weapons.ContainsKey(addedWeapon.Type))
+        {
+            return;
+        }
+
+        Weapon weapon = Instantiate(addedWeapon.gameObject, _player.Rig.WeaponPoint).GetComponent<Weapon>();
+        _weapons.Add(weapon.Type, weapon);
+
+        switch(addedWeapon.Type)
         {
             case WeaponType.Shotgun:
             {
-                InitializeFirearmWeapon(Instantiate(_startedWeapons[index].gameObject, _weaponPoint).GetComponent<Shotgun>());
-                _weapons[index].OnTaken += _player.Events.OnTakenShotgun.Invoke;
+                InitializeFirearmWeapon(weapon.ConvertTo<Shotgun>());
+                _weapons[weapon.Type].OnTaken += _player.Events.OnTakenShotgun.Invoke;
             }
             break;
             case WeaponType.Pistol:
             {
-                InitializeFirearmWeapon(Instantiate(_startedWeapons[index].gameObject, _weaponPoint).GetComponent<Pistol>());
-                _weapons[index].OnTaken += _player.Events.OnTakenPistol.Invoke;
+                InitializeFirearmWeapon(weapon.ConvertTo<Pistol>());
+                _weapons[weapon.Type].OnTaken += _player.Events.OnTakenPistol.Invoke;
             }
             break;
             case WeaponType.Axe:
             {
-                InitializeOverlapWeapon(Instantiate(_startedWeapons[index].gameObject, _weaponPoint).GetComponent<Axe>());
-                _weapons[index].OnTaken += _player.Events.OnTakenAxe.Invoke;
+                InitializeOverlapWeapon(weapon.ConvertTo<Axe>());
+                _weapons[weapon.Type].OnTaken += _player.Events.OnTakenAxe.Invoke;
             }
             break;
         }
-        _weapons[index].OnPerformShakingCamera += _player.CameraShaker.ReactOnAttack;
-        _weapons[index].gameObject.SetActive(stateWeapon);
-        _weapons[index].OnEndAttack += EndAttack;
-        _weapons[index].OnTaken += OnTakenWeapon;
+        _weapons[weapon.Type].OnPerformShakingCamera += _player.CameraShaker.ReactOnAttack;
+        _weapons[weapon.Type].gameObject.SetActive(false);
+        _weapons[weapon.Type].OnEndAttack += EndAttack;
+        _weapons[weapon.Type].OnTaken += OnTakenWeapon;
     }
 
     private void InitializeFirearmWeapon(FirearmWeapon weapon)
     {               
-        weapon.Initialize(_shootPoint, _player.Sound, _player.Ammo);
+        weapon.Initialize(_player.Rig.PlayerCamera.transform, _player.Sound, _player.Ammo);
         weapon.OnChangedAmountAmmoInClip += (string text) => _player.Events.OnChangedAmountAmmo(text);
-        _weapons.Add(weapon);
     }
 
     private void InitializeOverlapWeapon(OverlapWeapon weapon)
     {
         weapon.Initialize(_player.Sound);
         weapon.OnTaken += () => _player.Events.OnChangedAmountAmmo.Invoke("∞");
-        _weapons.Add(weapon);
     }
 
     private void OnTakenWeapon()
@@ -89,54 +86,53 @@ public class PlayerWeapons : MonoBehaviour
         }
     }
 
-    public void ChangeWeapon(int indexWeapon)
+    public void ChangeWeapon(WeaponType weaponType)
     {
-        if(indexWeapon == CurrentWeaponIndex || indexWeapon > _weapons.Count)
+        if(_player.Hands.State == HandsState.Hands)
+        {
+            _player.Hands.PutAway();
+        }
+        if(weaponType == CurrentWeaponType || !_weapons.ContainsKey(weaponType))
         {
             return;
         }
 
-        if(indexWeapon == 3)
+        PreviousWeaponType = CurrentWeaponType;
+        CurrentWeaponType = weaponType;
+        if(PreviousWeaponType != WeaponType.None)
         {
-            RemoveWeapon();
-            return;
+            _weapons[PreviousWeaponType].RemoveWeapon();
+            _weapons[PreviousWeaponType].gameObject.SetActive(false);
         }
-
-        if(isWeaponActive)
-        {
-            isWeaponActive = false;
-            _player.Events.OnTakenAnyWeapon.Invoke();
-        }
-
-        _weapons[CurrentWeaponIndex].RemoveWeapon();
-        _weapons[CurrentWeaponIndex].gameObject.SetActive(false);
-        PreviousWeaponIndex = CurrentWeaponIndex;
-        CurrentWeaponIndex = indexWeapon;
-        _weapons[CurrentWeaponIndex].gameObject.SetActive(true);
-        _player.Animations.SetAnimator(_weapons[CurrentWeaponIndex].GetAnimator());
-        _weapons[CurrentWeaponIndex].Take();
+        _weapons[CurrentWeaponType].gameObject.SetActive(true);
+        _player.Animations.SetAnimator(_weapons[CurrentWeaponType].GetAnimator());
+        _weapons[CurrentWeaponType].Take();
     }
 
-    private void RemoveWeapon()
+    public void RemoveWeapon()
     {
-        _weapons[CurrentWeaponIndex].gameObject.SetActive(false);
-        _player.Events.OnTakenHands.Invoke();
-        isWeaponActive = true;
+        if(CurrentWeaponType == WeaponType.None)
+        {
+            return;
+        }
+        _weapons[CurrentWeaponType].gameObject.SetActive(false);
+        PreviousWeaponType = CurrentWeaponType;
+        CurrentWeaponType = WeaponType.None;
     }
 
     public void Attack()
     {
-        if(!isWeaponActive)
+        if(_player.Hands.State == HandsState.Weapon)
         {
-            _weapons[CurrentWeaponIndex].Attack();
+            _weapons[CurrentWeaponType].Attack();
         }
     }
 
     public void Reload()
     {
-        if(!isWeaponActive)
+        if(_player.Hands.State == HandsState.Weapon)
         {
-            _weapons[CurrentWeaponIndex].Reload();
+            _weapons[CurrentWeaponType].Reload();
         }
     }
 
@@ -157,20 +153,12 @@ public class PlayerWeapons : MonoBehaviour
         }
     }
 
-    public WeaponState GetWeaponState()
+    public bool CanWalkPlayAnimation()
     {
-        return _weapons[CurrentWeaponIndex].State;
+        if(_weapons[CurrentWeaponType].State == WeaponState.Idle)
+        {
+            return true;
+        }
+        return false;
     }
-
-    // private void PutAwayCurrentWeapon()
-    // {
-    //     _weapons[_currentWeaponIndex].RemoveWeapon();
-    //     _weapons[_currentWeaponIndex].gameObject.SetActive(false);
-    // }
-
-    // private void TakeCurrentWeapon()
-    // {
-    //     _weapons[_currentWeaponIndex].gameObject.SetActive(true);
-    //     _weapons[_currentWeaponIndex].Take();
-    // }
 }

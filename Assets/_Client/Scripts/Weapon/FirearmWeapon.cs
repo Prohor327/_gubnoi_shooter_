@@ -28,9 +28,9 @@ public abstract class FirearmWeapon : Weapon
     public virtual void Initialize(Transform shootPoint, PlayerSound playerSound, Ammo ammo)
     {
         this.shootPoint = shootPoint;
-        base.Initialize(playerSound);
         this.ammo = ammo;
         this.ammo.OnAddedAmmo += OnAddedAmmo;
+        base.Initialize(playerSound);
         PerformReload();
     }
 
@@ -71,7 +71,7 @@ public abstract class FirearmWeapon : Weapon
         if(state == WeaponState.Idle && ammo.GetAmountAmmo(ammoType) > 0)
         {
             state = WeaponState.Reload;
-            _animations.PlayReload();
+            animations.PlayReload();
         }
     }
 

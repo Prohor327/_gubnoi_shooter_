@@ -1,7 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
 using UnityEditor;
-using NUnit.Framework;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMotor : MonoBehaviour
@@ -12,7 +11,6 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 _playerVelocity;
     private Vector3 _direction;
     private PlayerEvents _playerEvents;
-    private PlayerSound _playerSound;
     private float _height;
     private bool _isChangingHeight;
 
@@ -35,7 +33,6 @@ public class PlayerMotor : MonoBehaviour
         _moveSpeed = _movementConfig.WalkSpeed;
         _controller = GetComponent<CharacterController>();
         _playerEvents = player.Events;
-        _playerSound = player.Sound;
         _height = _controller.height;
     }
 

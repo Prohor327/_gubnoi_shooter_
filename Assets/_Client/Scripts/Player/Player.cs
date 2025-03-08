@@ -14,11 +14,12 @@ public class Player : Character
     [SerializeField] private Rig _rig;
 
     private PlayerMotor _movement;
+    private PlayerHands _hands;
     private PlayerLook _look;
     private PlayerInput _input;
     private PlayerAnimations _animations;
     private PlayerWeapons _weapons;
-    private PlayerInteract _hands;
+    private PlayerInteract _interact;
     private PlayerState _state;
     private PlayerSound _sound;
     private Unit _unit;
@@ -28,11 +29,12 @@ public class Player : Character
     private GroundChecker _groundChecker;
 
     public PlayerMotor Movement => _movement;
+    public PlayerHands Hands => _hands;
     public PlayerLook View => _look;
     public PlayerInput Input => _input;
     public PlayerWeapons Weapons => _weapons;
     public PlayerAnimations Animations => _animations;
-    public PlayerInteract Hands => _hands;
+    public PlayerInteract Interact => _interact;
     public PlayerState State => _state;
     public Unit Unit => _unit;
     public Ammo Ammo => _ammo;
@@ -40,6 +42,7 @@ public class Player : Character
     public Shaker CameraShaker => _cameraShaker;
     public PlayerEvents Events => _events;
     public GroundChecker GroundChecker => _groundChecker;
+    public Rig Rig => _rig;
 
     [Inject]
     private void Construct(GameMachine gameMachine)
@@ -48,28 +51,30 @@ public class Player : Character
         _look = GetComponent<PlayerLook>();
         _animations = GetComponent<PlayerAnimations>();
         _weapons = GetComponent<PlayerWeapons>();
-        _hands = GetComponent<PlayerInteract>();
+        _interact = GetComponent<PlayerInteract>();
         _unit = GetComponent<Unit>();
         _ammo = GetComponent<Ammo>();
         _sound = GetComponent<PlayerSound>();
         _cameraShaker = GetComponent<Shaker>();
         _groundChecker = GetComponent<GroundChecker>();
+        _hands = GetComponent<PlayerHands>();
 
         _events = new PlayerEvents();
 
         _movement.Initialize(_config.MovementConfig, this);
-        _weapons.Initialize(_rig, this);
-        _hands.Initialize(_rig, _config.HandsConfig, _events);
+        _weapons.Initialize(this);
+        _interact.Initialize(_rig, _config.HandsConfig, _events);
         _look.Initialize(_rig, _config.PlayerLookConfig);
         _unit.Initialize(this, _config.HealthConfig);
         _sound.Initialize(_groundChecker, this);
         _groundChecker.Initialize(_sound);
+        _hands.Initialize(this);
 
         _input = new PlayerInput(this);
 
         _state = PlayerState.Idle;
-        _events.OnEndMove += EndMove;
-        _events.OnStartMove += StartMove;
+        _events.OnEndMove += OnEndMove;
+        _events.OnStartMove += OnStartMove;
 
         _unit.OnHealthChanged += OnHealthChanged;
 
@@ -81,32 +86,33 @@ public class Player : Character
         gameMachine.OnEndCutScene += OnEndCutScene;
     }
 
+    private void Start()
+    {
+        _hands.Take();   
+    }
+
     private void OnHealthChanged(float value)
     {
         _events.OnHealthChanged.Invoke(value);
     }
 
-    private void StartMove()
+    private void OnStartMove()
     {
-        if(_weapons.AmountWeapon != 0)
+        if(_hands.State == HandsState.Weapon && _weapons.CanWalkPlayAnimation())
         {
-            if(_weapons.GetWeaponState() == WeaponState.Idle)
-            {
-                _animations.PlayWalk();
-            }
-        }
-        else
-        {
-            _animations.PlayWalk();
+            _animations?.PlayWalk();
         }
         _state = PlayerState.Move;
     }
 
-    private void EndMove()
+    private void OnEndMove()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        _animations.PlayIdle();
+        if(_hands.State == HandsState.Weapon && _weapons.CanWalkPlayAnimation())
+        {
+            _animations.PlayIdle();
+        }
         _state = PlayerState.Idle;
     }
 

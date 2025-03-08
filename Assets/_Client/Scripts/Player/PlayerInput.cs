@@ -82,26 +82,26 @@ public class PlayerInput
 
     private void OnInteract(InputAction.CallbackContext context)
     {
-        _player.Hands.Interact();   
+        _player.Interact.Interact();   
     }
     private void OnFirstWeapon(InputAction.CallbackContext context)
     {
-        _player.Weapons.ChangeWeapon(0);   
+        _player.Weapons.ChangeWeapon(WeaponType.Axe);
     }
 
     private void OnSecondWeapon(InputAction.CallbackContext context)
     {
-        _player.Weapons.ChangeWeapon(1);   
+        _player.Weapons.ChangeWeapon(WeaponType.Pistol); 
     }
 
     private void OnThirdWeapon(InputAction.CallbackContext context)
     {
-        _player.Weapons.ChangeWeapon(2);   
+        _player.Weapons.ChangeWeapon(WeaponType.Shotgun);   
     }
 
     private void OnFourthWeapon(InputAction.CallbackContext context)
     {
-        _player.Weapons.ChangeWeapon(3);   
+        _player.Hands.Take();
     }
 
     private void OnJump(InputAction.CallbackContext context)

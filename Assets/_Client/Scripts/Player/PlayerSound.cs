@@ -11,7 +11,6 @@ public class PlayerSound : MonoBehaviour
     [SerializeField] private AudioClip _landing;
     [SerializeField] private float _walkRate;
 
-    private bool _isWalkInUpdate;
     private AudioSource _source;
     private GroundChecker _groundChecker;
     private float _nextStep;
@@ -23,8 +22,6 @@ public class PlayerSound : MonoBehaviour
     {
         _groundChecker = groundChecker;
         _player = player;
-        _player.Events.OnTakenHands += () => { _isWalkInUpdate = true; };
-        _player.Events.OnTakenAnyWeapon += () => { _isWalkInUpdate = false; };
     }
 
     private void Awake()
@@ -59,7 +56,7 @@ public class PlayerSound : MonoBehaviour
 
     private void Update()
     {
-        if(_isWalkInUpdate && _player.State == PlayerState.Move)
+        if(_player.Hands.State == HandsState.Hands && _player.State == PlayerState.Move)
         {
             Walk();
         }

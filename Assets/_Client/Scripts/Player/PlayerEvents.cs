@@ -8,10 +8,6 @@ public class PlayerEvents
     public Action OnStartMove;
     public Action OnEndMove;
     public Action<string> OnChangedAmountAmmo;
-    public Action OnChangedAmmoType;
-    public Action OnTakenItem;
-    public Action OnPutAwayItem;
-    public Action OnTakenAnyWeapon;
     public Action OnTakenShotgun;
     public Action OnTakenAxe;
     public Action OnTakenPistol;

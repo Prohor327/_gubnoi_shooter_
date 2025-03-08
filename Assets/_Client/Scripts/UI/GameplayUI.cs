@@ -7,8 +7,12 @@ public class GameplayUI : UIElement
 {
     private VisualElement _background;
     private VisualElement _target;
-    private List<VisualElement> _playerItems = new List<VisualElement>();
-    private Label _currentInteractableText;
+    private VisualElement _axeImage;
+    private VisualElement _handsImage;
+    private VisualElement _pistolImage;
+    private VisualElement _shotgunImage;
+    private VisualElement _currentPlayerItemImage;
+    private Label _interactableText;
     private Label _magazine;
 
     [Inject]
@@ -23,30 +27,44 @@ public class GameplayUI : UIElement
 
         player.Events.OnChangedAmountAmmo += ChangeMagazineText;
     
-        player.Events.OnTakenAxe += () => ChangeWeaponImage(0, player.Weapons.PreviousWeaponIndex);
-        player.Events.OnTakenPistol += () => ChangeWeaponImage(1, player.Weapons.PreviousWeaponIndex);
-        player.Events.OnTakenShotgun += () => ChangeWeaponImage(2, player.Weapons.PreviousWeaponIndex);
-        player.Events.OnTakenHands += () => ChangeWeaponImage(3, player.Weapons.PreviousWeaponIndex);
+        player.Events.OnTakenAxe += () => {
+            ChangePlayerItemImage(_axeImage);
+            HideTarget();
+        };
+        player.Events.OnTakenPistol += () => {
+            ChangePlayerItemImage(_pistolImage);
+            ShowPistolTarget();
+        };
+        player.Events.OnTakenShotgun += () => {
+            ChangePlayerItemImage(_shotgunImage);
+            ShowShotgunTarget();
+        };
+        player.Events.OnTakenHands += () => {
+            ChangePlayerItemImage(_handsImage);
+            HideTarget();
+        };
     }
 
-    private void ChangeWeaponImage(int weaponIndex, int previousWeaponIndex)
-    {
-        _playerItems[weaponIndex].style.visibility = Visibility.Visible;
-        _playerItems[previousWeaponIndex].style.visibility = Visibility.Hidden;
-        ChangeTarget(weaponIndex);
-        
+    private void ChangePlayerItemImage(VisualElement image)
+    {   
+        if(_currentPlayerItemImage != null)
+        {
+            _currentPlayerItemImage.style.visibility = Visibility.Hidden;
+        }
+        image.style.visibility = Visibility.Visible;
+        _currentPlayerItemImage = image;
     }
 
     protected override void Initialize()
     {
         base.Initialize();
-        _playerItems.Add(_UIElement.Q<VisualElement>("Axe"));
-        _playerItems.Add(_UIElement.Q<VisualElement>("Pistol"));
-        _playerItems.Add(_UIElement.Q<VisualElement>("Shotgun"));
-        _playerItems.Add(_UIElement.Q<VisualElement>("Hands"));
+        _axeImage = _UIElement.Q<VisualElement>("Axe");
+        _pistolImage = _UIElement.Q<VisualElement>("Pistol");
+        _shotgunImage = _UIElement.Q<VisualElement>("Shotgun");
+        _handsImage = _UIElement.Q<VisualElement>("Hands");
         _background = _UIElement.Q<VisualElement>("Background");
         _target = _UIElement.Q<VisualElement>("Target");
-        _currentInteractableText = _UIElement.Q<Label>("CurrentInteractable");
+        _interactableText = _UIElement.Q<Label>("CurrentInteractable");
         _magazine = _UIElement.Q<Label>("Magazine");
     }
 
@@ -62,12 +80,12 @@ public class GameplayUI : UIElement
 
     private void ChangeCurrentInteractableText(string text)
     {
-        _currentInteractableText.text = text;
+        _interactableText.text = text;
     }
 
     private void ClearCurrentInteractableText()
     {
-        _currentInteractableText.text = "";
+        _interactableText.text = "";
     }
 
     public override void Open()
@@ -75,32 +93,20 @@ public class GameplayUI : UIElement
         base.Open();
     }
 
-    private void ChangeTarget(int weaponIndex)
+    private void HideTarget()
     {
-        switch (weaponIndex)
-        {
-            case 0:
-                {
-                    _target.style.visibility = Visibility.Hidden;
-                    break;
-                }
-            case 1:
-                {
-                    _target.style.visibility = Visibility.Visible;
-                    _target.style.rotate = new StyleRotate(new Rotate(0f));
-                    break;
-                }
-            case 2:
-                {
-                    _target.style.visibility = Visibility.Visible;
-                    _target.style.rotate = new StyleRotate(new Rotate(45f));
-                    break;
-                }
-            case 3:
-                {
-                    _target.style.visibility = Visibility.Hidden;
-                    break;
-                }
-        }
+        _target.style.visibility = Visibility.Hidden;
+    }
+
+    private void ShowPistolTarget()
+    {
+        _target.style.visibility = Visibility.Visible;
+        _target.style.rotate = new StyleRotate(new Rotate(0f));
+    }
+
+    private void ShowShotgunTarget()
+    {
+        _target.style.visibility = Visibility.Visible;
+        _target.style.rotate = new StyleRotate(new Rotate(45f));
     }
 }
