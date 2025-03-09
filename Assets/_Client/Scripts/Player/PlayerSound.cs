@@ -56,7 +56,7 @@ public class PlayerSound : MonoBehaviour
 
     private void Update()
     {
-        if(_player.Hands.State == HandsState.Hands && _player.State == PlayerState.Move)
+        if((_player.Hands.State == HandsState.Hands || _player.Weapons.CanSoundWalk()) && _player.State == PlayerState.Move)
         {
             Walk();
         }

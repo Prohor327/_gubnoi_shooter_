@@ -161,4 +161,13 @@ public class PlayerWeapons : MonoBehaviour
         }
         return false;
     }
+
+    public bool CanSoundWalk()
+    {
+        if(_weapons[CurrentWeaponType].State != WeaponState.Idle)
+        {
+            return true;
+        }
+        return false;
+    }
 }
