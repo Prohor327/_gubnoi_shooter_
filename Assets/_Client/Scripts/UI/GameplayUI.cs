@@ -109,4 +109,10 @@ public class GameplayUI : UIElement
         _target.style.visibility = Visibility.Visible;
         _target.style.rotate = new StyleRotate(new Rotate(45f));
     }
+
+    public void ShowOrHideSubtitres(VisualElement element, bool _bool)
+    {
+        if(_bool) _UIElement.Add(element);
+        else _UIElement.Remove(element);
+    }    
 }

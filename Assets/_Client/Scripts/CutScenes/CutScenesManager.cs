@@ -21,10 +21,10 @@ public class CutScenesManager : MonoBehaviour
 
     private void Start()
     {
+        _director = GetComponent<PlayableDirector>();
         InputHandler.CutSceneActions.Skip.started += SkipCutScene;
         _gameMachine.OnFinishGame += OnFinishGame;
         InputHandler.CutSceneActions.Disable();
-        _director = GetComponent<PlayableDirector>();
     }
 
     public void StartCutScene(CutSceneSO so)
@@ -50,6 +50,11 @@ public class CutScenesManager : MonoBehaviour
     private void SkipCutScene(InputAction.CallbackContext context)
     {
         EndCutScene();
+    }
+
+    public void LoadLevel(string levelName)
+    {
+        _gameMachine.LoadLevel(levelName);
     }
 
     private void OnFinishGame()

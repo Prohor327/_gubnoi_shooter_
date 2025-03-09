@@ -23,7 +23,7 @@ public abstract class UIElement : MonoBehaviour
 
     public virtual void Open()
     {
-        _document?.Clear();
+        _document.Clear();
         _document.Add(_UIElement);
     }
 }

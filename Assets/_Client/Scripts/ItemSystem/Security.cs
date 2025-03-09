@@ -4,6 +4,7 @@ using Zenject;
 public class Security : Interactable
 {
     [SerializeField] private AudioClip _clip;
+    [SerializeField] private SubTitresSO _securitySubTitle;
 
     private SubTitles _subTitles;
     private AudioSource _audioSource;
@@ -24,8 +25,7 @@ public class Security : Interactable
         if(!_audioSource.isPlaying)
         {
             _audioSource.PlayOneShot(_clip);
-            _subTitles.SetTitle("Охранник");
-            _subTitles.PrintText("А, ты пришел, ну проходи, лифт вот там. Вон там. Вон. Вон. Ну, ты че слепой? Ну ты лифт не видишь, слепошарый. Вон там.");
+            _subTitles.Printing(_securitySubTitle);
         }
     }
 }
