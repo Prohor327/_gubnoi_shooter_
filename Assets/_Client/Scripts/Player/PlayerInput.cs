@@ -68,6 +68,7 @@ public class PlayerInput
     private void OnMousePosition(InputAction.CallbackContext context)
     {
         _player.View.RotateCamera(context.ReadValue<Vector2>());
+        _player.WeaponTransformSway.SetMousePosition(context.ReadValue<Vector2>());
     }
 
     private void OnStartMove(InputAction.CallbackContext context)

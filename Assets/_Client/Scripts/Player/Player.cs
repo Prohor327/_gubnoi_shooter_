@@ -13,6 +13,7 @@ public class Player : Character
     [SerializeField] private PlayerSO _config;
     [SerializeField] private Rig _rig;
 
+    private TransformSway _weaponTransformSway;
     private PlayerMotor _movement;
     private PlayerHands _hands;
     private PlayerLook _look;
@@ -43,6 +44,7 @@ public class Player : Character
     public PlayerEvents Events => _events;
     public GroundChecker GroundChecker => _groundChecker;
     public Rig Rig => _rig;
+    public TransformSway WeaponTransformSway => _weaponTransformSway;
 
     [Inject]
     private void Construct(GameMachine gameMachine)
@@ -58,6 +60,7 @@ public class Player : Character
         _cameraShaker = GetComponent<Shaker>();
         _groundChecker = GetComponent<GroundChecker>();
         _hands = GetComponent<PlayerHands>();
+        _weaponTransformSway = _rig.WeaponPoint.GetComponent<TransformSway>();
 
         _events = new PlayerEvents();
 

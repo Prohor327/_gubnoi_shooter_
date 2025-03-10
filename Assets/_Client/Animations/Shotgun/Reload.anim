@@ -88183,7 +88183,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.8166667
+  - time: 1.85
     functionName: FinishReload
     data: 
     objectReferenceParameter: {fileID: 0}

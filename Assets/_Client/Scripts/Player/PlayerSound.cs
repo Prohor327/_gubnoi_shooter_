@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zenject;
 
 public class PlayerSound : MonoBehaviour
 {
@@ -15,8 +14,6 @@ public class PlayerSound : MonoBehaviour
     private GroundChecker _groundChecker;
     private float _nextStep;
     private Player _player;
-
-    public AudioSource AudioSource => _source;
 
     public void Initialize(GroundChecker groundChecker, Player player)
     {
@@ -78,11 +75,11 @@ public class PlayerSound : MonoBehaviour
 
     public void SoundJump()
     {
-        PlayAudioClip(_jump);
+        //PlayAudioClip(_jump);
     }
 
     public void SoundLanding()
     {
-        PlayAudioClip(_landing);
+        //PlayAudioClip(_landing);
     }
 }

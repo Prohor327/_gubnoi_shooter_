@@ -309,6 +309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8955629051232246684}
+  - component: {fileID: 4772199005450283920}
   m_Layer: 0
   m_Name: WeaponPoint
   m_TagString: Untagged
@@ -331,6 +332,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1032080455747027925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4772199005450283920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7735569025416805566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d29487f3bd1fc64ba38c7ebd39311f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _force: {x: 1, y: 1}
+  _multiplier: 3
+  _inverseX: 0
+  _inverseY: 0
+  _minMaxX: {x: 2, y: -2}
+  _minMaxY: {x: 7, y: -7}
 --- !u!1 &8363578427431343702
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e82547aaefee44ea5075a56068170c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 0}
+  _transform: {fileID: 9159482374488658669}
 --- !u!114 &1897502623866216444
 MonoBehaviour:
   m_ObjectHideFlags: 0
