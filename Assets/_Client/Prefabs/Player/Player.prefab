@@ -492,9 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startedWeapons:
-  - {fileID: 496160808756783761, guid: 2c068970b5f8c374db7f72e2ec25d959, type: 3}
   - {fileID: 4822978064445843476, guid: 18380fddf25b4384b92305672d07ae48, type: 3}
-  - {fileID: 4262116651925600656, guid: 7ae1d094ae16f9e42b2722aafb712866, type: 3}
 --- !u!82 &5452224689098295496
 AudioSource:
   m_ObjectHideFlags: 0

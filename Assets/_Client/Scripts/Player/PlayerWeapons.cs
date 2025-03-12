@@ -24,12 +24,12 @@ public class PlayerWeapons : MonoBehaviour
         {
             for(int i = 0; i < AmountWeapon; i++)
             {
-                SpawnWeapon(_startedWeapons[i]);
+                AddWeapon(_startedWeapons[i]);
             }
         }
     }
 
-    private void SpawnWeapon(Weapon addedWeapon)
+    public void AddWeapon(Weapon addedWeapon)
     {
         if(_weapons.ContainsKey(addedWeapon.Type))
         {

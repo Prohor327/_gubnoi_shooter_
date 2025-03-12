@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using TMPro;
+using UnityEditor.Search;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(WeaponAnimations))]
@@ -9,6 +10,7 @@ public abstract class Weapon : MonoBehaviour
 {
     [Header("Base")]
     [SerializeField] private WeaponType _type;
+    [SerializeField] private string _name; 
 
     [Header("Damage")]
     [SerializeField] private float _damage;
@@ -27,6 +29,7 @@ public abstract class Weapon : MonoBehaviour
     public WeaponState State => state;
     public WeaponType Type => _type;
     public float Damage => _damage;
+    public string Name => _name;
 
     protected WeaponState state;
     protected PlayerWeaponSound sound;
