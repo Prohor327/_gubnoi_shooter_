@@ -34,13 +34,15 @@ public class Lift : Interactable
     {
         _audioSource.PlayOneShot(_buttonPressSound);
         _liftCallButton.CloseDoors();
+        _liftCallButton.StopAllCoroutines();
         StartCoroutine(StartCutScene());   
     }
 
     private IEnumerator StartCutScene()
     {
         base.OnInteract();
-        _liftAudioSource.clip = _liftSound;
+        yield return new WaitForSeconds(1f);
+        _liftAudioSource.PlayOneShot(_liftSound);
         yield return new WaitForSeconds(_timeInLift);
         _cutScenesManager.StartCutScene(_cutSceneSO);
     }
