@@ -17,6 +17,7 @@ public class Pickable : Interactable
     public override void OnInteract()
     {
         _playerSound.PlayAudioClip(_pickUpSound);
+        OnEndHover();
     }
 
     public override void OnStartHover()

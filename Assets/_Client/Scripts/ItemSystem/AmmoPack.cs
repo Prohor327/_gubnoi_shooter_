@@ -18,7 +18,6 @@ public class AmmoPack : Pickable
     {
         base.OnInteract();
         _playerAmmo.AddAmmo(_ammoPackSO.AmmoType, _ammoPackSO.AmountAmmo);
-        playerEvents.OnEndHoverObject.Invoke();
         DestroyImmediate(gameObject);
     }
 }

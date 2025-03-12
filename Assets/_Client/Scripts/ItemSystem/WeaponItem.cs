@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -8,8 +9,9 @@ public class WeaponItem : Pickable
     private PlayerWeapons _playerWeapons;
 
     [Inject]
-    private void Constuct(Player player)
+    protected override void Construct(Player player)
     {
+        base.Construct(player);
         _playerWeapons = player.Weapons;
     }
 
@@ -18,7 +20,7 @@ public class WeaponItem : Pickable
         base.OnInteract();
         _playerWeapons.AddWeapon(_weapon);
         _playerWeapons.ChangeWeapon(_weapon.Type);
-        Destroy(gameObject);
+        DestroyImmediate(gameObject);
     }
 
     public override void OnStartHover()
