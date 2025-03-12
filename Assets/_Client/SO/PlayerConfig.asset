@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
   _movementConfig:
-    _walkSpeed: 4
+    _walkSpeed: 7
     _runSpeed: 0
-    _jumpHeight: 4
+    _jumpForce: 5
     _crouchHeight: 0.5
     _crouchDuration: 0.5
     _crouchSpeed: 1.6
+    _gravityMultiplier: 1
   _healthConfig:
     Health: 100
   _handsConfig:

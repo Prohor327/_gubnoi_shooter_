@@ -27,7 +27,6 @@ public class GroundChecker : MonoBehaviour
             {
                 IsGrounded = true;
                 _playerSound.SoundLanding();
-                print("landing");
             }
 
             if(Physics.Raycast(transform.position, Vector3.down, out hit, _maxDistance, _groundLayers))
@@ -43,7 +42,6 @@ public class GroundChecker : MonoBehaviour
         {
             CurrentGroundType = GroundType.None;
             IsGrounded = false;
-            print("rise");
         }
     }    
 

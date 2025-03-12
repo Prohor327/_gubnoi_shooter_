@@ -39,7 +39,7 @@ public class PlayerMotor : MonoBehaviour
     private void Update()
     {
         _controller.Move(transform.TransformDirection(_direction) * _moveSpeed * Time.deltaTime);
-        _playerVelocity.y += Physics.gravity.y * Time.deltaTime;
+        _playerVelocity.y += Physics.gravity.y * Time.deltaTime * _movementConfig.GravityMultiplier;
         if (_controller.isGrounded)
         {
             if (_playerVelocity.y < 0)
@@ -68,7 +68,7 @@ public class PlayerMotor : MonoBehaviour
         if(_controller.isGrounded)
         {
             //_playerSound.SoundJump();
-            _playerVelocity.y += Mathf.Sqrt(_movementConfig.JumpHeight * -2.0f * Physics.gravity.y);
+            _playerVelocity.y = _movementConfig.JumpForce;
         }
     }
 

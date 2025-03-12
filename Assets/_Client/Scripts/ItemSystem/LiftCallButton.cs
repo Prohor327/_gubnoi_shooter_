@@ -49,6 +49,7 @@ public class LiftCallButton : Door
         {
             Open();
         }
+        OnEndHover();
     }
 
     private IEnumerator CallLift()
