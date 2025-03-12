@@ -88,13 +88,14 @@ public class PlayerWeapons : MonoBehaviour
 
     public void ChangeWeapon(WeaponType weaponType)
     {
-        if(_player.Hands.State == HandsState.Hands)
-        {
-            _player.Hands.PutAway();
-        }
         if(weaponType == CurrentWeaponType || !_weapons.ContainsKey(weaponType))
         {
             return;
+        }
+
+        if(_player.Hands.State == HandsState.Hands)
+        {
+            _player.Hands.PutAway();
         }
 
         PreviousWeaponType = CurrentWeaponType;

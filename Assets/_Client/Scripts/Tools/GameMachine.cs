@@ -10,6 +10,7 @@ public class GameMachine
     public GameState CurrentState {get; private set; }
 
     public Action OnStartGame;
+    public Action OnLoadGame;
     public Action OnStopGame;
     public Action OnResumeGame;
     public Action OnStartCutScene;
@@ -35,9 +36,14 @@ public class GameMachine
     {
         UpdateGameState(GameState.LoadGame);
         _scenesOpener.OpenLevel(nameLevel);
-        OnStartGame?.Invoke();
+        OnLoadGame?.Invoke();
+    }
+
+    public void StartGame()
+    {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        OnStartGame?.Invoke();
         UpdateGameState(GameState.Game);
     }
 
