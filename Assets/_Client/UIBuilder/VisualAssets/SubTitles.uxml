@@ -1,7 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/_Client/UIBuilder/Selectors/Text.uss?fileID=7433441132597879392&amp;guid=a7d9d9acfaddf8042931110f23207c73&amp;type=3#Text" />
     <engine:VisualElement style="flex-grow: 1; position: absolute; width: 1920px; height: 250px; top: 746px; background-color: rgba(0, 0, 0, 0.69); align-items: center;">
-        <engine:Label text="Label" name="Title" class="textTitle" style="width: 1698px; font-size: 46px;" />
-        <engine:Label name="Text" focusable="false" class="textButton" style="height: 165px; width: 1633px; -unity-text-align: upper-center; white-space: pre-wrap; font-size: 34px; -unity-font-style: bold;" />
+        <engine:Label text="Label" name="Title" class="textTitle" style="width: 1698px; font-size: 46px; -unity-font-definition: url(&quot;project://database/Assets/_Client/Fonts/Most%20Title/Bounded-Variable.ttf?fileID=12800000&amp;guid=283d55d8459cb8d459a30d2f9c1220fa&amp;type=3#Bounded-Variable&quot;);" />
+        <engine:Label name="Text" focusable="false" class="textButton" style="height: 165px; width: 1633px; -unity-text-align: upper-center; white-space: pre-wrap; font-size: 34px; -unity-font-style: bold; -unity-font-definition: url(&quot;project://database/Assets/_Client/Fonts/Most%20Text/AcuminR.otf?fileID=12800000&amp;guid=09e9e82338ac557438d1f6dd64faf17d&amp;type=3#AcuminR&quot;);" />
     </engine:VisualElement>
 </engine:UXML>

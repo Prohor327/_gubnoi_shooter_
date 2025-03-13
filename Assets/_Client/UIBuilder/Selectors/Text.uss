@@ -1,15 +1,17 @@
 .textTitle {
     -unity-text-align: middle-center;
     color: rgb(255, 255, 255);
-    font-size: 52px;
+    font-size: 26px;
     width: 344px;
     white-space: normal;
     -unity-font-style: bold;
+    -unity-font-definition: url("project://database/Assets/_Client/Fonts/Western%20title/Aguante-Regular.otf?fileID=12800000&guid=f68eca2268b84524e8c1655fba31c69a&type=3#Aguante-Regular");
 }
 
 .textButton {
     color: rgb(255, 255, 255);
-    font-size: 40px;
+    font-size: 50px;
     white-space: nowrap;
     text-overflow: clip;
+    -unity-font-definition: url("project://database/Assets/_Client/Fonts/2/Boncegro%20FF%204F.otf?fileID=12800000&guid=7b01dd8c337dd05409c3ea39a321a325&type=3#Boncegro FF 4F");
 }
