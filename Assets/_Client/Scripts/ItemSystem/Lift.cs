@@ -13,6 +13,7 @@ public class Lift : Interactable
 
     private AudioSource _audioSource;
     private CutScenesManager _cutScenesManager;
+    private bool _isRunning = false;
 
     private void Awake()
     {
@@ -27,15 +28,22 @@ public class Lift : Interactable
 
     public override void OnStartHover()
     {
-        playerEvents.OnStartHoverObject("[E] Спустьтся");
+        if(!_isRunning)
+        {
+            playerEvents.OnStartHoverObject("[E] Спустьтся");
+        }
     }
 
     public override void OnInteract()
     {
-        _audioSource.PlayOneShot(_buttonPressSound);
-        _liftCallButton.CloseDoors();
-        _liftCallButton.StopAllCoroutines();
-        StartCoroutine(StartCutScene());   
+        if(!_isRunning)
+        {
+            _isRunning = true;
+            _audioSource.PlayOneShot(_buttonPressSound);
+            _liftCallButton.CloseDoors();
+            _liftCallButton.StopAllCoroutines();
+            StartCoroutine(StartCutScene());   
+        }
     }
 
     private IEnumerator StartCutScene()

@@ -30,12 +30,12 @@ public class CutScenesManager : MonoBehaviour
 
     public void StartCutScene(CutSceneSO so)
     {
-        _gameMachine.StartCutScene();
         _currentCutSceneSO = so;
         _director.playableAsset = _cutScenes[_currentCutSceneSO].Asset;
+        _director.time = 0;
+        _gameMachine.StartCutScene();
         InputHandler.CutSceneActions.Enable();
         _cutScenes[_currentCutSceneSO].Camera.gameObject.SetActive(true);
-        _director.time = 0;
         _director.Play();
         print("Start cutscene: " + so.Name);
     }

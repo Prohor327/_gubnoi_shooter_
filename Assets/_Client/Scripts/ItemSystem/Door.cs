@@ -33,7 +33,6 @@ public class Door : Interactable
     {
         if(!isAnimationPlaying)
         {
-            base.OnInteract();
             isAnimationPlaying = true;
 
             if(isOpen)
@@ -45,6 +44,7 @@ public class Door : Interactable
                 Open();
             }
         }
+        base.OnInteract();
     }
 
     [ContextMenu("Open")]
