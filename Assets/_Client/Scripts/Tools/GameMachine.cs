@@ -7,7 +7,7 @@ public class GameMachine
     private ScenesOpener _scenesOpener;
     private bool _isCutScenePlaying;
 
-    public GameState CurrentState {get; private set; }
+    public GameState CurrentState { get; private set; }
 
     public Action OnStartGame;
     public Action OnLoadGame;
