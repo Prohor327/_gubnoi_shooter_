@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour 
 {
-    [SerializeField] private GroundType _groundType;    
+    [SerializeField] private SurfaceType _surfaceType;    
 
-    public GroundType Type => _groundType;
+    public SurfaceType Type => _surfaceType;
 }

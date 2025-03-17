@@ -1,12 +1,11 @@
+using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
     private HandsConfig _handsConfig;
     private Transform _raycastPoint;
-    private Transform _itemPoint;
     private Interactable _currentTarget;
-    private PlayerEvents _playerEvents;
     private bool _isHandsBasied = false;
 
     private void OnDrawGizmos()
@@ -27,7 +26,6 @@ public class PlayerInteract : MonoBehaviour
     {
         _raycastPoint = rig.PlayerCamera.transform;
         _handsConfig = handsConfig;
-        _playerEvents = playerEvents;
     }
 
     public void Update()
@@ -58,6 +56,11 @@ public class PlayerInteract : MonoBehaviour
                 _currentTarget?.OnEndHover();
                 _currentTarget = null;
             }
+        }
+        else if(_currentTarget != null)
+        {
+            _currentTarget?.OnEndHover();
+            _currentTarget = null;
         }
     }
 

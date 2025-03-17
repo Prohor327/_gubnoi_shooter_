@@ -6,7 +6,7 @@ public class GroundChecker : MonoBehaviour
     [SerializeField] private LayerMask _groundLayers;
 
     public bool IsGrounded { get; private set; }
-    public GroundType CurrentGroundType { get; private set; }
+    public SurfaceType CurrentGroundType { get; private set; }
 
     private PlayerSound _playerSound;
     private CharacterController _controller;
@@ -40,7 +40,7 @@ public class GroundChecker : MonoBehaviour
         }
         else if(IsGrounded)
         {
-            CurrentGroundType = GroundType.None;
+            CurrentGroundType = SurfaceType.None;
             IsGrounded = false;
         }
     }    

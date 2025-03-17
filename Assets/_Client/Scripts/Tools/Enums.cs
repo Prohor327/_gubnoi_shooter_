@@ -25,7 +25,7 @@ public enum GameState
     Death
 }
 
-public enum GroundType
+public enum SurfaceType
 {
     None,
     Gravel, 

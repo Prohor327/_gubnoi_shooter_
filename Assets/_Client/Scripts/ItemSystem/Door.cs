@@ -12,6 +12,9 @@ public class Door : Interactable
 
     protected AudioSource audioSource;
 
+    private const string OpenedDoorText = "[E] Заркыть";
+    private const string ClosedDoorText = "[E] Открыть";
+
     protected virtual void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -21,11 +24,11 @@ public class Door : Interactable
     {
         if(isOpen)
         {
-            playerEvents.OnStartHoverObject.Invoke("[E] Закрыть");
+            playerEvents.OnStartHoverObject.Invoke(OpenedDoorText);
         }
         else
         {
-            playerEvents.OnStartHoverObject.Invoke("[E] Открыть");
+            playerEvents.OnStartHoverObject.Invoke(ClosedDoorText);
         }
     }
 
@@ -50,15 +53,17 @@ public class Door : Interactable
     [ContextMenu("Open")]
     protected virtual void Open()
     {
-        transform.DOLocalRotateQuaternion(Quaternion.Euler(-90, 0, 100), openningDuration).onComplete = OnEndOpen;
+        transform.DOLocalRotateQuaternion(Quaternion.Euler(-90, 0, 100), openningDuration).onComplete = () => isAnimationPlaying = false;
         audioSource.PlayOneShot(_openningSound);
+        isOpen = true;
     }
 
     [ContextMenu("Close")]
     protected virtual void Close()
     {
-        transform.DOLocalRotateQuaternion(Quaternion.Euler(-90, 0, 0), openningDuration).onComplete = OnEndClose;
+        transform.DOLocalRotateQuaternion(Quaternion.Euler(-90, 0, 0), openningDuration).onComplete = () => isAnimationPlaying = false;
         audioSource.PlayOneShot(_closingSound);
+        isOpen = false;
     }
 
     protected void OnEndOpen()

@@ -30,22 +30,22 @@ public class PlayerSound : MonoBehaviour
     {
         switch(_groundChecker.CurrentGroundType)
         {
-            case GroundType.None:
+            case SurfaceType.None:
             return;
 
-            case GroundType.Gravel:
+            case SurfaceType.Gravel:
                 _source.PlayOneShot(_footstepsGravel[Random.Range(0, _footstepsGravel.Length)]);
             break;
 
-            case GroundType.Tiles:
+            case SurfaceType.Tiles:
                 _source.PlayOneShot(_footstepsTiles[Random.Range(0, _footstepsTiles.Length)]);
             break;
 
-            case GroundType.Floor:
+            case SurfaceType.Floor:
                 _source.PlayOneShot(_footstepsFloor[Random.Range(0, _footstepsFloor.Length)]);
             break;
             
-            case GroundType.Wood:
+            case SurfaceType.Wood:
                 _source.PlayOneShot(_footstepsWood[Random.Range(0, _footstepsWood.Length)]);
             break;
         }
