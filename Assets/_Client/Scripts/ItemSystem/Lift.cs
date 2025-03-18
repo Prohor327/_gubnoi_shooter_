@@ -49,9 +49,10 @@ public class Lift : Interactable
     private IEnumerator StartCutScene()
     {
         base.OnInteract();
-        yield return new WaitForSeconds(1f);
-        _liftAudioSource.PlayOneShot(_liftSound);
-        yield return new WaitForSeconds(_timeInLift);
+        yield return new WaitForSeconds(1.5f);
+        _liftAudioSource.clip = _liftSound;
+        _liftAudioSource.Play();
+        yield return new WaitForSeconds(_timeInLift - .1f);
         _cutScenesManager.StartCutScene(_cutSceneSO);
     }
 }
