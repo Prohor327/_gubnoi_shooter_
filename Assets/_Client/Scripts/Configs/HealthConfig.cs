@@ -1,7 +1,8 @@
+using UnityEngine;
 using System;
 
 [Serializable]
 public class HealthConfig
 {
-    public float Health;
+    [field: SerializeField] public float Health { get; private set; }
 }

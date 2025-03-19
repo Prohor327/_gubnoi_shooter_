@@ -4,7 +4,7 @@ using Zenject;
 public class Security : Interactable
 {
     [SerializeField] private AudioClip _clip;
-    [SerializeField] private SubTitresSO _securitySubTitle;
+    [SerializeField] private SubTitlesSO _securitySubTitle;
 
     private SubTitles _subTitles;
     private AudioSource _audioSource;
@@ -18,6 +18,11 @@ public class Security : Interactable
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+    }
+
+    public override void OnStartHover()
+    {
+        playerEvents.OnStartHoverObject("[E] Говорить");
     }
 
     public override void OnInteract()

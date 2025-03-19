@@ -6,7 +6,7 @@ public class Shaker : MonoBehaviour
 
     public void ReactOnAttack(ShakeCameraAnimationConfig shakeCameraAnimationConfig)
     {
-        AnimationShortCuts.ShakePositionAnimation(_transform, shakeCameraAnimationConfig.positionConfig);
-        AnimationShortCuts.ShakeRotationAnimation(_transform, shakeCameraAnimationConfig.rotationConfig);
+        AnimationShortCuts.ShakePositionAnimation(_transform, shakeCameraAnimationConfig.PositionConfig);
+        AnimationShortCuts.ShakeRotationAnimation(_transform, shakeCameraAnimationConfig.RotationConfig);
     }
 }

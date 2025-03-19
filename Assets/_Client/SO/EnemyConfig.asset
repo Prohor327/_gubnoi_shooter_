@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af69b282d06a8f4bbb54721364323d8, type: 3}
   m_Name: EnemyConfig
   m_EditorClassIdentifier: 
-  _healthConfig:
-    Health: 20
+  <HealthConfig>k__BackingField:
+    <Health>k__BackingField: 20

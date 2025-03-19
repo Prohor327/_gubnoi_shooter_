@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0888d904473c624888740b9cb9d6fe0, type: 3}
   m_Name: Arrived
   m_EditorClassIdentifier: 
-  _name: Arrived
+  <Name>k__BackingField: Arrived

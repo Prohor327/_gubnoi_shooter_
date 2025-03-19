@@ -4,7 +4,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CutSceneSO", menuName = "Game/CutSceneSO", order = 0)]
 public class CutSceneSO : ScriptableObject 
 {
-    [SerializeField] private string _name;    
-
-    public string Name => _name;
+    [field: SerializeField] public string Name { get; private set; }
 }

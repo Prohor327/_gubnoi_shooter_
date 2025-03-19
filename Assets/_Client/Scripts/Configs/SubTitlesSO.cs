@@ -1,12 +1,8 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Subtitres", menuName = "Game/New subtitres", order = 0)]
-public class SubTitresSO : ScriptableObject
+public class SubTitlesSO : ScriptableObject
 {
-    [SerializeField] string[] _title;
-    [SerializeField] string[] _text;
-
-    public string[] GetTitle() => _title;
-
-    public string[] GetText() => _text;
+    [field: SerializeField] public string[] Title { get; private set; }
+    [field: SerializeField] public string[] Text { get; private set; }
 }

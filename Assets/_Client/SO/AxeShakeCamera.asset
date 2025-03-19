@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54eb00b31a29d0344a74ea43bb964230, type: 3}
   m_Name: AxeShakeCamera
   m_EditorClassIdentifier: 
-  _shakeCameraAnimationConfig:
-    _positionConfig:
+  <ShakeCameraAnimationConfig>k__BackingField:
+    <PositionConfig>k__BackingField:
       isOn: 1
       duration: 0.1
       ease: 1
-      randomnessMode: 1
-      strength: {x: 0.05, y: 0.15, z: 0}
-      randomness: 0
-      vibrato: 3
-      snapping: 0
-    _rotationConfig:
+      <RandomnessMode>k__BackingField: 0
+      <Strength>k__BackingField: {x: 0.005, y: 0.15, z: 0}
+      <Randomness>k__BackingField: 0
+      <Vibrato>k__BackingField: 3
+      <Snapping>k__BackingField: 0
+    <RotationConfig>k__BackingField:
       isOn: 1
       duration: 1
       ease: 6
-      randomnessMode: 0
-      strength: {x: 1, y: 1, z: 1}
-      randomness: 90
-      vibrato: 10
-      snapping: 0
+      <RandomnessMode>k__BackingField: 0
+      <Strength>k__BackingField: {x: 1, y: 1, z: 1}
+      <Randomness>k__BackingField: 90
+      <Vibrato>k__BackingField: 10
+      <Snapping>k__BackingField: 0

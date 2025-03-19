@@ -8,7 +8,7 @@ public class SubTitles : UIElement
     private Label _title;
     private Label _text;
     private Coroutine coroutine = null;
-    private SubTitresSO _currentSubTitle;
+    private SubTitlesSO _currentSubTitle;
     private int _indexCurrentText = 0;
 
     protected override void Initialize()
@@ -24,28 +24,28 @@ public class SubTitles : UIElement
         _gameplayUI.ShowOrHideSubtitres(_UIElement, true);
     }
 
-    public void Printing(SubTitresSO subTitresSO)
+    public void Printing(SubTitlesSO subTitlesSO)
     {
         Open();
         
         _text.SetEnabled(true);
         _title.SetEnabled(true);
-        _currentSubTitle = subTitresSO;
+        _currentSubTitle = subTitlesSO;
 
         NextText();
     }
 
     private void NextText()
     {
-        if (coroutine == null && _indexCurrentText < _currentSubTitle.GetTitle().Length)
+        if (coroutine == null && _indexCurrentText < _currentSubTitle.Title.Length)
         {
             _text.text = null;
             _title.text = null;
-            SetTitle(_currentSubTitle.GetTitle()[_indexCurrentText]);
-            PrintText(_currentSubTitle.GetText()[_indexCurrentText]);
+            SetTitle(_currentSubTitle.Title[_indexCurrentText]);
+            PrintText(_currentSubTitle.Text[_indexCurrentText]);
             _indexCurrentText++;
         }
-        else if (_indexCurrentText >= _currentSubTitle.GetTitle().Length) Close();
+        else if (_indexCurrentText >= _currentSubTitle.Title.Length) Close();
     }
 
     private void SetTitle(string title)

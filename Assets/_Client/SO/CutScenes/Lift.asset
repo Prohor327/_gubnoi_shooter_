@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0888d904473c624888740b9cb9d6fe0, type: 3}
   m_Name: Lift
   m_EditorClassIdentifier: 
-  _name: Lift
-  _id: 1
+  <Name>k__BackingField: Lift

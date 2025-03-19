@@ -4,9 +4,6 @@ using UnityEngine;
 [Serializable]
 public class HandsConfig
 {
-    [SerializeField] private float _distance;
-    [SerializeField] private float _throwingForce;
-
-    public float Distance => _distance;
-    public float ThrowingForce => _throwingForce;
+    [field: SerializeField] public float Distance { get; private set; }
+    [field: SerializeField] public float ThrowingForce { get; private set; }
 }

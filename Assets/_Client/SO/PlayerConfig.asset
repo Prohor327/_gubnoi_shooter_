@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e335f4adb855241882c8f3c63fa154, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  _movementConfig:
-    _walkSpeed: 7
-    _runSpeed: 0
-    _jumpForce: 5
-    _crouchHeight: 0.5
-    _crouchDuration: 0.5
-    _crouchSpeed: 1.6
-    _gravityMultiplier: 1
-  _healthConfig:
-    Health: 100
-  _handsConfig:
-    _distance: 2
-    _throwingForce: 0
-  _playerLookConfig:
-    Sensivity: 2
-    FocusOfView: 0
-    YRotateLimit: 80
+  <MovementConfig>k__BackingField:
+    <RunSpeed>k__BackingField: 0
+    <WalkSpeed>k__BackingField: 7
+    <JumpForce>k__BackingField: 5
+    <CrouchHeight>k__BackingField: 0.5
+    <CrouchDuration>k__BackingField: 0.5
+    <CrouchSpeed>k__BackingField: 1.6
+    <GravityMultiplier>k__BackingField: 1
+  <HealthConfig>k__BackingField:
+    <Health>k__BackingField: 100
+  <HandsConfig>k__BackingField:
+    <Distance>k__BackingField: 2
+    <ThrowingForce>k__BackingField: 0
+  <PlayerLookConfig>k__BackingField:
+    <YRotateLimit>k__BackingField: 80
+    <Sensivity>k__BackingField: 2
+    <FocusOfView>k__BackingField: 100

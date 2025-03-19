@@ -5,19 +5,11 @@ using UnityEditor.ShaderGraph.Internal;
 [Serializable]
 public class MovementConfig
 {
-    [SerializeField] private float _walkSpeed;
-    [SerializeField] private float _runSpeed;
-    [SerializeField] private float _jumpForce;
-    [SerializeField] private float _crouchHeight;
-    [SerializeField] private float _crouchDuration;
-    [SerializeField] private float _crouchSpeed;
-    [SerializeField] private float _gravityMultiplier;
-
-    public float WalkSpeed => _walkSpeed;
-    public float RunSpeed => _runSpeed;
-    public float JumpForce => _jumpForce;
-    public float CrouchHeight => _crouchHeight;
-    public float CrouchDuration => _crouchDuration;
-    public float CrouchSpeed => _crouchSpeed;
-    public float GravityMultiplier => _gravityMultiplier;
+    [field: SerializeField] public float RunSpeed { get; private set; }
+    [field: SerializeField] public float WalkSpeed { get; private set; }
+    [field: SerializeField] public float JumpForce { get; private set; }
+    [field: SerializeField] public float CrouchHeight { get; private set; }
+    [field: SerializeField] public float CrouchDuration { get; private set; }
+    [field: SerializeField] public float CrouchSpeed { get; private set; }
+    [field: SerializeField] public float GravityMultiplier { get; private set; }
 }

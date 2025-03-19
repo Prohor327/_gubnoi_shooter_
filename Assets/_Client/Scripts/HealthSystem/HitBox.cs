@@ -33,6 +33,6 @@ public class HitBox : MonoBehaviour, IWeaponVisitor
 
     private void SpawnDecals(RaycastHit hit)
     {
-        Instantiate(_particalDecal.gameObject, hit.point, Quaternion.LookRotation(hit.normal), hit.transform);
+        //Instantiate(_particalDecal.gameObject, hit.point, Quaternion.LookRotation(hit.normal), hit.transform);
     }
 }
