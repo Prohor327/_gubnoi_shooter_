@@ -947,6 +947,9 @@ MonoBehaviour:
   distance: 100
   _useSpread: 1
   _spreading: 0.15
+  _includeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!82 &3956103908563350077
 AudioSource:
   m_ObjectHideFlags: 0

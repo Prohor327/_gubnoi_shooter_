@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6804083758796603058}
   - component: {fileID: 4984216440040362268}
+  - component: {fileID: 5414238202218435588}
   m_Layer: 0
   m_Name: Speaker
   m_TagString: Untagged
@@ -42,12 +43,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 58ac853f139473e45a22b89ec64445b9, type: 3}
+  m_Resource: {fileID: 8300000, guid: 58ac853f139473e45a22b89ec64445b9, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -129,6 +130,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &5414238202218435588
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781609369029377501}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &931501960795988693
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +308,7 @@ GameObject:
   - component: {fileID: 3263991302187643151}
   - component: {fileID: 4919903343028699897}
   - component: {fileID: 6903072802379949404}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: lift
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +403,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -837,6 +860,7 @@ MonoBehaviour:
   _buttonPressSound: {fileID: 8300000, guid: 7e8dff2bebab5d5489150d0d9401ac8a, type: 3}
   _liftAudioSource: {fileID: 6903072802379949404}
   _liftSpeakerSource: {fileID: 4984216440040362268}
+  _liftCallButton: {fileID: 2012684443837424939}
   _liftDoors: {fileID: 4301556640674601714}
   _timeInLift: 20
 --- !u!1 &7034809309239492003
@@ -1077,7 +1101,7 @@ GameObject:
   - component: {fileID: 1645059155520842198}
   - component: {fileID: 7764982461174292204}
   - component: {fileID: 5795004669829292425}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: lift_door2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1185,7 +1209,7 @@ GameObject:
   - component: {fileID: 6755518283740077624}
   - component: {fileID: 6017071554734393596}
   - component: {fileID: 6805911242391190495}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: lift_door1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

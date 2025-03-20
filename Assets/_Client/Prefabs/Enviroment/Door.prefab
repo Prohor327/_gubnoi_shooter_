@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2751865555350528048}
   - component: {fileID: 2396929771944222177}
   - component: {fileID: 4242444155219200951}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,9 +31,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.115, y: 1.353, z: 3.773}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_LocalScale: {x: -100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7079927010919011679}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &5065064174726064170
@@ -43,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8052076454319832088}
-  m_Mesh: {fileID: 5779197439840542771, guid: 264f82f096dab1d468b6ce41f9a93faa, type: 3}
+  m_Mesh: {fileID: 5779197439840542771, guid: 25f228af6abb60942b2bb65f396def7f, type: 3}
 --- !u!23 &3297072334046855702
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -67,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 95c02f3a7ca41be4c8a0cab66da63586, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -205,8 +206,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.012532596, y: 0.004066737, z: 0.024655206}
-  m_Center: {x: 0.0062660584, y: 0.0000015638079, z: -0.0000105244135}
+  m_Size: {x: 0.012024962, y: 0.004066737, z: 0.024842978}
+  m_Center: {x: 0.0065198857, y: 0.0000015914968, z: 0.00008330981}
 --- !u!114 &4242444155219200951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +220,130 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff501c68db206e6468c02b96e487e9c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: "\u0414\u0432\u0435\u0440\u044C"
   openningDuration: 1
   _openningSound: {fileID: 8300000, guid: cc833998bc920804eac86900ee0b65fb, type: 3}
   _closingSound: {fileID: 8300000, guid: 3ebd511aa918fe04bb66443f7ab1be0a, type: 3}
+--- !u!1 &8543746041912598805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7079927010919011679}
+  - component: {fileID: 303833300555544156}
+  - component: {fileID: 831459161936325680}
+  - component: {fileID: 7461172273739369693}
+  - component: {fileID: 3209397608270135123}
+  m_Layer: 11
+  m_Name: Door Handle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7079927010919011679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543746041912598805}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8859862662350670365}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &303833300555544156
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543746041912598805}
+  m_Mesh: {fileID: -5287171592913596021, guid: 25f228af6abb60942b2bb65f396def7f, type: 3}
+--- !u!23 &831459161936325680
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543746041912598805}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 95c02f3a7ca41be4c8a0cab66da63586, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7461172273739369693
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543746041912598805}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0022849927, y: 0.0053747874, z: 0.002034531}
+  m_Center: {x: 0.010367355, y: 0.00009510163, z: 0.00013907412}
+--- !u!114 &3209397608270135123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543746041912598805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68068f3acceffa340a37af868a35373a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: "\u0414\u0432\u0435\u0440\u044C"
+  _doorHandleSound: {fileID: 8300000, guid: c7fc25cc42f660445be77c0040b840bb, type: 3}
+  _door: {fileID: 4242444155219200951}

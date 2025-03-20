@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Zenject;
+using TMPro;
 
 public class PlayerWeapons : MonoBehaviour 
 {
@@ -8,6 +10,7 @@ public class PlayerWeapons : MonoBehaviour
 
     private Dictionary<WeaponType, Weapon> _weapons = new Dictionary<WeaponType, Weapon>();
     private Player _player;
+    private SurfaceConfig _surfaceConfig;
     
     public int AmountWeapon => _startedWeapons.Length;
     public WeaponType CurrentWeaponType { private set; get; }
@@ -16,6 +19,12 @@ public class PlayerWeapons : MonoBehaviour
     public void Initialize(Player player)
     {
         _player = player;
+    }
+
+    [Inject]
+    private void Construct(SurfaceConfig surfaceConfig)
+    {
+        _surfaceConfig = surfaceConfig;
     }
 
     private void Start()
@@ -68,13 +77,13 @@ public class PlayerWeapons : MonoBehaviour
 
     private void InitializeFirearmWeapon(FirearmWeapon weapon)
     {               
-        weapon.Initialize(_player.Rig.PlayerCamera.transform, _player.Sound, _player.Ammo);
+        weapon.Initialize(_player.Rig.PlayerCamera.transform, _player.Sound, _player.Ammo, _surfaceConfig);
         weapon.OnChangedAmountAmmoInClip += (string text) => _player.Events.OnChangedAmountAmmo(text);
     }
 
     private void InitializeOverlapWeapon(OverlapWeapon weapon)
     {
-        weapon.Initialize(_player.Sound);
+        weapon.Initialize(_player.Sound, _surfaceConfig);
         weapon.OnTaken += () => _player.Events.OnChangedAmountAmmo.Invoke("∞");
     }
 
@@ -116,6 +125,7 @@ public class PlayerWeapons : MonoBehaviour
         {
             return;
         }
+        _weapons[CurrentWeaponType].RemoveWeapon();
         _weapons[CurrentWeaponType].gameObject.SetActive(false);
         PreviousWeaponType = CurrentWeaponType;
         CurrentWeaponType = WeaponType.None;

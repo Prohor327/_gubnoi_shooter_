@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3feaf6dcc6a9db458d68277a546b048, type: 3}
+  m_Name: GameConfig
+  m_EditorClassIdentifier: 
+  _surfaceConfig:
+    <BulletHoles>k__BackingField:
+      _serializedList:
+      - Key:
+          serializedVersion: 2
+          m_Bits: 128
+        Value: {fileID: 2803857800911547382, guid: 30433eecd8a00b34d9c41f7c892f0bab, type: 3}
+      - Key:
+          serializedVersion: 2
+          m_Bits: 512
+        Value: {fileID: 2803857800911547382, guid: a15fef016959ed240962c57af85bbca2, type: 3}
+      - Key:
+          serializedVersion: 2
+          m_Bits: 256
+        Value: {fileID: 2803857800911547382, guid: a15fef016959ed240962c57af85bbca2, type: 3}
+      - Key:
+          serializedVersion: 2
+          m_Bits: 64
+        Value: {fileID: 2803857800911547382, guid: a15fef016959ed240962c57af85bbca2, type: 3}
+      - Key:
+          serializedVersion: 2
+          m_Bits: 2048
+        Value: {fileID: 2803857800911547382, guid: a15fef016959ed240962c57af85bbca2, type: 3}
+    <ParticalEffects>k__BackingField:
+      _serializedList:
+      - Key:
+          serializedVersion: 2
+          m_Bits: 64
+        Value: {fileID: 6582252855736309423, guid: fc7f8379080d0a844ad699b91bfd56f0, type: 3}
+      - Key:
+          serializedVersion: 2
+          m_Bits: 128
+        Value: {fileID: 6285362708770907629, guid: 00fedc70b62a31e448e8ccc298257b56, type: 3}
+      - Key:
+          serializedVersion: 2
+          m_Bits: 2048
+        Value: {fileID: 9168697941526051207, guid: ac1aa04288fad804ba1cd769f4377aaf, type: 3}
+      - Key:
+          serializedVersion: 2
+          m_Bits: 512
+        Value: {fileID: 6285362708770907629, guid: 00fedc70b62a31e448e8ccc298257b56, type: 3}
+      - Key:
+          serializedVersion: 2
+          m_Bits: 1024
+        Value: {fileID: 3622236672296073344, guid: 8f89d00c2890d754d8a54ae613047b89, type: 3}

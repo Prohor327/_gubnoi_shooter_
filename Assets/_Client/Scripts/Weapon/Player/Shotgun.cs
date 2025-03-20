@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Shotgun : RaycastWeapon
 {
-    public override void Initialize(Transform shootPoint, PlayerSound playerSound, Ammo ammo)
+    public override void Initialize(Transform shootPoint, PlayerSound playerSound, Ammo ammo, SurfaceConfig surfaceConfig)
     {
         this.shootPoint = shootPoint;
         this.ammo = ammo;
         this.ammo.OnAddedAmmo += OnAddedAmmo;
         amountAmmoInClip = ammo.LoadClip(ammoType, clipSize, amountAmmoInClip);
-        base.Initialize(playerSound);
+        base.Initialize(playerSound, surfaceConfig);
     }
 
     public override void Reload()

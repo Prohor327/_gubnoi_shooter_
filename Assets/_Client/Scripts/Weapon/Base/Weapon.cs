@@ -34,14 +34,16 @@ public abstract class Weapon : MonoBehaviour
     protected WeaponState state;
     protected PlayerWeaponSound sound;
     protected WeaponAnimations animations;
+    protected SurfaceConfig surfaceConfig;
 
-    public virtual void Initialize(PlayerSound playerSound)
+    public virtual void Initialize(PlayerSound playerSound, SurfaceConfig surfaceConfig)
     {
         state = WeaponState.Idle;
         OnInitialize?.Invoke();
         sound = GetComponent<PlayerWeaponSound>();
         sound.Initialize(playerSound);
         animations = GetComponent<WeaponAnimations>();
+        this.surfaceConfig = surfaceConfig;
         animations.Initialize();
     }
 

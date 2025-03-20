@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8240126697350984492}
   - component: {fileID: 6178438253419530214}
   - component: {fileID: 3819927458636153652}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5674188820987127347}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 147.074, y: 0.858, z: 188.843}
-  m_LocalScale: {x: 120.00001, y: 120.00001, z: 120.00001}
+  m_LocalScale: {x: 120, y: 120, z: 120}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &8240126697350984492
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54eb00b31a29d0344a74ea43bb964230, type: 3}
   m_Name: ShotgunShakeCamera
   m_EditorClassIdentifier: 
-  _shakeCameraAnimationConfig:
-    _positionConfig:
-      isOn: 1
-      duration: 0.1
-      ease: 1
-      randomnessMode: 1
-      strength: {x: 0.1, y: 0.2, z: 0.03}
-      randomness: 0
-      vibrato: 0
-      snapping: 0
-    _rotationConfig:
-      isOn: 1
-      duration: 0.5
-      ease: 11
-      randomnessMode: 0
-      strength: {x: 2, y: 2, z: 2}
-      randomness: 10
-      vibrato: 10
-      snapping: 0
+  <ShakeCameraAnimationConfig>k__BackingField:
+    <PositionConfig>k__BackingField:
+      <isOn>k__BackingField: 1
+      <Duration>k__BackingField: 0.1
+      <ease>k__BackingField: 1
+      <RandomnessMode>k__BackingField: 0
+      <Strength>k__BackingField: {x: 0.1, y: 0.2, z: 0.03}
+      <Randomness>k__BackingField: 0
+      <Vibrato>k__BackingField: 0
+      <Snapping>k__BackingField: 0
+    <RotationConfig>k__BackingField:
+      <isOn>k__BackingField: 1
+      <Duration>k__BackingField: 0.5
+      <ease>k__BackingField: 11
+      <RandomnessMode>k__BackingField: 0
+      <Strength>k__BackingField: {x: 2, y: 2, z: 2}
+      <Randomness>k__BackingField: 10
+      <Vibrato>k__BackingField: 10
+      <Snapping>k__BackingField: 0

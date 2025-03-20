@@ -25,12 +25,12 @@ public abstract class FirearmWeapon : Weapon
         OnChangedAmountAmmoInClip.Invoke(amountAmmoInClip.ToString() + "/" + ammo.GetAmountAmmo(ammoType));
     }
 
-    public virtual void Initialize(Transform shootPoint, PlayerSound playerSound, Ammo ammo)
+    public virtual void Initialize(Transform shootPoint, PlayerSound playerSound, Ammo ammo, SurfaceConfig surfaceConfig)
     {
         this.shootPoint = shootPoint;
         this.ammo = ammo;
         this.ammo.OnAddedAmmo += OnAddedAmmo;
-        base.Initialize(playerSound);
+        base.Initialize(playerSound, surfaceConfig);
         PerformReload();
     }
 
@@ -44,7 +44,14 @@ public abstract class FirearmWeapon : Weapon
 
     protected void SpawnBulletHole(RaycastHit hit)
     {
-        Instantiate(bulletHole.gameObject, hit.point, Quaternion.LookRotation(hit.normal), hit.transform);
+        if(surfaceConfig.BulletHoles.ContainsKey(1 << hit.transform.gameObject.layer))
+        {
+            Instantiate(surfaceConfig.BulletHoles[1 << hit.transform.gameObject.layer].gameObject, hit.point, Quaternion.LookRotation(hit.normal));
+        }
+        if(surfaceConfig.ParticalEffects.ContainsKey(1 << hit.transform.gameObject.layer))
+        {
+            Instantiate(surfaceConfig.ParticalEffects[1 << hit.transform.gameObject.layer].gameObject, hit.point, Quaternion.LookRotation(hit.normal));
+        }
     }
 
     public override void Attack()

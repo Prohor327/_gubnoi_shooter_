@@ -6,10 +6,9 @@ public abstract class RaycastWeapon : FirearmWeapon
     [Header("Shoot")]
     [SerializeField] private int _amountShots;
     [SerializeField] protected float distance;
-
-    [Header("Shoot")]
     [SerializeField] private bool _useSpread;
     [SerializeField] private float _spreading;
+    [SerializeField] private LayerMask _includeLayers;
 
     public override void PreformAttack()
     {
@@ -25,7 +24,7 @@ public abstract class RaycastWeapon : FirearmWeapon
                 direction += spread;
             }
             RaycastHit hit;
-            if (Physics.Raycast(shootPoint.position, direction, out hit, distance))
+            if (Physics.Raycast(shootPoint.position, direction, out hit, distance, _includeLayers))
             {
                 SpawnBulletHole(hit);
                 HitScan(hit);

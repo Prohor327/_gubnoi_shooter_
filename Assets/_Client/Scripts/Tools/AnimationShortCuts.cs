@@ -54,14 +54,14 @@ public static class AnimationShortCuts
     public static Tween ShakeRotationAnimation(this Transform transform, ShakeAnimationConfig config)
     {
         return transform
-            .DOShakeRotation(config.duration, config.Strength, config.Vibrato, config.Randomness, randomnessMode: config.RandomnessMode)
+            .DOShakeRotation(config.Duration, config.Strength, config.Vibrato, config.Randomness, randomnessMode: config.RandomnessMode)
             .SetEase(config.ease);
     }
     
     public static Tween ShakePositionAnimation(this Transform transform, ShakeAnimationConfig config)
     {
         return transform
-            .DOShakePosition(config.duration, config.Strength, config.Vibrato, config.Randomness, config.Snapping, true, config.RandomnessMode)
+            .DOShakePosition(config.Duration, config.Strength, config.Vibrato, config.Randomness, config.Snapping, true, config.RandomnessMode)
             .SetEase(config.ease);
     }
 

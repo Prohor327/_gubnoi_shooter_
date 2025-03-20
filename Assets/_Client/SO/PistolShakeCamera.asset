@@ -12,22 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54eb00b31a29d0344a74ea43bb964230, type: 3}
   m_Name: PistolShakeCamera
   m_EditorClassIdentifier: 
-  _shakeCameraAnimationConfig:
-    _positionConfig:
-      isOn: 1
-      duration: 0.2
-      ease: 1
-      randomnessMode: 0
-      strength: {x: 0.1, y: 0.07, z: 0.05}
-      randomness: 0
-      vibrato: 10
-      snapping: 0
-    _rotationConfig:
-      isOn: 1
-      duration: 0.4
-      ease: 5
-      randomnessMode: 1
-      strength: {x: 1, y: 1, z: 1}
-      randomness: 0
-      vibrato: 10
-      snapping: 0
+  <ShakeCameraAnimationConfig>k__BackingField:
+    <PositionConfig>k__BackingField:
+      <isOn>k__BackingField: 1
+      <Duration>k__BackingField: 0.2
+      <ease>k__BackingField: 1
+      <RandomnessMode>k__BackingField: 0
+      <Strength>k__BackingField: {x: 0.1, y: 0.07, z: 0.05}
+      <Randomness>k__BackingField: 0
+      <Vibrato>k__BackingField: 0
+      <Snapping>k__BackingField: 0
+    <RotationConfig>k__BackingField:
+      <isOn>k__BackingField: 1
+      <Duration>k__BackingField: 0.4
+      <ease>k__BackingField: 5
+      <RandomnessMode>k__BackingField: 1
+      <Strength>k__BackingField: {x: 1, y: 1, z: 1}
+      <Randomness>k__BackingField: 0
+      <Vibrato>k__BackingField: 10
+      <Snapping>k__BackingField: 0
