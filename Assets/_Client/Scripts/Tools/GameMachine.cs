@@ -16,6 +16,8 @@ public class GameMachine
     public Action OnStartCutScene;
     public Action OnEndCutScene;
     public Action OnFinishGame;
+    public Action OnQuitGame;
+    public Action OnLoadMenu;
 
     [Inject]
     public GameMachine(ScenesOpener scenesOpener)
@@ -28,12 +30,15 @@ public class GameMachine
     {
         UpdateGameState(GameState.Initialize);
         InputHandler.Initialize();
-        _scenesOpener.OpenMenu();
-        UpdateGameState(GameState.Menu);
+        LoadMenu();
     }
 
     public void LoadLevel(string nameLevel)
     {
+        if(CurrentState == GameState.Game || CurrentState == GameState.CutScene)
+        {
+            FinishGame();
+        }
         UpdateGameState(GameState.LoadGame);
         _scenesOpener.OpenLevel(nameLevel);
         OnLoadGame?.Invoke();
@@ -91,13 +96,34 @@ public class GameMachine
     public void FinishGame()
     {
         OnFinishGame?.Invoke();
+        ResetGameplayActions();
+        UpdateGameState(GameState.FinishigGame);
+    }
+
+    public void LoadMenu()
+    {
+        UpdateGameState(GameState.Menu);
+        OnLoadMenu?.Invoke();
+        _scenesOpener.OpenMenu();
+    }
+
+    public void QuitGame()
+    {
+        OnQuitGame?.Invoke();
+        ResetGameplayActions();
+        OnLoadMenu += () => {};
+        OnQuitGame += () => {}; 
+        OnLoadGame += () => {};
+        Application.Quit();
+    }
+
+    private void ResetGameplayActions()
+    {
         OnStopGame += () => {};
         OnResumeGame += () => {};
         OnStartCutScene += () => {};
         OnEndCutScene += () => {};
         OnFinishGame += () => {};
-        UpdateGameState(GameState.Menu);
-        _scenesOpener.OpenMenu();
     }
 
     private void UpdateGameState(GameState gameState)

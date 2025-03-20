@@ -1,5 +1,4 @@
 using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using Zenject;
 
@@ -24,7 +23,7 @@ public class Pause : UIElement
         Button exit = _UIElement.Q<Button>("Exit");
 
         Continue.clicked += Close;
-        exit.clicked += () =>  SceneManager.LoadScene(1);
+        exit.clicked += () => _gameMachine.LoadMenu();
     }
 
     public override void Open()

@@ -22,7 +22,7 @@ public enum GameState
     Game, 
     CutScene,
     Pause, 
-    Death
+    FinishigGame
 }
 
 public enum SurfaceType
