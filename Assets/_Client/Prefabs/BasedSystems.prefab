@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 3274330356399961992}
   - component: {fileID: 1985236055539760101}
   - component: {fileID: 3960329197584844813}
+  - component: {fileID: 6682842473076661964}
   m_Layer: 5
   m_Name: UIDocument
   m_TagString: Untagged
@@ -152,6 +153,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _asset: {fileID: 9197481963319205126, guid: 2dbcbf1891ddc3a4ea54045dae0da24d, type: 3}
+--- !u!114 &6682842473076661964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3482249448906046915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15facf4046b2db84187207c0157d3a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _asset: {fileID: 9197481963319205126, guid: f3468be31414d2141819a55869c36e0a, type: 3}
+  _animationTimer: 1
 --- !u!1 &3929040878283442011
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +318,14 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 1453998324772624131, guid: c166b692773f279479a4296e658c343d, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -3908243953001370374, guid: c166b692773f279479a4296e658c343d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7427000880514149359, guid: c166b692773f279479a4296e658c343d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3530778947072349340, guid: c166b692773f279479a4296e658c343d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7451444386800386561, guid: c166b692773f279479a4296e658c343d, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &6372311393395324582
@@ -319,12 +342,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cutScenes:
     _serializedList: []
-  _onStartCutScene:
-    m_PersistentCalls:
-      m_Calls: []
-  _onEndCutScene:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &6749827197113734540
 MonoBehaviour:
   m_ObjectHideFlags: 0

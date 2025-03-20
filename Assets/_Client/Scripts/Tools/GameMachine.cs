@@ -40,8 +40,13 @@ public class GameMachine
             FinishGame();
         }
         UpdateGameState(GameState.LoadGame);
-        _scenesOpener.OpenLevel(nameLevel);
+        _scenesOpener.LoadLevel(nameLevel);
         OnLoadGame?.Invoke();
+    }
+
+    public void OpenLevel()
+    {
+        _scenesOpener.OpenLevel();
     }
 
     public void StartGame()
