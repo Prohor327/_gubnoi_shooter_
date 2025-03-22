@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4547223593407848995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6186553854161737351}
+  m_Layer: 3
+  m_Name: GunFirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6186553854161737351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4547223593407848995}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.001, y: 0.06, z: 0.659}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 989389262334810362}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2824823357082982240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -844,7 +875,10 @@ PrefabInstance:
     - {fileID: -8078506430061932926, guid: 81481cb4e0a66c24e96b18423f2589c4, type: 3}
     - {fileID: -139076337850678904, guid: 81481cb4e0a66c24e96b18423f2589c4, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -6158446357345136742, guid: 81481cb4e0a66c24e96b18423f2589c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6186553854161737351}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81481cb4e0a66c24e96b18423f2589c4, type: 3}
       insertIndex: -1
@@ -862,6 +896,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3956103908563350077}
   m_SourcePrefab: {fileID: 100100000, guid: 81481cb4e0a66c24e96b18423f2589c4, type: 3}
+--- !u!4 &989389262334810362 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6158446357345136742, guid: 81481cb4e0a66c24e96b18423f2589c4, type: 3}
+  m_PrefabInstance: {fileID: 2824823357082982240}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3166769622794201649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 81481cb4e0a66c24e96b18423f2589c4, type: 3}
@@ -942,6 +981,8 @@ MonoBehaviour:
   ammoType: 3
   clipSize: 6
   bulletHole: {fileID: 2803857800911547382, guid: a15fef016959ed240962c57af85bbca2, type: 3}
+  _gunFirePoint: {fileID: 6186553854161737351}
+  _gunFire: {fileID: 100000, guid: 17a5d0e5b223afc48a3f7a3389405165, type: 3}
   amountAmmoInClip: 0
   _amountShots: 5
   distance: 100

@@ -26,7 +26,7 @@ public abstract class RaycastWeapon : FirearmWeapon
             RaycastHit hit;
             if (Physics.Raycast(shootPoint.position, direction, out hit, distance, _includeLayers))
             {
-                SpawnBulletHole(hit);
+                SpawnVFX(hit);
                 HitScan(hit);
             }
         }
