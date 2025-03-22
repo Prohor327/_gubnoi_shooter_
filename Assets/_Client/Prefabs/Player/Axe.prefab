@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 6740384352465466587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.465, z: 0.377}
+  m_LocalPosition: {x: 0, y: 0.465, z: 0.276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -181,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 47dc1d637af02f64eb0835aa8d2e7788, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1656502389482791065, guid: 47dc1d637af02f64eb0835aa8d2e7788, type: 3}
       propertyPath: m_Layer
@@ -393,8 +393,9 @@ MonoBehaviour:
   _damage: 10
   _shakeCameraAnimationSO: {fileID: 11400000, guid: f10381b072eefe24b910fdf7ad903474, type: 2}
   _maxAmountColliders: 5
-  _attackRange: 0.48
+  _attackRange: 0.55
   _overlapPoint: {fileID: 6208014864575447971}
+  _scratch: {fileID: 2803857800911547382, guid: 33685a0e7ef0afd47b22afa0bfcf01fe, type: 3}
 --- !u!82 &9125642672724209830
 AudioSource:
   m_ObjectHideFlags: 0

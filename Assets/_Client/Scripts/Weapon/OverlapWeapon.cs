@@ -6,6 +6,7 @@ public abstract class OverlapWeapon : Weapon
     [SerializeField] private int _maxAmountColliders;
     [SerializeField] private float _attackRange;
     [SerializeField] private Transform _overlapPoint;
+    [SerializeField] private LimitedLifeDecal _scratch;
 
     private void OnDrawGizmos()
     {
@@ -23,6 +24,11 @@ public abstract class OverlapWeapon : Weapon
         Collider[] hitColliders = new Collider[_maxAmountColliders];
         int amountColliders = Physics.OverlapSphereNonAlloc(_overlapPoint.position, _attackRange, hitColliders);
         TryPerformAttack(hitColliders, amountColliders);
+        RaycastHit hitForVFX;
+        if(Physics.Raycast(_overlapPoint.position, _overlapPoint.forward, out hitForVFX, _attackRange))
+        {
+            SpawnVFX(hitForVFX);
+        }
     }
 
     private void TryPerformAttack(Collider[] colliders, int amountColliders)
@@ -37,4 +43,13 @@ public abstract class OverlapWeapon : Weapon
     }
 
     protected abstract void Accept(IWeaponVisitor weaponVisitor);
+
+    protected override void SpawnVFX(RaycastHit hit)
+    {
+        if(surfaceConfig.Scratches.ContainsKey(1 << hit.transform.gameObject.layer))
+        {
+            Instantiate(surfaceConfig.Scratches[1 << hit.transform.gameObject.layer].gameObject, hit.point, Quaternion.LookRotation(hit.normal));
+        }
+        base.SpawnVFX(hit);
+    }
 }

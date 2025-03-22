@@ -8,7 +8,7 @@ public abstract class FirearmWeapon : Weapon
     [SerializeField] protected int clipSize;
 
     [Header("VFX")]
-    [SerializeField] private BulletHole bulletHole;
+    [SerializeField] private LimitedLifeDecal bulletHole;
     [SerializeField] private Transform _gunFirePoint;
     [SerializeField] private GameObject _gunFire;
 
@@ -44,18 +44,14 @@ public abstract class FirearmWeapon : Weapon
         }
     }
 
-    protected void SpawnVFX(RaycastHit hit)
+    protected override void SpawnVFX(RaycastHit hit)
     {
         if(surfaceConfig.BulletHoles.ContainsKey(1 << hit.transform.gameObject.layer))
         {
             Instantiate(surfaceConfig.BulletHoles[1 << hit.transform.gameObject.layer].gameObject, hit.point, Quaternion.LookRotation(hit.normal));
         }
-        if(surfaceConfig.ParticalEffects.ContainsKey(1 << hit.transform.gameObject.layer))
-        {
-            Instantiate(surfaceConfig.ParticalEffects[1 << hit.transform.gameObject.layer].gameObject, hit.point, Quaternion.LookRotation(hit.normal));
-        }
-
         Instantiate(_gunFire, _gunFirePoint.position, Quaternion.identity, _gunFirePoint);
+        base.SpawnVFX(hit);
     }
 
     public override void Attack()

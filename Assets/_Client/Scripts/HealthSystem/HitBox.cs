@@ -5,7 +5,7 @@ public class HitBox : MonoBehaviour, IWeaponVisitor
 {
     [Header("VFX")]
     [SerializeField] private Decal _particalDecal;
-    [SerializeField] private BulletHole bulletHole;
+    [SerializeField] private LimitedLifeDecal bulletHole;
 
     private Unit _unit;
 

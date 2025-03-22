@@ -100,4 +100,12 @@ public abstract class Weapon : MonoBehaviour
         OnPerformAttack += () => {};
         OnRemoveWeapon += () => {};
     }
+
+    protected virtual void SpawnVFX(RaycastHit hit) 
+    {
+        if(surfaceConfig.ParticalEffects.ContainsKey(1 << hit.transform.gameObject.layer))
+        {
+            Instantiate(surfaceConfig.ParticalEffects[1 << hit.transform.gameObject.layer].gameObject, hit.point, Quaternion.LookRotation(hit.normal));
+        }
+    }
 }

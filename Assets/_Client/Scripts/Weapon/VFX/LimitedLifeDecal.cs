@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletHole : Decal
+public class LimitedLifeDecal : Decal
 {
     [SerializeField] private float _lifetime;    
 
